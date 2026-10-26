@@ -4,9 +4,9 @@
 ![App Map](ux-design/Violet%20Path%20App%20Map.png)
 
 ## Wireframes(Mobile)
-| Log In | Home | Student Information |
-|:---:|:---:|:---:|
-| <img src="ux-design/Log%20In.png" width="200"> | <img src="ux-design/Home.png" width="200"> | <img src="ux-design/Student%20Information.png" width="200"> |
+| Log In | Sign Up | Home | Student Information |
+|:---:|:---:|:---:|:---:|
+| <img src="ux-design/Log%20In.png" width="200"> | <img src="ux-design/Sign%20Up.png" width="200"> | <img src="ux-design/Home.png" width="200"> | <img src="ux-design/Student%20Information.png" width="200"> |
 
 | Degree Progess | Requirements | Graduation Check |
 |:---:|:---:|:---:|
