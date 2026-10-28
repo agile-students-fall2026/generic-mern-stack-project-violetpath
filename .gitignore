@@ -127,3 +127,15 @@ typings/
 ## Jekyll artifacts
 **/.jekyll-cache
 **/_site/
+
+# Database and user data files
+*.sqlite3
+*.db
+data/
+uploads/
+dump/
+
+# Editor folders
+.vscode/
+.idea/
+*.swp
