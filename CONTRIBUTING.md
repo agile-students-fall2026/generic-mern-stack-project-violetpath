@@ -2,11 +2,10 @@
 
 - **Communication:** Team members should communicate regularly on Discord and respond to important updates promptly (within 24 hours).
 - **Participation:** All team members are expected to participate in meetings, discussions, and development activities.
-- **Responsibility:** Each team member is responsible for completing assigned tasks by the agreed deadlines.
+- **Sprint Planning and stand-ups:** Standup times are fixed to Tuesday: 9:45 pm, Friday: 4 pm, Sunday: 8pm via Zoom. Everyone will attend synchronously and share their progress, next steps, and blockers. We will review what we did, choose user stories, make necessary tasks, and use Planning Poker (1,2,3,5,8,13) to estimate the difficulties of each user stories 
 - **Collaboration:** We encourage team members to share ideas, ask questions, and help each other solve problems.
 - **Respect:** All team members should respect different perspectives and provide constructive feedback.
-- **Transparency:** Any difficulties or delays should be communicated to the team as early as possible.
-Standup times are fixed to Tuesday: 9:45 pm, Friday: 4 pm, Sunday: 8pm over Zoom. Everyone will attend synchronously and share their progress, next steps, and blockers. For emergencies, contact professor or course assistant. 
+ 
 
 ## 2. Git Workflow
 
