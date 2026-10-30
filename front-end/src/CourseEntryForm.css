@@ -1,0 +1,168 @@
+
+/* Violet Path - Mobile Course Entry */
+
+.course-entry-page {
+  box-sizing: border-box;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 24px 16px;
+  background-color: #ffffff;
+  font-family: Arial, sans-serif;
+  color: #111111;
+}
+
+.course-entry-page *,
+.course-entry-page *::before,
+.course-entry-page *::after {
+  box-sizing: border-box;
+}
+
+/* Mobile container */
+
+.course-entry-page .course-entry-container {
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+}
+
+/* Violet Path heading */
+
+.course-entry-page .course-entry-title {
+  margin: 30px 0 35px;
+  color: black;
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Form card */
+
+.course-entry-page .course-entry-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 22px;
+  padding: 32px 24px;
+  background-color: white;
+  border: 2px solid #111111;
+  border-radius: 20px;
+  box-shadow: none;
+}
+
+/* Add a Course heading */
+
+.course-entry-page .course-entry-heading {
+  margin: 0 0 12px;
+  color: black;
+  font-size: 28px;
+  line-height: 1.3;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Input field groups */
+
+.course-entry-page .course-entry-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+}
+
+/* Input labels */
+
+.course-entry-page .course-entry-label {
+  display: block;
+  color: black;
+  font-size: 17px;
+  font-weight: 500;
+  text-align: left;
+}
+
+/* Text inputs and select */
+
+.course-entry-page .course-entry-input,
+.course-entry-page .course-entry-select {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: 54px;
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid #bcbcbc;
+  border-radius: 9px;
+  background-color: white;
+  color: #111111;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.course-entry-page .course-entry-input::placeholder {
+  color: #aaaaaa;
+}
+
+.course-entry-page .course-entry-input:focus,
+.course-entry-page .course-entry-select:focus {
+  outline: 2px solid #6e217c;
+  outline-offset: 1px;
+}
+
+/* Add Course button */
+
+.course-entry-page .course-entry-button {
+  display: block;
+  align-self: center;
+  width: 100%;
+  min-height: 54px;
+  margin-top: 12px;
+  padding: 14px 20px;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 11px;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+}
+
+.course-entry-page .course-entry-button:hover {
+  background-color: #45205a;
+}
+
+.course-entry-page .course-entry-button:focus-visible {
+  outline: 3px solid #9a73b0;
+  outline-offset: 3px;
+}
+
+/* Smaller phones */
+
+@media (max-width: 360px) {
+  .course-entry-page {
+    padding: 18px 12px;
+  }
+
+  .course-entry-page .course-entry-title {
+    font-size: 30px;
+  }
+
+  .course-entry-page .course-entry-form {
+    padding: 24px 16px;
+  }
+
+  .course-entry-page .course-entry-heading {
+    font-size: 24px;
+  }
+}
+
+/* Larger screens */
+
+@media (min-width: 600px) {
+  .course-entry-page {
+    padding-top: 48px;
+  }
+}
