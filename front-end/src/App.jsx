@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './Home'
 import LogIn from './LogIn'
 import TargetGPA from './TargetGPA'
+import CourseEntryForm from './CourseEntryForm'
 import MajorMinorSection from './MajorMinorSection';
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/gpa/target" element={<TargetGPA />} />
+        <Route path="/courses/add" element={<CourseEntryForm />} />
         <Route path="/degree/requirements" element={<MajorMinorSection />} />
       </Routes>
     </Router>
