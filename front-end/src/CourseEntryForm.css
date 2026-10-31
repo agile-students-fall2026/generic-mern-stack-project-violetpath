@@ -1,5 +1,5 @@
 
-/* Violet Path - Mobile Course Entry */
+
 
 .course-entry-page {
   box-sizing: border-box;
@@ -18,7 +18,6 @@
   box-sizing: border-box;
 }
 
-/* Mobile container */
 
 .course-entry-page .course-entry-container {
   width: 100%;
@@ -26,7 +25,7 @@
   margin: 0 auto;
 }
 
-/* Violet Path heading */
+
 
 .course-entry-page .course-entry-title {
   margin: 30px 0 35px;
@@ -37,7 +36,7 @@
   text-align: center;
 }
 
-/* Form card */
+
 
 .course-entry-page .course-entry-form {
   display: flex;
@@ -51,7 +50,7 @@
   box-shadow: none;
 }
 
-/* Add a Course heading */
+
 
 .course-entry-page .course-entry-heading {
   margin: 0 0 12px;
@@ -62,7 +61,7 @@
   text-align: center;
 }
 
-/* Input field groups */
+
 
 .course-entry-page .course-entry-field {
   display: flex;
@@ -71,7 +70,7 @@
   gap: 8px;
 }
 
-/* Input labels */
+
 
 .course-entry-page .course-entry-label {
   display: block;
@@ -81,7 +80,7 @@
   text-align: left;
 }
 
-/* Text inputs and select */
+
 
 .course-entry-page .course-entry-input,
 .course-entry-page .course-entry-select {
@@ -110,7 +109,7 @@
   outline-offset: 1px;
 }
 
-/* Add Course button */
+
 
 .course-entry-page .course-entry-button {
   display: block;
@@ -139,7 +138,7 @@
   outline-offset: 3px;
 }
 
-/* Smaller phones */
+
 
 @media (max-width: 360px) {
   .course-entry-page {
@@ -159,10 +158,71 @@
   }
 }
 
-/* Larger screens */
+
 
 @media (min-width: 600px) {
   .course-entry-page {
     padding-top: 48px;
   }
+}
+
+.course-entry-page .course-entry-error {
+  color: #c62828;
+  background-color: #fff0f0;
+  border: 1px solid #f4b9b9;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 0;
+  font-size: 14px;
+}
+
+.course-entry-page .course-list {
+  margin-top: 35px;
+}
+
+.course-entry-page .course-list h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.course-entry-page .semester-group {
+  margin-bottom: 24px;
+}
+
+.course-entry-page .semester-group h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #4b2162;
+}
+
+.course-entry-page .course-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 12px;
+}
+
+.course-entry-page .course-card p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.course-entry-page .course-delete-button {
+  background-color: #111;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.course-entry-page .course-delete-button:hover {
+  background-color: #b42318;
 }
