@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import './ResetPassword.css'
+import './ForgotPW.css'
  
-const ResetPassword = () => {
+const ForgotPW = () => {
   const [email, setEmail] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [confirmNewPassword, setConfirmNewPassword] = useState('')
@@ -24,7 +24,7 @@ const ResetPassword = () => {
   }
 
   return (
-    <main className="ResetPassword">
+    <main className="ForgotPW">
       <form onSubmit={handleSubmit}>
         <h1>Violet Path</h1>
         <h2>Reset Password</h2>
@@ -33,7 +33,7 @@ const ResetPassword = () => {
             <input
               id="email_field"
               type="text"
-              placeholder="current email address"
+              placeholder="Current Email Address"
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
@@ -61,12 +61,12 @@ const ResetPassword = () => {
  
           {error && (
             <div>
-              <p className="login-error">{error}</p>
+              <p className="PW-error">{error}</p>
             </div>
           )}
  
           <div>
-            <button type="submit" className="button">confirm</button>
+            <button type="submit" className="button">Confirm</button>
           </div>
         </div>
       </form>
@@ -74,4 +74,4 @@ const ResetPassword = () => {
   )
 }
  
-export default ResetPassword
+export default ForgotPW

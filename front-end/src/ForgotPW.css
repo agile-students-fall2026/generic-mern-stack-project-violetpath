@@ -1,4 +1,4 @@
-.ResetPassword {
+.ForgotPW {
   /* some spacing around the entire contents of the app */
   margin: 20px;
   display: flex;
@@ -7,7 +7,7 @@
   justify-content: center;
 }
  
-.ResetPassword form {
+.ForgotPW form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,13 +15,13 @@
 }
  
 /* "Reset Password" title is above the box, lined up with its left edge */
-.ResetPassword h2 {
+.ForgotPW h2 {
   width: 90%;
   max-width: 480px;
   text-align: left;
 }
  
-.ResetPassword .frame {
+.ForgotPW .frame {
   border: 2px solid black;
   border-radius: 12px;
   padding: 2.5rem 3rem;
@@ -30,36 +30,36 @@
   box-sizing: border-box;
 }
  
-.ResetPassword .frame .button {
+.ForgotPW .frame .button {
   width: auto;
   min-width: 160px;
   padding: 0.6em 2em;
   margin-top: 1.25rem;
 }
  
-.ResetPassword .frame > div:last-child {
+.ForgotPW .frame > div:last-child {
   text-align: center;
 }
  
-.ResetPassword .formField {
+.ForgotPW .formField {
   margin-top: 10px;
 }
  
-.ResetPassword .formField input {
+.ForgotPW .formField input {
   width: 100%;
   padding: 10px;
   font-size: 1.2em;
   box-sizing: border-box;
 }
  
-.ResetPassword p.login-error {
+.ForgotPW p.PW-error {
   color: red;
   text-align: center;
   margin: 1em 0 0;
 }
  
 /* the confirm button is white with a black border in the wireframe */
-.ResetPassword .button {
+.ForgotPW .button {
   font-size: 1em;
   font-weight: 600;
   text-align: center;
@@ -71,7 +71,7 @@
   color: black;
 }
  
-.ResetPassword .button:hover {
+.ForgotPW .button:hover {
   background-color: rgb(86, 0, 86);
   color: white;
 }
