@@ -1,0 +1,79 @@
+.SignUp {
+  /* some spacing around the entire contents of the app */
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.SignUp form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+ 
+.SignUp .frame {
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 2.5rem 3rem;
+  width: 90%;
+  max-width: 480px;
+  box-sizing: border-box;
+}
+ 
+/* "Sign Up" title sits on the left inside the box */
+.SignUp .frame h2 {
+  text-align: left;
+  margin-top: 0;
+}
+ 
+.SignUp .frame .button {
+  width: auto;
+  min-width: 160px;
+  padding: 0.6em 2em;
+  margin-top: 1.25rem;
+}
+ 
+.SignUp .frame > div:last-child {
+  text-align: center;
+}
+ 
+.SignUp .formField {
+  margin-top: 10px;
+}
+ 
+.SignUp .formField input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.2em;
+  box-sizing: border-box;
+  text-align: center; /* the text inside the inputs is centered */
+}
+ 
+.SignUp p.signup-error {
+  color: red;
+  text-align: center;
+  margin: 1em 0 0;
+}
+ 
+.SignUp .button {
+  font-size: 1em;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+}
+ 
+.SignUp .button-primary {
+  background-color: black;
+  color: white;
+}
+ 
+.SignUp .button-primary:hover {
+  background-color: rgb(86, 0, 86);
+  color: white;
+}
