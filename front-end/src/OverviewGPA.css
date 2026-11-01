@@ -1,0 +1,88 @@
+
+.overview-gpa-page {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.overview-gpa-container {
+  width: 90%;
+  max-width: 480px;
+}
+
+.overview-gpa-header {
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+}
+
+.overview-gpa-header h1 {
+  border: 1px solid black;
+  border-radius: 8px;
+  width: 50%;
+  margin: 0 auto;
+  padding: 5px;
+  color: rgb(86, 0, 86);
+}
+
+.overview-gpa-container h2 {
+  margin-top: 20px;
+}
+
+.overview-gpa-summary {
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.overview-gpa-summary p {
+  margin: 10px 0;
+}
+
+.overview-gpa-courses {
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.overview-gpa-courses h3 {
+  margin-top: 0;
+}
+
+.overview-gpa-category {
+  margin-top: 20px;
+}
+
+.overview-gpa-category h4 {
+  margin-bottom: 10px;
+}
+
+.overview-gpa-category p {
+  margin: 5px 0;
+}
+
+.overview-gpa-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.overview-gpa-button {
+  display: block;
+  padding: 12px 20px;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+
+.overview-gpa-button:hover {
+  background-color: rgb(86, 0, 86);
+}
