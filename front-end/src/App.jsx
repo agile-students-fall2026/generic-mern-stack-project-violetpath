@@ -6,9 +6,11 @@ import ForgotPW from './ForgotPW'
 import TargetGPA from './TargetGPA'
 import CourseEntryForm from './CourseEntryForm'
 import MajorMinorSection from './MajorMinorSection';
+import Header from './Header'
 const App = () => {
   return (
     <Router>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LogIn />} />
