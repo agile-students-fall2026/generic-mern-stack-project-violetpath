@@ -4,6 +4,7 @@ import LogIn from './LogIn'
 import SignUp from './SignUp'
 import ForgotPW from './ForgotPW'
 import TargetGPA from './TargetGPA'
+import OverviewGPA from './OverviewGPA'
 import CourseEntryForm from './CourseEntryForm'
 import MajorMinorSection from './MajorMinorSection';
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forgot-password" element={<ForgotPW />} />
+        <Route path="/gpa/overview" element={<OverviewGPA />} />
         <Route path="/gpa/target" element={<TargetGPA />} />
         <Route path="/courses/add" element={<CourseEntryForm />} />
         <Route path="/degree/requirements" element={<MajorMinorSection />} />
