@@ -8,6 +8,7 @@ import OverviewGPA from './OverviewGPA'
 import CourseEntryForm from './CourseEntryForm'
 import MajorMinorSection from './MajorMinorSection';
 import Header from './Header'
+import DegreeProgress from './DegreeProgress'
 const App = () => {
   return (
     <Router>
@@ -20,7 +21,9 @@ const App = () => {
         <Route path="/gpa/overview" element={<OverviewGPA />} />
         <Route path="/gpa/target" element={<TargetGPA />} />
         <Route path="/courses/add" element={<CourseEntryForm />} />
+        <Route path="/degree/progress" element={<DegreeProgress />} />
         <Route path="/degree/requirements" element={<MajorMinorSection />} />
+        <Route path="/graduation-check" element={<div />} />
       </Routes>
     </Router>
   )

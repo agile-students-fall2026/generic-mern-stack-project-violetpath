@@ -10,7 +10,7 @@ function Header() {
       <nav className="site-navigation">
         <Link to="/">Home</Link>
         <Link to="/gpa/target">GPA Calculator</Link>
-        <Link to="/degree/requirements">Degree Progress</Link>
+        <Link to="/degree/progress">Degree Progress</Link>
         <Link to="/courses/add">Courses</Link>
       </nav>
     </header>
