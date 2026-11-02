@@ -7,6 +7,8 @@ import TargetGPA from './TargetGPA'
 import OverviewGPA from './OverviewGPA'
 import CourseEntryForm from './CourseEntryForm'
 import MajorMinorSection from './MajorMinorSection';
+import Header from "./Header";
+import DegreeProgress from './DegreeProgress'
 import FAQ from "./FAQ";
 import DepartmentContact from "./DepartmentContact"
 const App = () => {
