@@ -1,0 +1,149 @@
+
+.faq-page {
+  max-width: 460px;
+  min-height: 100vh;
+  margin: auto;
+  background: white;
+  border: 1px solid lightgray;
+  font-family: "Helvetica Neue";
+  color: black;
+}
+
+.faq-top-bar {
+  text-align: center;
+  border-bottom: 1px solid lightgray;
+  padding: 20px;
+}
+
+.faq-top-bar h1 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.faq-main {
+  padding: 40px 45px;
+}
+
+.faq-logo-box {
+  border: 1px solid black;
+  padding: 12px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.faq-logo {
+  border: 1px solid black;
+  color: #380063;
+  font-size: 24px;
+  font-weight: bold;
+  width: 160px;
+  margin: auto;
+}
+
+.faq-main h2 {
+  font-size: 23px;
+  margin-bottom: 25px;
+}
+
+.faq-search {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 25px;
+}
+
+.faq-search input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.faq-search button {
+  background: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.faq-category-section h3 {
+  font-size: 13px;
+}
+
+.faq-category-buttons {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0 30px;
+}
+
+.faq-category-buttons button {
+  flex: 1;
+  background: white;
+  border: 1px solid black;
+  padding: 8px 4px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.faq-category-buttons .faq-selected {
+  background: #380063;
+  color: white;
+}
+
+.faq-question-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 0 10px;
+}
+
+.faq-question-item {
+  border: 1px solid black;
+}
+
+.faq-question-button {
+  width: 100%;
+  background: white;
+  color: black;
+  border: none;
+  padding: 18px 10px;
+  font-weight: bold;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-answer {
+  border-top: 1px solid lightgray;
+  padding: 15px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.faq-bottom {
+  margin-top: 55px;
+  text-align: center;
+}
+
+.faq-bottom p {
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.faq-support-button,
+.faq-home-button {
+  display: block;
+  background: black;
+  color: white;
+  text-decoration: none;
+  padding: 12px;
+  margin: 0 auto 16px;
+  text-align: center;
+}
+
+.faq-support-button {
+  width: 185px;
+}
+
+.faq-home-button {
+  width: 105px;
+}
