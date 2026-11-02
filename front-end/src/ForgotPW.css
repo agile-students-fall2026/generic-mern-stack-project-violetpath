@@ -1,0 +1,77 @@
+.ForgotPW {
+  /* some spacing around the entire contents of the app */
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.ForgotPW form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+ 
+/* "Reset Password" title is above the box, lined up with its left edge */
+.ForgotPW h2 {
+  width: 90%;
+  max-width: 480px;
+  text-align: left;
+}
+ 
+.ForgotPW .frame {
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 2.5rem 3rem;
+  width: 90%;
+  max-width: 480px;
+  box-sizing: border-box;
+}
+ 
+.ForgotPW .frame .button {
+  width: auto;
+  min-width: 160px;
+  padding: 0.6em 2em;
+  margin-top: 1.25rem;
+}
+ 
+.ForgotPW .frame > div:last-child {
+  text-align: center;
+}
+ 
+.ForgotPW .formField {
+  margin-top: 10px;
+}
+ 
+.ForgotPW .formField input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.2em;
+  box-sizing: border-box;
+}
+ 
+.ForgotPW p.PW-error {
+  color: red;
+  text-align: center;
+  margin: 1em 0 0;
+}
+ 
+/* the confirm button is white with a black border in the wireframe */
+.ForgotPW .button {
+  font-size: 1em;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
+ 
+.ForgotPW .button:hover {
+  background-color: rgb(86, 0, 86);
+  color: white;
+}

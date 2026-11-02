@@ -1,0 +1,30 @@
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 2px solid black;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: rgb(86, 0, 86);
+}
+
+.site-navigation {
+  display: flex;
+  gap: 20px;
+}
+
+.site-navigation a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.site-navigation a:hover {
+  color: rgb(86, 0, 86);
+  text-decoration: underline;
+}
