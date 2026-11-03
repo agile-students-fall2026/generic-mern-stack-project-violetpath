@@ -5,7 +5,7 @@ import './SignUp.css'
 const SignUp = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [confirmPassword, setconfirmPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [major, setMajor] = useState('')
   const [error, setError] = useState('')
 
