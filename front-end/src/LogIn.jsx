@@ -21,7 +21,7 @@ const LogIn = () => {
         <div className="frame">
           
           <div className="formField">
-            <br /> {/* a line break to separate the label from the input */}
+            <br />
             <input
               id="email_field"
               type="text"
@@ -32,7 +32,7 @@ const LogIn = () => {
           </div>
 
           <div className="formField">
-            <br /> {/* a line break to separate the label from the input */}
+            <br />
             <input
               id="password_field"
               type="password"
