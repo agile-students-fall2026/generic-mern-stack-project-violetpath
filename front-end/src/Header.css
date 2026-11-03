@@ -1,30 +1,65 @@
-
 .site-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  border-bottom: 2px solid black;
+  padding: 15px 20px;
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.site-header h1 {
+/* Violet Path logo and title */
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.site-logo {
+  width: 29px;
+  height: 29px;
+  flex-shrink: 0;
+}
+
+.site-brand h1 {
   margin: 0;
-  font-size: 24px;
-  color: rgb(86, 0, 86);
+  color: #57068C;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
 }
 
+/* Navigation menu */
 .site-navigation {
   display: flex;
+  align-items: center;
   gap: 20px;
 }
 
 .site-navigation a {
-  color: black;
+  color: #57068C;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
   text-decoration: none;
-  font-weight: bold;
 }
 
 .site-navigation a:hover {
-  color: rgb(86, 0, 86);
+  color: #000000;
   text-decoration: underline;
+}
+
+/* Responsive layout */
+@media (max-width: 650px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .site-navigation {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
 }
