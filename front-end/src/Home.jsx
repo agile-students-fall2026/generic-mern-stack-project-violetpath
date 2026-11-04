@@ -8,7 +8,7 @@ const navItems = [
   { label: 'GPA', to: '/gpa/overview' },
   { label: 'FAQ', to: '/faq' },
   { label: 'Declaration', to: '/declaration' },
-  { label: 'Department Contacts', to: '/contacts' },
+  { label: 'Department Contacts', to: '/department/contact' },
 ];
 
 function Home() {
