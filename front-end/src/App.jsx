@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from './Home'
+import Home from './Home';
 import LogIn from './LogIn'
 import SignUp from './SignUp'
 import ForgotPW from './ForgotPW'
@@ -8,8 +8,7 @@ import OverviewGPA from './OverviewGPA'
 import CourseEntryForm from './CourseEntryForm'
 import MajorMinorSection from './MajorMinorSection';
 import Header from "./Header";
-import DegreeProgress from './DegreeProgress'
-import HomeScreen from './HomeScreen';
+import DegreeProgress from './DegreeProgress';
 import FAQ from "./FAQ";
 import DepartmentContact from "./DepartmentContact"
 import StudentInformation from './StudentInformation'
@@ -31,7 +30,6 @@ const App = () => {
         <Route path="/degree/progress" element={<DegreeProgress />} />
         <Route path="/degree/requirements" element={<MajorMinorSection />} />
         <Route path="/graduation-check" element={<div />} />
-        <Route path="/homescreen" element={<HomeScreen />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/department/contact" element={<DepartmentContact />} />
       </Routes>
