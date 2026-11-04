@@ -7,9 +7,11 @@ import TargetGPA from './TargetGPA'
 import OverviewGPA from './OverviewGPA'
 import CourseEntryForm from './CourseEntryForm'
 import MajorMinorSection from './MajorMinorSection';
-import Header from './Header'
+import Header from "./Header";
 import DegreeProgress from './DegreeProgress'
 import HomeScreen from './HomeScreen';
+import FAQ from "./FAQ";
+import DepartmentContact from "./DepartmentContact"
 const App = () => {
   return (
     <Router>
@@ -26,6 +28,8 @@ const App = () => {
         <Route path="/degree/requirements" element={<MajorMinorSection />} />
         <Route path="/graduation-check" element={<div />} />
         <Route path="/homescreen" element={<HomeScreen />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/department/contact" element={<DepartmentContact />} />
       </Routes>
     </Router>
   )

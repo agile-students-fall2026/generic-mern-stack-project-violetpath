@@ -5,7 +5,7 @@ import './SignUp.css'
 const SignUp = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [confirmPassword, setconfirmPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [major, setMajor] = useState('')
   const [error, setError] = useState('')
 
@@ -27,9 +27,8 @@ const SignUp = () => {
   return (
     <main className="SignUp">
       <form onSubmit={handleSubmit}>
-        <h1>Violet Path</h1>
+        <h2>Sign Up</h2>
         <div className="frame">
-          <h2>Sign Up</h2>
           <div className="formField">
             <input
               id="email_field"
@@ -41,6 +40,7 @@ const SignUp = () => {
           </div>
  
           <div className="formField">
+            <br />
             <input
               id="password_field"
               type="password"
@@ -51,6 +51,7 @@ const SignUp = () => {
           </div>
  
           <div className="formField">
+            <br />
             <input
               id="confirm_password_field"
               type="password"
@@ -61,6 +62,7 @@ const SignUp = () => {
           </div>
  
           <div className="formField">
+            <br />
             <input
               id="major_field"
               type="text"
