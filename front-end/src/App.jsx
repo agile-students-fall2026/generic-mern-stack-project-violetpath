@@ -11,6 +11,7 @@ import Header from "./Header";
 import DegreeProgress from './DegreeProgress'
 import FAQ from "./FAQ";
 import DepartmentContact from "./DepartmentContact"
+import GraduationCheck from './GraduationCheck';
 const App = () => {
   return (
     <Router>
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/degree/requirements" element={<MajorMinorSection />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/department/contact" element={<DepartmentContact />} />
+        <Route path="/degree/graduation" element={<GraduationCheck />} />
       </Routes>
     </Router>
   )
