@@ -1,0 +1,89 @@
+
+.courses-page {
+    max-width: 480px;
+    margin: 30px auto 60px;
+    padding: 20px;
+  }
+
+  .courses-logo {
+    border: 1px solid #333;
+    color: #570068;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 18px;
+    margin-bottom: 25px;
+  }
+
+  .courses-page h1 {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+
+  .courses-search {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  .courses-search input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #555;
+    font-size: 16px;
+  }
+
+  .courses-search button {
+    background: black;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+  }
+
+  .courses-filter {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 22px;
+    border: 1px solid #555;
+    background: white;
+    font-size: 15px;
+  }
+
+  .courses-results {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .course-card {
+    border: 1px solid #555;
+    padding: 20px;
+  }
+
+  .course-card h3 {
+    margin-top: 0;
+    font-size: 18px;
+  }
+
+  .course-card p {
+    line-height: 1.5;
+    font-size: 15px;
+  }
+
+  .courses-home {
+    display: block;
+    width: 140px;
+    padding: 12px;
+    margin: 35px auto 0;
+    background: black;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .courses-home:hover,
+  .courses-search button:hover {
+    background: #570068;
+  }

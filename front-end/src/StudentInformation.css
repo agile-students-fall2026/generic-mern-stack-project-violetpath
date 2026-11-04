@@ -1,0 +1,56 @@
+
+.student-info {
+    max-width: 520px;
+    margin: 30px auto 60px;
+    padding: 20px;
+  }
+  
+  .student-info-logo {
+    border: 1px solid #333;
+    padding: 16px;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  
+  .student-info-logo span {
+    color: #570068;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .student-info h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  
+  .student-info-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .student-info-form input {
+    width: 100%;
+    padding: 17px 20px;
+    border: 1px solid #555;
+    border-radius: 0;
+    font-size: 16px;
+    background: white;
+  }
+  
+  .student-info-home {
+    display: block;
+    width: 160px;
+    padding: 12px;
+    margin: 35px auto 0;
+    background: black;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .student-info-home:hover {
+    background: #570068;
+  }
+  
