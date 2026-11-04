@@ -26,7 +26,6 @@ const ForgotPW = () => {
   return (
     <main className="ForgotPW">
       <form onSubmit={handleSubmit}>
-        <h1>Violet Path</h1>
         <h2>Reset Password</h2>
         <div className="frame">
           <div className="formField">
@@ -40,6 +39,7 @@ const ForgotPW = () => {
           </div>
  
           <div className="formField">
+            <br />
             <input
               id="new_password_field"
               type="password"
@@ -50,6 +50,7 @@ const ForgotPW = () => {
           </div>
  
           <div className="formField">
+            <br />
             <input
               id="confirm_new_password_field"
               type="password"
@@ -66,7 +67,7 @@ const ForgotPW = () => {
           )}
  
           <div>
-            <button type="submit" className="button">Confirm</button>
+            <button type="submit" className="button button-primary">Confirm</button>
           </div>
         </div>
       </form>
