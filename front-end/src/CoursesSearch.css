@@ -1,89 +1,141 @@
-
 .courses-page {
-    max-width: 480px;
+    width: 100%;
+    max-width: 402px;
     margin: 30px auto 60px;
-    padding: 20px;
+    padding: 20px 22px;
+    background: #FFFFFF;
+    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
   }
-
+  
   .courses-logo {
     border: 1px solid #333;
-    color: #570068;
+    color: #59098A;
     text-align: center;
-    font-size: 28px;
-    font-weight: bold;
-    padding: 18px;
+    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    padding: 16px;
     margin-bottom: 25px;
+    -webkit-text-stroke: 1px #1E1E1E;
   }
-
+  
   .courses-page h1 {
-    font-size: 28px;
-    margin-bottom: 25px;
+    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+    line-height: normal;
+    margin-bottom: 20px;
   }
-
+  
   .courses-search {
     display: flex;
     gap: 8px;
     margin-bottom: 15px;
   }
-
+  
   .courses-search input {
     flex: 1;
     min-width: 0;
-    padding: 12px;
-    border: 1px solid #555;
-    font-size: 16px;
+    height: 41px;
+    padding: 0 12px;
+    border: 1px solid #000000;
+    border-radius: 0;
+    background: transparent;
+    color: #000000;
+    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
   }
-
+  
+  .courses-search input::placeholder {
+    color: #000000;
+    opacity: 1;
+  }
+  
   .courses-search button {
-    background: black;
-    color: white;
-    border: none;
-    padding: 12px 20px;
+    width: 97px;
+    height: 41px;
+    padding: 0;
+    border: 1px solid #000000;
+    border-radius: 0;
+    background: #000000;
+    color: #FFFFFF;
+    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
     cursor: pointer;
   }
-
+  
   .courses-filter {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 22px;
-    border: 1px solid #555;
-    background: white;
-    font-size: 15px;
+    height: 41px;
+    margin-bottom: 20px;
+    padding: 0 10px;
+    border: 1px solid #000000;
+    border-radius: 0;
+    background: #FFFFFF;
+    color: #000000;
+    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
   }
-
+  
   .courses-results {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 16px;
   }
-
+  
   .course-card {
-    border: 1px solid #555;
-    padding: 20px;
+    border: 1px solid #1E1E1E;
+    background: #FFFFFF;
+    padding: 18px 20px;
   }
-
+  
   .course-card h3 {
     margin-top: 0;
-    font-size: 18px;
+    margin-bottom: 16px;
+    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000000;
   }
-
+  
   .course-card p {
-    line-height: 1.5;
-    font-size: 15px;
+    margin: 0 0 14px;
+    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: #000000;
   }
-
+  
+  .course-card p:last-child {
+    margin-bottom: 0;
+  }
+  
   .courses-home {
-    display: block;
-    width: 140px;
-    padding: 12px;
+    display: flex;
+    width: 131px;
+    height: 40px;
     margin: 35px auto 0;
-    background: black;
-    color: white;
-    text-align: center;
+    background: #000000;
+    color: #FFFFFF;
+    border: 1px solid #000000;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
+    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
   }
-
+  
   .courses-home:hover,
   .courses-search button:hover {
-    background: #570068;
+    background: #57068C;
+  }
+  
+  @media (max-width: 402px) {
+    .courses-page {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
   }

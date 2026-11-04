@@ -1,8 +1,10 @@
-
 .student-info {
-    max-width: 520px;
+    width: 100%;
+    max-width: 402px;
     margin: 30px auto 60px;
-    padding: 20px;
+    padding: 20px 22px;
+    background: #FFFFFF;
+    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
   }
   
   .student-info-logo {
@@ -13,44 +15,63 @@
   }
   
   .student-info-logo span {
-    color: #570068;
-    font-size: 28px;
-    font-weight: bold;
+    color: #59098A;
+    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    -webkit-text-stroke: 1px #1E1E1E;
   }
   
   .student-info h1 {
-    font-size: 28px;
+    color: #000000;
+    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: normal;
     margin-bottom: 30px;
   }
   
   .student-info-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 28px;
   }
   
   .student-info-form input {
     width: 100%;
-    padding: 17px 20px;
-    border: 1px solid #555;
+    height: 47px;
+    padding: 0 16px;
+    border: 1px solid #000000;
     border-radius: 0;
-    font-size: 16px;
-    background: white;
+    background: transparent;
+    color: #000000;
+    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    box-sizing: border-box;
+  }
+  
+  .student-info-form input::placeholder {
+    color: #000000;
+    opacity: 1;
   }
   
   .student-info-home {
-    display: block;
-    width: 160px;
-    padding: 12px;
+    display: flex;
+    width: 131px;
+    height: 40px;
     margin: 35px auto 0;
-    background: black;
-    color: white;
-    text-align: center;
+    background: #000000;
+    color: #FFFFFF;
+    border: 1px solid #000000;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
-    font-size: 18px;
+    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
   }
   
   .student-info-home:hover {
-    background: #570068;
+    background: #57068C;
   }
-  
