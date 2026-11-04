@@ -48,3 +48,33 @@
   .course-row { grid-template-columns: 20px 1fr auto; }
   .course-code, .course-credits { display: none; }
 }
+.app-header {
+  display: flex;
+  justify-content: center;
+  padding: 12px;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  background: #fff;
+}
+.logo { color: #57068c; font-weight: 700; }
+.home-nav {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.nav-button {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  border: 1px solid #57068c;
+  border-radius: 8px;
+  color: #57068c;
+  text-decoration: none;
+  font-size: 14px;
+  background: #f3ebfa;
+}
+.nav-button:hover { background: #57068c; color: #fff; }
+@media (max-width: 600px) {
+  .home-nav { grid-template-columns: 1fr; }
+}

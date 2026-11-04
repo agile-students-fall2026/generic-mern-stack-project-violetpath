@@ -9,6 +9,7 @@ import CourseEntryForm from './CourseEntryForm'
 import MajorMinorSection from './MajorMinorSection';
 import Header from "./Header";
 import DegreeProgress from './DegreeProgress'
+import HomeScreen from './HomeScreen';
 import FAQ from "./FAQ";
 import DepartmentContact from "./DepartmentContact"
 const App = () => {
@@ -25,6 +26,8 @@ const App = () => {
         <Route path="/courses/add" element={<CourseEntryForm />} />
         <Route path="/degree/progress" element={<DegreeProgress />} />
         <Route path="/degree/requirements" element={<MajorMinorSection />} />
+        <Route path="/graduation-check" element={<div />} />
+        <Route path="/homescreen" element={<HomeScreen />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/department/contact" element={<DepartmentContact />} />
       </Routes>
