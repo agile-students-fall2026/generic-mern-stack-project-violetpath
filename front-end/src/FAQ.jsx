@@ -38,9 +38,9 @@ function FAQ() {
 
       <button
         className="faq-outline"
-        onClick={() => navigate("/department-contact")}
+        
       >
-        Contact Department
+        Contact Support
       </button>
 
       <button
