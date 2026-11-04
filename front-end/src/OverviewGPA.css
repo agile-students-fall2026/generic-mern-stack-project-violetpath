@@ -1,9 +1,12 @@
-
 .overview-gpa-page {
-  margin: 20px;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #dedede;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #171717;
 }
@@ -18,15 +21,21 @@
 }
 
 .overview-gpa-summary {
-  border: 2px solid #57068C;
-  border-radius: 12px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 20px;
   padding: 20px;
   margin-bottom: 20px;
 }
 
+.overview-gpa-summary p {
+  margin: 10px 0;
+}
+
 .overview-gpa-courses {
-  border: 2px solid #57068C;
-  border-radius: 12px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 20px;
   padding: 20px;
 }
 
@@ -46,15 +55,20 @@
   margin: 5px 0;
 }
 
+
 .overview-gpa-buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
   margin-top: 30px;
 }
 
 .overview-gpa-button {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 130px;
   padding: 12px 20px;
   background-color: #57068C;
   color: white;
