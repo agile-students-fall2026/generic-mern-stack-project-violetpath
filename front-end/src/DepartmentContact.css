@@ -1,165 +1,66 @@
 
 .contact-page {
-  max-width: 460px;
   min-height: 100vh;
-  margin: auto;
   background: white;
-  border: 1px solid lightgray;
-  font-family: Arial, sans-serif;
-  color: black;
+  padding: 40px 30px;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
-.contact-top-bar {
-  text-align: center;
-  border-bottom: 1px solid lightgray;
-  padding: 20px;
+.contact-page h1 {
+  font-size: 32px;
+  margin: 0 0 8px;
 }
 
-.contact-top-bar h1 {
-  font-size: 28px;
-  margin: 0;
+.contact-page > p {
+  color: #57068C;
+  margin: 0 0 30px;
 }
-
-.contact-main {
-  padding: 40px 45px;
+.contact-card {
+  background: white;
+  border-radius: 24px;
+  padding: 22px 20px;
+  margin-bottom: 18px;
 }
-
-.contact-logo-box {
-  border: 1px solid black;
-  text-align: center;
-  padding: 12px;
-  margin-bottom: 30px;
-}
-
-.contact-logo {
-  border: 1px solid black;
-  width: 160px;
-  margin: auto;
-  color: #380063;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.contact-main h2 {
-  font-size: 23px;
-  margin-bottom: 30px;
-}
-
-.contact-search {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 30px;
-}
-
-.contact-search input {
-  flex: 1;
-  min-width: 0;
-  padding: 10px;
-  border: 1px solid black;
-}
-
-.contact-search button {
-  background: black;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-}
-
-.contact-departments h3,
-.contact-advisor-section h3 {
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-
-.contact-department-list {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  padding: 0 15px;
-}
-
-.contact-department-card {
-  border: 1px solid black;
-  text-align: center;
-  padding: 18px;
-}
-
-.contact-department-card h4 {
+.contact-card h2 {
+  color: #57068C;
+  font-size: 20px;
   margin: 0 0 12px;
-  font-size: 14px;
 }
-
-.contact-card-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+.contact-card p {
+  color: #555;
+  line-height: 1.5;
+  margin: 0 0 12px;
 }
-
-.contact-card-buttons a,
-.contact-advisor-card a {
-  border: 1px solid black;
-  padding: 8px 15px;
+.contact-card a {
+  color: #57068C;
   text-decoration: none;
-  color: black;
-  font-size: 11px;
-  background: white;
+  font-weight: 600;
+}
+.contact-card a:hover {
+  text-decoration: underline;
 }
 
-.contact-advisor-section {
-  margin-top: 85px;
-  padding: 0 15px;
-}
 
-.contact-advisor-card {
-  border: 1px solid black;
-  text-align: center;
-  padding: 20px;
-}
-
-.contact-advisor-card h4 {
-  font-size: 14px;
-  margin: 0 0 15px;
-}
-
-.contact-advisor-card button {
-  display: block;
-  margin: 15px 0 0 auto;
-  background: white;
-  border: 1px solid black;
-  font-size: 11px;
+.contact-outline,
+.contact-home {
+  width: 100%;
+  padding: 13px;
+  border-radius: 12px;
+  font: 600 17px "Helvetica Neue", Helvetica, sans-serif;
   cursor: pointer;
+  margin-top: 12px;
 }
 
-.contact-advisor-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 15px;
+.contact-outline {
+  background: white;
+  border: 1px solid #57068C;
+  color: #57068C;
 }
 
-.contact-advisor-form input {
-  padding: 10px;
-  border: 1px solid black;
-}
-
-.contact-advisor-form button {
-  background: black;
+.contact-home {
+  background: #57068C;
   color: white;
   border: none;
-  padding: 10px;
-  cursor: pointer;
 }
 
-.contact-bottom {
-  text-align: center;
-  margin-top: 60px;
-}
 
-.contact-home-button {
-  display: inline-block;
-  background: black;
-  color: white;
-  padding: 12px 45px;
-  text-decoration: none;
-  font-size: 15px;
-}
