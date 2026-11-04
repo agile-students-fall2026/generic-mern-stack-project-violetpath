@@ -12,12 +12,12 @@
 }
 
 .faq-page > p {
-  color: #555;
+  color: #57068C;
   margin: 0 0 8px;
 }
 
 .faq-page > p {
-  color: #555;
+  color: #57068C;
   margin-bottom: 30px;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .faq-question span {
-  color: #59008f;
+  color: #57068C;
   font-size: 24px;
 }
 
@@ -65,12 +65,12 @@
 
 .faq-outline {
   background: white;
-  border: 1px solid #59008f;
-  color: #59008f;
+  border: 1px solid #57068C;
+  color: #57068C;
 }
 
 .faq-home {
-  background: #59008f;
+  background: #57068C;
   color: white;
   border: none;
 }

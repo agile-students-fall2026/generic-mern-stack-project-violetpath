@@ -17,12 +17,11 @@ const LogIn = () => {
   return (
     <main className="LogIn">
       <form onSubmit={handleSubmit}>
-        <h1>Violet Path</h1>
+        <h2>Log In</h2>
         <div className="frame">
-          <h2>Log In</h2>
+          
           <div className="formField">
-            <label>Email</label>
-            <br /> {/* a line break to separate the label from the input */}
+            <br />
             <input
               id="email_field"
               type="text"
@@ -33,11 +32,10 @@ const LogIn = () => {
           </div>
 
           <div className="formField">
-            <label>Password</label>
-            <br /> {/* a line break to separate the label from the input */}
+            <br />
             <input
               id="password_field"
-              type="text"
+              type="password"
               placeholder="Password"
               value={password}
               onChange={e => setPassword(e.target.value)}
@@ -57,7 +55,7 @@ const LogIn = () => {
 
         <div className="auth-links">
           <Link to="/forgot-password" className="text-link">Forgot Password?</Link>
-          <Link to="/signup" className="button button-secondary">Sign Up</Link>
+          <button type="button" onClick={() => navigate("/signup")} className="button button-secondary">Sign Up</button>
         </div>
       </form>
     </main>

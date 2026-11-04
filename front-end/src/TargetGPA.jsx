@@ -5,10 +5,6 @@ function TargetGPA() {
   return (
     <main className="target-gpa-page">
       <div className="target-gpa-container">
-        <header className="target-gpa-header">
-          <h1>LOGO</h1>
-        </header>
-
         <h2>GPA Calculator</h2>
 
         <section className="target-gpa-box">

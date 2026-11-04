@@ -4,6 +4,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "Helvetica Neue";
+  color: #171717;
 }
 
 .degree-progress-container {
@@ -11,35 +13,19 @@
   max-width: 480px;
 }
 
-.degree-progress-header {
-  border: 2px solid black;
-  border-radius: 12px;
-  padding: 15px;
-  text-align: center;
-}
-
-.degree-progress-header h1 {
-  border: 1px solid black;
-  border-radius: 8px;
-  width: 50%;
-  margin: 0 auto;
-  padding: 5px;
-  color: rgb(86, 0, 86);
-}
-
 .degree-progress-container h2 {
   margin-top: 20px;
 }
 
 .degree-progress-box {
-  border: 2px solid black;
+  border: 2px solid #57068C;
   border-radius: 12px;
   padding: 20px;
   min-height: 280px;
 }
 
 .degree-progress-summary {
-  border: 1px solid black;
+  border: 1px solid #57068C;
   border-radius: 8px;
   padding: 15px;
   font-weight: bold;
@@ -60,9 +46,9 @@
 .degree-progress-link {
   flex: 1;
   padding: 12px 5px;
-  border: 1px solid black;
+  border: 1px solid #57068C;
   border-radius: 8px;
-  color: black;
+  color: #57068C;
   text-decoration: none;
   text-align: center;
   font-weight: bold;
@@ -78,17 +64,17 @@
   width: 150px;
   margin: 40px auto;
   padding: 12px;
-  background-color: black;
+  background-color: #57068C;
   color: white;
   font-weight: 600;
   text-align: center;
   text-decoration: none;
-  border: 2px solid black;
+  border: 2px solid #57068C;
   border-radius: 8px;
 }
 
 .degree-progress-home:hover {
-  background-color: rgb(86, 0, 86);
+  background-color: #460570;
 }
 
 .degree-progress-link:disabled {

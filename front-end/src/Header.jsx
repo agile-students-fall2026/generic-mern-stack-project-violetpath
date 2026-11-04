@@ -1,18 +1,29 @@
-
-import { Link } from 'react-router-dom'
 import './Header.css'
 
 function Header() {
   return (
     <header className="site-header">
-      <h1>VioletPath</h1>
+      <div className="site-brand">
+        <svg
+          className="site-logo"
+          width="29"
+          height="29"
+          viewBox="0 0 29 29"
+          aria-hidden="true"
+        >
+          <rect width="29" height="29" rx="8" fill="#57068C" />
+          <path
+            d="M8 21 L21 8 M10 8 H21 V19"
+            stroke="#FFFFFF"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+          />
+        </svg>
 
-      <nav className="site-navigation">
-        <Link to="/">Home</Link>
-        <Link to="/gpa/target">GPA Calculator</Link>
-        <Link to="/degree/progress">Degree Progress</Link>
-        <Link to="/courses/add">Courses</Link>
-      </nav>
+        <h1>Violet Path</h1>
+      </div>
     </header>
   )
 }

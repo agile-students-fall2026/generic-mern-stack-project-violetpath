@@ -1,95 +1,98 @@
 .LogIn {
   /* some spacing around the entire contents of the app */
-  margin: 20px;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #DDDDDD;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  font-family: "Helvetica Neue";
+  
 }
 
 .LogIn form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;  
+  width: 100%;
+}
+
+.LogIn h2 {
+  width: 90%;
+  max-width: 480px;
 }
 
 .LogIn .frame {
-  border: 2px solid black;
-  border-radius: 12px;
-  padding: 2.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  padding: 30px;
   width: 90%;
   max-width: 480px;
-  box-sizing: border-box;
-}
-
-.LogIn .frame h2 {
-  text-align: center;
-  margin-top: 0;
 }
 
 .LogIn .frame .button {
-  width: auto;
-  min-width: 160px;
-  padding: 0.6em 2em;
-  margin-top: 1.25rem;
-}
-
-.LogIn .frame > div:last-child {
-  text-align: center;
+  min-width: 120px;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .LogIn .formField {
-  margin-top: 10px;
+  width: 100%;
 }
 
 .LogIn .formField input {
   width: 100%;
   padding: 10px;
-  font-size: 1.2em;
-  box-sizing: border-box;
+  font-size: 14px;
 }
 
 .LogIn p.login-error {
   color: red;
-  text-align: center;
-  margin: 1em 0 0;
+  padding-top: 10px;
 }
 
 .LogIn .button {
-  padding: 0.75em 1.5em;
-  font-size: 1em;
+  min-width: 120px;
+  padding: 10px;
+  font-size: 15px;
   font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-  border: 2px solid black;
-  border-radius: 8px;
+  border: 1px solid #57068C;
+  border-radius: 10px;
   cursor: pointer;
-  
 }
 
 .LogIn .button-primary {
-  background-color: black;
+  background-color: #57068C;
   color: white;
 }
 
 .LogIn .button-primary:hover {
-  background-color: rgb(86, 0, 86);
+  background-color: #000000;
   color: white;
 }
 
 .LogIn .button-secondary {
-  background-color: black;
-  color:white;
+  background-color: #FFFFFF;
+  color: #57068C;
 }
 .LogIn .button-secondary:hover {
-  background-color: rgb(138, 102, 138);
+  background-color: #000000;
+  color: #FFFFFF;
 }
 
 .LogIn .text-link {
-  color: rgb(86, 0, 86);
-  font-size: 1em;
+  color: #57068C;
+  font-size: 15px;
   text-decoration: none;
+  padding-bottom: 10px;
 }
 .LogIn .text-link:hover {
   text-decoration: underline;
@@ -99,6 +102,5 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75em;
-  margin-top: 1em;
+  margin-top: 10px;
 }

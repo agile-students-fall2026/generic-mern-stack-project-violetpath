@@ -6,9 +6,6 @@ function OverviewGPA() {
   return (
     <main className="overview-gpa-page">
       <div className="overview-gpa-container">
-        <header className="overview-gpa-header">
-          <h1>LOGO</h1>
-        </header>
 
         <h2>GPA</h2>
 
