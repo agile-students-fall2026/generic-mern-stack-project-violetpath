@@ -1,0 +1,106 @@
+.home-page {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  max-width: 390px;
+  margin: 0 auto;
+  padding: 0 16px 32px;
+  color: #1d1d1f;
+  background: #f5f5f7;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.home-header {
+  background: #4e0f85;
+  color: #fff;
+  margin: 0 -16px 16px;
+  padding: 20px 16px;
+  border-radius: 0 0 20px 20px;
+}
+
+.home-logo {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.home-intro {
+  margin-bottom: 16px;
+}
+
+.home-intro h1 {
+  margin: 0 0 4px;
+  font-size: 24px;
+}
+
+.home-subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: #6e6e73;
+}
+
+.home-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.home-card h2 {
+  margin: 0 0 12px;
+  font-size: 17px;
+}
+
+.home-stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  text-align: center;
+}
+
+.home-stat {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.home-stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #4e0f85;
+}
+
+.home-stat-label {
+  font-size: 12px;
+  color: #6e6e73;
+  margin-top: 4px;
+}
+
+.home-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.home-nav-button {
+  display: block;
+  text-align: center;
+  padding: 14px 8px;
+  background: #4e0f85;
+  color: #fff;
+  border-radius: 14px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.home-nav-button:hover {
+  background: #3a0a63;
+}
+
+@media (max-width: 400px) {
+  .home-page {
+    padding: 0 12px 24px;
+  }
+  .home-header {
+    margin: 0 -12px 16px;
+  }
+}
