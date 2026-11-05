@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom';
 import './MajorMinorSection.css';
 
 const navItems = [
-  { label: 'Student Information', to: '/student' },
+  { label: 'Student Information', to: '/student-information' },
   { label: 'Courses', to: '/courses' },
   { label: 'Degree Progress', to: '/degree/progress' },
   { label: 'GPA', to: '/gpa/overview' },
   { label: 'FAQ', to: '/faq' },
   { label: 'Declaration', to: '/declaration' },
-  { label: 'Department Contacts', to: '/contacts' },
+  { label: 'Department Contacts', to: '/department/contact' },
 ];
 
 function Home() {
