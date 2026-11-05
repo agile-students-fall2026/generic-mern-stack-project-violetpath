@@ -20,17 +20,18 @@ function FAQ() {
 
   return (
     <div className="faq-page">
-      <h1>Frequently Asked Questions</h1>
-      <p>Find answers to common questions.</p>
+      <div className="faq-container">
+        <h1>Frequently Asked Questions</h1>
+        <p>Find answers to common questions.</p>
 
-      {questions.map((item, i) => (
-        <div className="faq-card" key={i}>
-          <div
-            className="faq-question"
-            onClick={() => setOpen(open === i ? null : i)}
-          >
-            <strong>{item[0]}</strong>
-            <span>{open === i ? "−" : "+"}</span>
+        {questions.map((item, i) => (
+          <div className="faq-card" key={i}>
+            <div
+              className="faq-question"
+              onClick={() => setOpen(open === i ? null : i)}
+            >
+              <strong>{item[0]}</strong>
+              <span>{open === i ? "−" : "+"}</span>
           </div>
           {open === i && <p>{item[1]}</p>}
         </div>
@@ -38,7 +39,6 @@ function FAQ() {
 
       <button
         className="faq-outline"
-        
       >
         Contact Support
       </button>
@@ -49,7 +49,9 @@ function FAQ() {
       >
         Home
       </button>
+      </div>
     </div>
+
   );
 }
 
