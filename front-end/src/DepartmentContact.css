@@ -1,7 +1,8 @@
 
 .contact-page {
   min-height: 100vh;
-  background: #FFFFFF;
+  width:100%;
+  background: #DDDDDD;
   padding: 20px;
   box-sizing:border-box;
   font-family: "Helvetica Neue", Helvetica, sans-serif;
@@ -43,20 +44,14 @@
 }
 
 
-.contact-outline,
-.contact-home-button {
-  width: 100%;
-  padding: 13px;
-  border-radius: 8px;
+
+.contact-outline {
+  width:100%;
+  padding:13px;
+  border-radius:8px;
   font: 600 17px "Helvetica Neue", Helvetica, sans-serif;
   cursor: pointer;
   margin-top: 12px;
-}
-
-.contact-outline {
-  background: #FFFFFF;
-  border: 1px solid #57068C;
-  color: #57068C;
 }
 
 .contact-home {
@@ -126,17 +121,24 @@
   margin: 5px;
 }
 
-.contact-department-card,
-.contact-advisor-card {
-  background: #F4F4F4;
-  border: 1px solid #DDDDDD;
-}
 
 .contact-home-button {
-  display: block;
-  box-sizing: border-box;
-  text-align: center;
-  text-decoration: none;
+  display:block;
+  width: 180px;
+  padding: 16px 12px;
+  margin: 40px auto 20px;
+  box-sizing:border-box;
+  background-color: #57068C;
+  color: #FFFFFF;
+  border:none;
+  border-radius: 12px;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size:18px;
+  font-weight:bold;
+  text-align:center;
+  text-decoration:none;
+  cursor: pointer;
+
 }
 
 .contact-search button:hover,
@@ -146,3 +148,6 @@
   color: #FFFFFF;
 }
 
+.contact-page {
+  background-color: #DDDDDD !important;
+}
