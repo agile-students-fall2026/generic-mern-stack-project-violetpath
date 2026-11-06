@@ -3,6 +3,7 @@
   min-height: 100vh;
   background: #FFFFFF;
   padding: 20px;
+  box-sizing:border-box;
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
@@ -64,8 +65,10 @@
   border: none;
 }
 .contact-main {
+  width:100%;
   max-width: 800px;
   margin: 0 auto; 
+  box-sizing: border-box;
 }
 
 .contact-search {

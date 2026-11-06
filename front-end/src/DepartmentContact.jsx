@@ -25,14 +25,8 @@ const DepartmentContact = () => {
 
   return (
     <main className="contact-page">
-      <header className="contact-top-bar">
-        <h1>Department Contacts</h1>
-      </header>
-
       <div className="contact-main">
-        <div className="contact-logo-box">
-          <div className="contact-logo">LOGO</div>
-        </div>
+    
 
         <h2>Department Contacts</h2>
 
