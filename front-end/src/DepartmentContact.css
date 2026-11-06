@@ -1,8 +1,8 @@
 
 .contact-page {
   min-height: 100vh;
-  background: white;
-  padding: 40px 30px;
+  background: #FFFFFF;
+  padding: 20px;
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
@@ -15,10 +15,11 @@
   color: #57068C;
   margin: 0 0 30px;
 }
-.contact-card {
-  background: white;
-  border-radius: 24px;
-  padding: 22px 20px;
+.contact-department-card,
+.contact-advisor-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 20px;
   margin-bottom: 18px;
 }
 .contact-card h2 {
@@ -27,7 +28,7 @@
   margin: 0 0 12px;
 }
 .contact-card p {
-  color: #555;
+  color: #505050;
   line-height: 1.5;
   margin: 0 0 12px;
 }
@@ -42,25 +43,103 @@
 
 
 .contact-outline,
-.contact-home {
+.contact-home-button {
   width: 100%;
   padding: 13px;
-  border-radius: 12px;
+  border-radius: 8px;
   font: 600 17px "Helvetica Neue", Helvetica, sans-serif;
   cursor: pointer;
   margin-top: 12px;
 }
 
 .contact-outline {
-  background: white;
+  background: #FFFFFF;
   border: 1px solid #57068C;
   color: #57068C;
 }
 
 .contact-home {
   background: #57068C;
-  color: white;
+  color: #FFFFFF;
   border: none;
 }
+.contact-main {
+  max-width: 800px;
+  margin: 0 auto; 
+}
 
+.contact-search {
+  display: flex;
+  gap:12px;
+  margin-bottom: 25px;
+}
+.contact-search input {
+  flex: 1;
+  min-width:0;
+  padding:12px;
+  border: 1px solid #DDDDDD;
+  border-radius: 8px;
+}
+
+.contact-search button,
+.contact-card-buttons a,
+.contact-advisor-form button {
+  background: #57068C;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+.contact-card-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.contact-card-buttons a {
+  text-decoration: none;
+}
+
+.contact-advisor-card button {
+  background: #FFFFFF;
+  color: #57068C;
+  border: 1px solid #57068C;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+.contact-advisor-card a {
+  color: #57068C;
+  margin-right: 12px;
+}
+
+.contact-advisor-form input {
+  padding: 12px;
+  border: 1px solid #DDDDDD;
+  border-radius: 8px;
+  margin: 5px;
+}
+
+.contact-department-card,
+.contact-advisor-card {
+  background: #F4F4F4;
+  border: 1px solid #DDDDDD;
+}
+
+.contact-home-button {
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+}
+
+.contact-search button:hover,
+.contact-card-buttons a:hover,
+.contact-home-button:hover {
+  background: #6B6578;
+  color: #FFFFFF;
+}
 
