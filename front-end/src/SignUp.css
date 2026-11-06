@@ -19,6 +19,7 @@
 .SignUp h2 {
   width: 90%;
   max-width: 480px;
+  font-size: 28px;
 }
  
 .SignUp .frame {
@@ -35,6 +36,8 @@
 .SignUp .frame .button {
   min-width: 120px;
   padding: 10px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   font-size: 15px;
   font-weight: 600;
   margin-top: 20px;
@@ -51,21 +54,13 @@
   width: 100%;
   padding: 10px;
   font-size: 14px;
+  border: 1px solid #999999;
+  border-radius: 10px;
 }
  
 .SignUp p.signup-error {
   color: red;
   padding-top: 10px;
-}
- 
-.SignUp .button {
-  min-width: 120px;
-  padding: 10px;
-  font-size: 15px;
-  font-weight: 600;
-  border: 1px solid #57068C;
-  border-radius: 10px;
-  cursor: pointer;
 }
  
 .SignUp .button-primary {
