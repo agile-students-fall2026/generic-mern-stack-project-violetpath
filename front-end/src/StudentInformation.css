@@ -1,56 +1,79 @@
-
 .student-info {
-    max-width: 520px;
-    margin: 30px auto 60px;
+    margin: 0;
     padding: 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #dedede;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #171717;
   }
   
   .student-info-logo {
-    border: 1px solid #333;
-    padding: 16px;
-    margin-bottom: 25px;
-    text-align: center;
-  }
-  
-  .student-info-logo span {
-    color: #570068;
-    font-size: 28px;
-    font-weight: bold;
+    display: none;
   }
   
   .student-info h1 {
+    width: 90%;
+    max-width: 480px;
+    margin: 20px 0;
     font-size: 28px;
-    margin-bottom: 30px;
+    font-weight: 700;
   }
   
   .student-info-form {
+    width: 90%;
+    max-width: 480px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
   }
   
   .student-info-form input {
     width: 100%;
-    padding: 17px 20px;
-    border: 1px solid #555;
-    border-radius: 0;
+    height: 48px;
+    padding: 12px 15px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 16px;
-    background: white;
+    color: #171717;
+  }
+  
+  .student-info-form input::placeholder {
+    color: #777777;
+  }
+  
+  .student-info-form input:focus {
+    outline: none;
+    border-color: #57068C;
   }
   
   .student-info-home {
-    display: block;
-    width: 160px;
-    padding: 12px;
-    margin: 35px auto 0;
-    background: black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 130px;
+    padding: 12px 20px;
+    margin: 30px auto;
+    background-color: #57068C;
     color: white;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
     text-align: center;
     text-decoration: none;
-    font-size: 18px;
+    border: 2px solid #57068C;
+    border-radius: 8px;
   }
   
   .student-info-home:hover {
-    background: #570068;
+    background-color: #460570;
   }
-  
