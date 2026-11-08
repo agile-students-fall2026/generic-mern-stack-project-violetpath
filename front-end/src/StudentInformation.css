@@ -1,0 +1,79 @@
+.student-info {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #dedede;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #171717;
+  }
+  
+  .student-info-logo {
+    display: none;
+  }
+  
+  .student-info h1 {
+    width: 90%;
+    max-width: 480px;
+    margin: 20px 0;
+    font-size: 28px;
+    font-weight: 700;
+  }
+  
+  .student-info-form {
+    width: 90%;
+    max-width: 480px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .student-info-form input {
+    width: 100%;
+    height: 48px;
+    padding: 12px 15px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #171717;
+  }
+  
+  .student-info-form input::placeholder {
+    color: #777777;
+  }
+  
+  .student-info-form input:focus {
+    outline: none;
+    border-color: #57068C;
+  }
+  
+  .student-info-home {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 130px;
+    padding: 12px 20px;
+    margin: 30px auto;
+    background-color: #57068C;
+    color: white;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid #57068C;
+    border-radius: 8px;
+  }
+  
+  .student-info-home:hover {
+    background-color: #460570;
+  }

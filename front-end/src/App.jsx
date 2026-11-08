@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from './Home'
+import Home from './Home';
 import LogIn from './LogIn'
 import SignUp from './SignUp'
 import ForgotPW from './ForgotPW'
@@ -8,11 +8,13 @@ import OverviewGPA from './OverviewGPA'
 import CourseEntryForm from './CourseEntryForm'
 import MajorMinorSection from './MajorMinorSection';
 import Header from "./Header";
-import DegreeProgress from './DegreeProgress'
+import DegreeProgress from './DegreeProgress';
 import FAQ from "./FAQ";
 import DepartmentContact from "./DepartmentContact"
 import GraduationCheck from './GraduationCheck';
 import Declaration from './Declaration';
+import StudentInformation from './StudentInformation'
+import CoursesSearch from './CoursesSearch'
 const App = () => {
   return (
     <Router>
@@ -25,8 +27,11 @@ const App = () => {
         <Route path="/gpa/overview" element={<OverviewGPA />} />
         <Route path="/gpa/target" element={<TargetGPA />} />
         <Route path="/courses/add" element={<CourseEntryForm />} />
+        <Route path="/student-information" element={<StudentInformation />} />
+        <Route path="/courses" element={<CoursesSearch />} />
         <Route path="/degree/progress" element={<DegreeProgress />} />
         <Route path="/degree/requirements" element={<MajorMinorSection />} />
+        <Route path="/graduation-check" element={<div />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/department/contact" element={<DepartmentContact />} />
         <Route path="/degree/graduation" element={<GraduationCheck />} />

@@ -6,9 +6,6 @@ function DegreeProgress() {
   return (
     <main className="degree-progress-page">
       <div className="degree-progress-container">
-        <header className="degree-progress-header">
-          <h1>LOGO</h1>
-        </header>
 
         <h2>Degree Progress</h2>
 

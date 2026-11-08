@@ -1,0 +1,152 @@
+
+.courses-page {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #dedede;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #171717;
+  }
+  
+  .courses-logo {
+    display: none;
+  }
+  
+  .courses-page h1 {
+    width: 90%;
+    max-width: 480px;
+    margin: 20px 0;
+    font-size: 28px;
+    font-weight: 700;
+  }
+  
+  .courses-search {
+    display: flex;
+    width: 90%;
+    max-width: 480px;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .courses-search input {
+    flex: 1;
+    min-width: 0;
+    height: 48px;
+    padding: 12px 15px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #171717;
+  }
+  
+  .courses-search input:focus {
+    outline: none;
+    border-color: #57068C;
+  }
+  
+  .courses-search button {
+    min-width: 90px;
+    padding: 12px 15px;
+    background-color: #57068C;
+    color: white;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    border: 2px solid #57068C;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .courses-search button:hover {
+    background-color: #460570;
+  }
+  
+  .courses-filter {
+    width: 90%;
+    max-width: 480px;
+    height: 48px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #171717;
+  }
+  
+  .courses-filter:focus {
+    outline: none;
+    border-color: #57068C;
+  }
+  
+  .courses-results {
+    width: 90%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .course-card {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+  }
+  
+  .course-card h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  
+  .course-card p {
+    margin: 10px 0;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  
+  .course-card p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .courses-home {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 130px;
+    padding: 12px 20px;
+    margin: 30px auto;
+    background-color: #57068C;
+    color: white;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid #57068C;
+    border-radius: 8px;
+  }
+  
+  .courses-home:hover {
+    background-color: #460570;
+  }
+  
+  @media (max-width: 480px) {
+    .courses-search {
+      gap: 8px;
+    }
+  
+    .courses-search button {
+      min-width: 80px;
+      padding: 10px;
+    }
+  }  

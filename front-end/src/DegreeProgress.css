@@ -1,9 +1,14 @@
-
 .degree-progress-page {
-  margin: 20px;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #dedede;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #171717;
 }
 
 .degree-progress-container {
@@ -11,37 +16,23 @@
   max-width: 480px;
 }
 
-.degree-progress-header {
-  border: 2px solid black;
-  border-radius: 12px;
-  padding: 15px;
-  text-align: center;
-}
-
-.degree-progress-header h1 {
-  border: 1px solid black;
-  border-radius: 8px;
-  width: 50%;
-  margin: 0 auto;
-  padding: 5px;
-  color: rgb(86, 0, 86);
-}
-
 .degree-progress-container h2 {
   margin-top: 20px;
 }
 
 .degree-progress-box {
-  border: 2px solid black;
-  border-radius: 12px;
-  padding: 20px;
-  min-height: 280px;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  min-height: 0;
+  background-color: transparent;
 }
 
 .degree-progress-summary {
-  border: 1px solid black;
-  border-radius: 8px;
-  padding: 15px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 20px;
   font-weight: bold;
   font-size: 14px;
 }
@@ -60,9 +51,10 @@
 .degree-progress-link {
   flex: 1;
   padding: 12px 5px;
-  border: 1px solid black;
+  background-color: #ffffff;
+  border: 1px solid #57068C;
   border-radius: 8px;
-  color: black;
+  color: #57068C;
   text-decoration: none;
   text-align: center;
   font-weight: bold;
@@ -70,7 +62,7 @@
 }
 
 .degree-progress-link:hover {
-  background-color: #eeeeee;
+  background-color: #f4f4f4;
 }
 
 .degree-progress-home {
@@ -78,17 +70,17 @@
   width: 150px;
   margin: 40px auto;
   padding: 12px;
-  background-color: black;
-  color: white;
+  background-color: #57068C;
+  color: #ffffff;
   font-weight: 600;
   text-align: center;
   text-decoration: none;
-  border: 2px solid black;
+  border: 2px solid #57068C;
   border-radius: 8px;
 }
 
 .degree-progress-home:hover {
-  background-color: rgb(86, 0, 86);
+  background-color: #460570;
 }
 
 .degree-progress-link:disabled {
