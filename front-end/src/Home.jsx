@@ -3,7 +3,7 @@ import './Home.css';
 
 const navItems = [
   { label: 'Student Information', to: 'student-information' },
-  { label: 'Courses', to: '/courses/add' },
+  { label: 'Courses', to: '/courses' },
   { label: 'Degree Progress', to: '/degree/progress' },
   { label: 'GPA', to: '/gpa/overview' },
   { label: 'Declaration', to: '/declaration' },

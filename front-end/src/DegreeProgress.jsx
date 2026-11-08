@@ -22,7 +22,7 @@ function DegreeProgress() {
               Requirements
             </Link>
 
-            <Link to="/graduation-check" className="degree-progress-link">
+            <Link to="/degree/graduation" className="degree-progress-link">
               Graduation Check
             </Link>
           </div>
