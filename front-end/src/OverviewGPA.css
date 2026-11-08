@@ -1,60 +1,167 @@
 .overview-gpa-page {
   margin: 0;
-  padding: 20px;
+  padding: 30px 20px 50px;
   min-height: 100vh;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: #dedede;
+  color: #000000;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #171717;
 }
 
 .overview-gpa-container {
   width: 90%;
   max-width: 480px;
+  margin: 0 auto;
 }
 
 .overview-gpa-container h2 {
-  margin-top: 20px;
+  margin: 0 0 24px;
+  font-size: 28px;
+  font-weight: 700;
 }
 
-.overview-gpa-summary {
-  background-color: #ffffff;
-  border: none;
-  border-radius: 20px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
 
-.overview-gpa-summary p {
-  margin: 10px 0;
-}
-
+.overview-gpa-summary,
 .overview-gpa-courses {
   background-color: #ffffff;
   border: none;
   border-radius: 20px;
-  padding: 20px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
 }
 
+.overview-gpa-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.overview-gpa-section-heading h3,
 .overview-gpa-courses h3 {
-  margin-top: 0;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.overview-gpa-section-heading span {
+  color: #666666;
+  font-size: 14px;
+}
+
+.overview-gpa-highlight {
+  background-color: #F4F4F4;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 12px;
+}
+
+.overview-gpa-highlight p {
+  margin: 0 0 8px;
+  color: #666666;
+  font-size: 14px;
+}
+
+.overview-gpa-main-value {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.overview-gpa-main-value strong {
+  color: #57068C;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.overview-gpa-main-value span {
+  color: #666666;
+  font-size: 14px;
+}
+
+.overview-gpa-stats {
+  display: flex;
+  gap: 12px;
+}
+
+.overview-gpa-stat {
+  flex: 1;
+  min-width: 0;
+  padding: 16px;
+  background-color: #F4F4F4;
+  border-radius: 14px;
+  box-sizing: border-box;
+}
+
+.overview-gpa-stat p {
+  margin: 0 0 8px;
+  color: #666666;
+  font-size: 14px;
+}
+
+.overview-gpa-stat strong {
+  font-size: 22px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.overview-gpa-program {
+  margin: 20px 0;
+  padding: 16px 0;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+}
+
+.overview-gpa-program-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.overview-gpa-program-row span {
+  color: #666666;
+}
+
+.overview-gpa-program-row strong {
+  color: #000000;
+  font-weight: 600;
+  text-align: right;
+}
+
+.overview-gpa-semester {
+  color: #666666;
+  font-size: 14px;
+  margin: 8px 0 20px;
 }
 
 .overview-gpa-category {
-  margin-top: 20px;
+  background-color: #F4F4F4;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.overview-gpa-category:last-child {
+  margin-bottom: 0;
 }
 
 .overview-gpa-category h4 {
-  margin-bottom: 10px;
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #000000;
 }
 
 .overview-gpa-category p {
-  margin: 5px 0;
+  margin: 0;
+  font-size: 14px;
+  color: #666666;
 }
-
 
 .overview-gpa-buttons {
   display: flex;
@@ -65,20 +172,57 @@
 }
 
 .overview-gpa-button {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   min-width: 130px;
   padding: 12px 20px;
+  box-sizing: border-box;
   background-color: #57068C;
-  color: white;
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
+  color: #ffffff;
   border: 2px solid #57068C;
   border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
 }
 
 .overview-gpa-button:hover {
   background-color: #460570;
+}
+
+@media (max-width: 480px) {
+  .overview-gpa-container {
+    width: 100%;
+  }
+
+  .overview-gpa-summary,
+  .overview-gpa-courses {
+    padding: 20px;
+  }
+
+  .overview-gpa-container h2 {
+    font-size: 26px;
+  }
+
+  .overview-gpa-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .overview-gpa-buttons {
+    gap: 12px;
+  }
+
+  .overview-gpa-button {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 8px;
+    font-size: 14px;
+  }
+
+  .overview-gpa-program-row {
+    flex-wrap: wrap;
+  }
 }
