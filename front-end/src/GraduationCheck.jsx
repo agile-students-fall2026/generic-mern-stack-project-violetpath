@@ -43,19 +43,16 @@ function GraduationCheck() {
 
   return (
     <div className="grad-page">
-      <header className="grad-header">
-        <span className="grad-logo-icon">↗</span>
-        <span className="grad-logo-text">Violet Path</span>
-      </header>
-
       <main className="grad-main">
-        <h1 className="grad-title">Graduation Check</h1>
-        <p className="grad-subtitle">
-          {term} - {major}, {minor} minor
-        </p>
-
+        <div className="grad-intro">
+          <h1 className="grad-title">Graduation Check</h1>
+          <p className="grad-subtitle">
+            {term} - {major}, {minor} minor
+          </p>
+        </div>
+        
         <section className="grad-hero">
-          <span className="grad-hero-label">Total credits</span>
+          <h2 className="grad-hero-label">Total credits</h2>
           <div className="grad-hero-numbers">
             <span className="grad-hero-taken">{totalCredits.taken}</span>
             <span className="grad-hero-required">/ {totalCredits.required}</span>
