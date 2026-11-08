@@ -1,28 +1,67 @@
-
-import { Link } from 'react-router-dom'
-import './OverviewGPA.css'
+import { Link } from 'react-router-dom';
+import './OverviewGPA.css';
 
 function OverviewGPA() {
   return (
-    <main className="overview-gpa-page">
+    <div className="overview-gpa-page">
       <div className="overview-gpa-container">
-
-        <h2>GPA</h2>
+        <h2>GPA Overview</h2>
 
         <section className="overview-gpa-summary">
-          <p>Current Major: Computer Science</p>
-          <p>Current Minor: Math</p>
-          <p>Cumulative GPA: 3.781</p>
-          <p>Major GPA: 3.812</p>
-          <p>Minor GPA: 3.811</p>
-          <p># of credits taken: XX credits</p>
-          <p># of credits left: XX credits</p>
+          <div className="overview-gpa-section-heading">
+            <h3>Academic Summary</h3>
+            <span>Spring 2026</span>
+          </div>
+
+          <div className="overview-gpa-highlight">
+            <p>Cumulative GPA</p>
+            <div className="overview-gpa-main-value">
+              <strong>3.781</strong>
+              <span>/ 4.000</span>
+            </div>
+          </div>
+
+          <div className="overview-gpa-stats">
+            <div className="overview-gpa-stat">
+              <p>Major GPA</p>
+              <strong>3.812</strong>
+            </div>
+
+            <div className="overview-gpa-stat">
+              <p>Minor GPA</p>
+              <strong>3.811</strong>
+            </div>
+          </div>
+
+          <div className="overview-gpa-program">
+            <div className="overview-gpa-program-row">
+              <span>Major</span>
+              <strong>Computer Science</strong>
+            </div>
+
+            <div className="overview-gpa-program-row">
+              <span>Minor</span>
+              <strong>Math</strong>
+            </div>
+          </div>
+
+          <div className="overview-gpa-stats">
+            <div className="overview-gpa-stat">
+              <p>Credits Taken</p>
+              <strong>XX</strong>
+            </div>
+
+            <div className="overview-gpa-stat">
+              <p>Credits Left</p>
+              <strong>XX</strong>
+            </div>
+          </div>
         </section>
-
         <section className="overview-gpa-courses">
-          <h3>List of the courses with letter grades</h3>
-
-          <h4>Spring 2026</h4>
+          <h3>Course Grades</h3>
+          <p className="overview-gpa-semester">
+            Spring 2026
+          </p>
 
           <div className="overview-gpa-category">
             <h4>Major Courses</h4>
@@ -44,19 +83,21 @@ function OverviewGPA() {
             <p>Course Name - Grade</p>
           </div>
         </section>
-
         <div className="overview-gpa-buttons">
-          <Link className="overview-gpa-button" to="/">
+          <Link to="/" className="overview-gpa-button">
             Home
           </Link>
 
-          <Link className="overview-gpa-button" to="/gpa/target">
+          <Link
+            to="/gpa/target"
+            className="overview-gpa-button"
+          >
             GPA Calculator
           </Link>
         </div>
       </div>
-    </main>
-  )
+    </div>
+  );
 }
 
-export default OverviewGPA
+export default OverviewGPA;
