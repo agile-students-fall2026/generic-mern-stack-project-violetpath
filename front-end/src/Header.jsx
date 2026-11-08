@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import './Header.css'
 
 function Header() {
@@ -22,7 +23,7 @@ function Header() {
           />
         </svg>
 
-        <h1>Violet Path</h1>
+        <Link to="/" className="logo-info">Violet Path</Link>
       </div>
     </header>
   )
