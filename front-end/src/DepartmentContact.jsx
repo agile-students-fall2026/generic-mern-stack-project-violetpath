@@ -70,7 +70,7 @@ function DepartmentContact () {
             {email ? (
               <a href={`mailto:${email}`}>Email</a>
             ) : (
-              <a href="https://cas.nyu.edu/academic-advising.html">
+              <a href="https://cas.nyu.edu/advising/advising-staff.html">
                 Find Advisor
               </a>
             )}
