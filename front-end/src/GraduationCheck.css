@@ -177,6 +177,7 @@
 .grad-actions {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
   margin: 0;
   margin-top: 10px;
@@ -191,12 +192,13 @@
   font-size: 15px;
   font-weight: 600;
   text-decoration: none;
-
+  width: 100%;
 }
 .grad-btn-outline {
   background: #FFFFFF;
   color: #57068C;
   border: 1px solid #57068C;
+  max-width: 200px;
 }
 
 .grad-btn-outline:hover {
@@ -208,6 +210,7 @@
   background: #57068C;
   color: #FFFFFF;
   border: 1px solid #57068C;
+  max-width: 150px;
 }
 
 .grad-btn-primary:hover {
