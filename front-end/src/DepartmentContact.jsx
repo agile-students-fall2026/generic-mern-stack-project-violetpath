@@ -3,75 +3,69 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import './DepartmentContact.css'
 
-const DepartmentContact = () => {
-  const [search, setSearch] = useState('')
-  const [advisor, setAdvisor] = useState('')
-  const [email, setEmail] = useState('')
-  const [showForm, setShowForm] = useState(false)
+function DepartmentContact () {
+  const [search, setSearch] = useState('');
+  const [advisor, setAdvisor] = useState('');
+  const [email, setEmail] = useState('');
+  const [showForm, setShowForm] = useState(false);
 
   const departments = [
     { name: 'Computer Science', website: 'https://cs.nyu.edu/' },
     { name: 'Data Science', website: 'https://cds.nyu.edu/' }
   ]
 
-  const filtered = departments.filter(dept =>
-    dept.name.toLowerCase().includes(search.toLowerCase())
+  const filteredDepartments = departments.filter((department) =>
+    department.name.toLowerCase().includes(search.toLowerCase())
   )
-
-  const handleSubmit = e => {
-    e.preventDefault()
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault()
     setShowForm(false)
-  }
+  };
 
   return (
-    <main className="contact-page">
-      <header className="contact-top-bar">
-        <h1>Department Contacts</h1>
-      </header>
-
+    <div className="contact-page">
       <div className="contact-main">
-        <div className="contact-logo-box">
-          <div className="contact-logo">LOGO</div>
-        </div>
 
-        <h2>Department Contacts</h2>
+        <h1>Department Contacts</h1>
 
         <div className="contact-search">
           <input
             type="text"
             placeholder="Search for departments"
             value={search}
-            onChange={e => setSearch(e.target.value)}
+            onChange={(event) => setSearch(event.target.value)}
           />
           <button type="button">Search</button>
         </div>
 
         <section className="contact-departments">
-          <h3>Your Departments</h3>
+          <h2>Your Departments</h2>
 
-          <div className="contact-department-list">
-            {filtered.map(dept => (
-              <div className="contact-department-card" key={dept.name}>
-                <h4>{dept.name}</h4>
+            {filteredDepartments.map((department) => (
+              <div className="contact-department-card" key={department.name}>
+                <h3>{department.name}</h3>
+              
                 <div className="contact-card-buttons">
-                  <a href={dept.website} target="_blank" rel="noreferrer">
+                  <a href={department.website} target="_blank" rel="noreferrer">
                     Contact
                   </a>
-                  <a href={dept.website} target="_blank" rel="noreferrer">
+                  <a href={department.website} target="_blank" rel="noreferrer">
                     Website
                   </a>
                 </div>
               </div>
             ))}
-            {filtered.length === 0 && <p>No departments found.</p>}
-          </div>
+            {filteredDepartments.length === 0 && <p>No departments found.</p>}
         </section>
 
         <section className="contact-advisor-section">
-          <h3>Advisor Contact</h3>
+          <h2>Advisor Contact</h2>
 
           <div className="contact-advisor-card">
-            <h4>{advisor || 'Your Advisor'}</h4>
+            <h3>{advisor || 'Your Advisor'}</h3>
 
             {email ? (
               <a href={`mailto:${email}`}>Email</a>
@@ -81,8 +75,8 @@ const DepartmentContact = () => {
               </a>
             )}
 
-            <button onClick={() => setShowForm(!showForm)}>
-              add advisor
+            <button type="button" onClick={toggleForm}>
+              Add advisor
             </button>
           </div>
 
@@ -92,14 +86,14 @@ const DepartmentContact = () => {
                 type="text"
                 placeholder="Advisor name"
                 value={advisor}
-                onChange={e => setAdvisor(e.target.value)}
+                onChange={(event) => setAdvisor(event.target.value)}
                 required
               />
               <input
                 type="email"
                 placeholder="Advisor email"
                 value={email}
-                onChange={e => setEmail(e.target.value)}
+                onChange={(event) => setEmail(event.target.value)}
                 required
               />
               <button type="submit">Save</button>
@@ -107,12 +101,12 @@ const DepartmentContact = () => {
           )}
         </section>
 
-        <div className="contact-bottom">
-          <Link to="/" className="contact-home-button">Home</Link>
+        <Link to="/" className="contact-home-button">
+         Home
+        </Link>
         </div>
       </div>
-    </main>
-  )
+  );
 }
 
-export default DepartmentContact
+export default DepartmentContact;

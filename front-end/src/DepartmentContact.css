@@ -1,165 +1,184 @@
 
 .contact-page {
-  max-width: 460px;
-  min-height: 100vh;
-  margin: auto;
-  background: white;
-  border: 1px solid lightgray;
-  font-family: Arial, sans-serif;
-  color: black;
-}
-
-.contact-top-bar {
-  text-align: center;
-  border-bottom: 1px solid lightgray;
-  padding: 20px;
-}
-
-.contact-top-bar h1 {
-  font-size: 28px;
   margin: 0;
+  min-height: 100vh;
+  background-color: #DDDDDD;
+  padding: 30px 20px 50px;
+  box-sizing:border-box;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #000000;
+}
+
+.contact-page h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 24px;
+}
+
+.contact-page > p {
+  color: #57068C;
+  margin: 0 0 30px;
+}
+.contact-department-card,
+.contact-advisor-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 24px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  margin-bottom: 20px;
+}
+.contact-department-card h2,
+.contact-advisor-card h2{
+  margin: 0 0 12px;
+  font-size: 20px; 
+  font-weight: 700;
+  color: #000000;
+}
+
+.contact-card p {
+  color: #505050;
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+.contact-card a {
+  color: #57068C;
+  text-decoration: none;
+  font-weight: 600;
+}
+.contact-card a:hover {
+  text-decoration: underline;
+}
+
+
+
+.contact-outline {
+  width:100%;
+  padding:13px;
+  border-radius:8px;
+  font: 600 17px "Helvetica Neue", Helvetica, sans-serif;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.contact-home {
+  background: #57068C;
+  color: #FFFFFF;
+  border: none;
 }
 
 .contact-main {
-  padding: 40px 45px;
+  width:90%;
+  max-width: 480px;
+  margin: 0 auto; 
 }
-
-.contact-logo-box {
-  border: 1px solid black;
-  text-align: center;
-  padding: 12px;
-  margin-bottom: 30px;
-}
-
-.contact-logo {
-  border: 1px solid black;
-  width: 160px;
-  margin: auto;
-  color: #380063;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.contact-main h2 {
-  font-size: 23px;
-  margin-bottom: 30px;
+.contact-main > p,
+.contact-page > p {
+  margin: 0 0 24px;
+  font-size: 16px;
+  color: #000000;
 }
 
 .contact-search {
   display: flex;
-  gap: 8px;
-  margin-bottom: 30px;
-}
-
-.contact-search input {
-  flex: 1;
-  min-width: 0;
-  padding: 10px;
-  border: 1px solid black;
-}
-
-.contact-search button {
-  background: black;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-}
-
-.contact-departments h3,
-.contact-advisor-section h3 {
-  font-size: 16px;
+  gap:12px;
   margin-bottom: 20px;
 }
-
-.contact-department-list {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  padding: 0 15px;
+.contact-search input {
+  flex: 1;
+  min-width:0;
+  padding:10px;
+  font-family:inherit;
+  font-size: 14px; 
+  color: #000000;
+  background-color: #FFFFFF;
+  border: 1px solid #6B6578;
+  border-radius: 6px;
 }
 
-.contact-department-card {
-  border: 1px solid black;
-  text-align: center;
-  padding: 18px;
+.contact-search input:focus,
+.contact-advisor-form input:focus {
+  outline:2px solid #57068C;
+  outline-offset:2px;
+}
+.contact-department-card,
+.contact-advisor-card {
+  margin-bottom: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  border-radius: 20px;
 }
 
-.contact-department-card h4 {
-  margin: 0 0 12px;
-  font-size: 14px;
+.contact-search button,
+.contact-card-buttons a,
+.contact-advisor-form button {
+  background: #57068C;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  cursor: pointer;
 }
 
 .contact-card-buttons {
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  gap: 12px;
 }
 
-.contact-card-buttons a,
-.contact-advisor-card a {
-  border: 1px solid black;
-  padding: 8px 15px;
+.contact-card-buttons a {
   text-decoration: none;
-  color: black;
-  font-size: 11px;
-  background: white;
-}
-
-.contact-advisor-section {
-  margin-top: 85px;
-  padding: 0 15px;
-}
-
-.contact-advisor-card {
-  border: 1px solid black;
-  text-align: center;
-  padding: 20px;
-}
-
-.contact-advisor-card h4 {
-  font-size: 14px;
-  margin: 0 0 15px;
 }
 
 .contact-advisor-card button {
-  display: block;
-  margin: 15px 0 0 auto;
-  background: white;
-  border: 1px solid black;
-  font-size: 11px;
+  background: #FFFFFF;
+  color: #57068C;
+  border: 1px solid #57068C;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-left: 12px;
   cursor: pointer;
 }
 
-.contact-advisor-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 15px;
+.contact-advisor-card a {
+  color: #57068C;
+  margin-right: 12px;
 }
 
 .contact-advisor-form input {
-  padding: 10px;
-  border: 1px solid black;
+  padding: 12px;
+  border: 1px solid #DDDDDD;
+  border-radius: 8px;
+  margin: 5px;
 }
 
-.contact-advisor-form button {
-  background: black;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.contact-bottom {
-  text-align: center;
-  margin-top: 60px;
-}
 
 .contact-home-button {
-  display: inline-block;
-  background: black;
-  color: white;
-  padding: 12px 45px;
-  text-decoration: none;
-  font-size: 15px;
+  display:block;
+  width: 150px;
+  padding: 12px;
+  margin: 40px auto 0;
+  box-sizing:border-box;
+  background-color: #57068C;
+  color: #FFFFFF;
+  border:2px solid #57068C;
+  border-radius: 8px;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size:16px;
+  font-weight:600;
+  text-align:center;
+  text-decoration:none;
+  cursor: pointer;
+
+}
+
+.contact-search button:hover,
+.contact-card-buttons a:hover,
+.contact-home-button:hover {
+  background: #6B6578;
+  color: #FFFFFF;
+}
+
+.contact-page {
+  background-color: #DDDDDD !important;
 }
