@@ -11,6 +11,8 @@ import Header from "./Header";
 import DegreeProgress from './DegreeProgress';
 import FAQ from "./FAQ";
 import DepartmentContact from "./DepartmentContact"
+import GraduationCheck from './GraduationCheck';
+import Declaration from './Declaration';
 import StudentInformation from './StudentInformation'
 import CoursesSearch from './CoursesSearch'
 const App = () => {
@@ -32,6 +34,8 @@ const App = () => {
         <Route path="/graduation-check" element={<div />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/department/contact" element={<DepartmentContact />} />
+        <Route path="/degree/graduation" element={<GraduationCheck />} />
+        <Route path="/declaration" element={<Declaration />} />
       </Routes>
     </Router>
   )
