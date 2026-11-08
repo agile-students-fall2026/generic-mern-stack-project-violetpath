@@ -2,12 +2,10 @@ import { Link } from 'react-router-dom';
 import './Home.css';
 
 const navItems = [
-  { label: 'Course Entry', to: '/courses/add' },
+  { label: 'Student Information', to: 'student-information' },
+  { label: 'Courses', to: '/courses/add' },
   { label: 'Degree Progress', to: '/degree/progress' },
-  { label: 'Degree Requirements', to: '/degree/requirements' },
-  { label: 'Graduation Check', to: '/degree/graduation' },
-  { label: 'GPA Overview', to: '/gpa/overview' },
-  { label: 'Target GPA', to: '/gpa/target' },
+  { label: 'GPA', to: '/gpa/overview' },
   { label: 'Declaration', to: '/declaration' },
   { label: 'FAQ', to: '/faq' },
   { label: 'Department Contacts', to: '/department/contact' },
@@ -15,7 +13,7 @@ const navItems = [
 
 function Home() {
   const student = {
-    name: 'Student Name',
+    name: 'John Doe',
     major: 'Computer Science',
     creditsTaken: 48,
     creditsLeft: 16,
@@ -24,16 +22,12 @@ function Home() {
 
   return (
     <div className="home-page">
-      <header className="home-header">
-        <span className="home-logo">LOGO</span>
-      </header>
-
-      <section className="home-intro">
+      <div className="home-intro">
         <h1>Home</h1>
         <p className="home-subtitle">
           Welcome back, {student.name}. Major: {student.major}
         </p>
-      </section>
+      </div>
 
       <div className="home-card">
         <div className="home-stats">
