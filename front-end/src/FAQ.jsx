@@ -1,22 +1,37 @@
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./FAQ.css";
 
-function FAQ() {
-  const navigate = useNavigate();
-  const [open, setOpen] = useState(null);
+const faqs = [
+  {
+    question: "How do I check my graduation progress?",
+    answer: "Go to Graduation Check to see your completed and remaining credits.",
 
-  const questions = [
-    ["How do I check my graduation progress?",
-     "Go to Graduation Check to see your completed and remaining credits."],
-    ["How do I calculate my GPA?",
-     "Use the GPA Calculator to calculate your current or target GPA."],
-    ["How do I view my degree requirements?",
-     "Go to Degree Requirements to see required courses."],
-    ["Who can I contact for help?",
-     "Visit Department Contact for more information."]
-  ];
+  },
+  {
+    question: "How do I calculate my GPA?",
+    answer:"Use the GPA Calculator to calculate your current or target GPA.",
+  },
+  {
+    question: "How do I view my degree requirements?",
+    answer: "Go to Degree Requirements to see required courses.",
+  },
+  {
+    question: "Who can I contact for help?",
+    answer: "Visit Department Contact for more information.",
+  },
+];
+
+
+
+
+function FAQ() {
+  const [openIndex, setOpenIndex] = useState(null);
+  const toggleFaq = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
 
   return (
     <div className="faq-page">
@@ -24,33 +39,34 @@ function FAQ() {
         <h1>Frequently Asked Questions</h1>
         <p>Find answers to common questions.</p>
 
-        {questions.map((item, i) => (
-          <div className="faq-card" key={i}>
+        {faqs.map((faq,index)=>(
+          <section className="faq-card" key={faq.question}>
             <div
               className="faq-question"
-              onClick={() => setOpen(open === i ? null : i)}
+              onClick={() => toggleFaq(index)}
             >
-              <strong>{item[0]}</strong>
-              <span>{open === i ? "−" : "+"}</span>
-          </div>
-          {open === i && <p>{item[1]}</p>}
+              <strong>{faq.question}</strong>
+              <span>{openIndex === index ? "-" : "+"}</span>
+            </div>
+            {openIndex === index && <p>{faq.answer}</p>}
+          </section>
+        ))}
+
+      <section className="faq-support">
+        <p>Still need help?</p>
+
+        <div className ="faq-support-buttons">
+          <Link to="/contact" className="faq-outline">
+          Contact Support
+          </Link>
+
+          <Link to ="/" className="faq-home">
+           Home
+          </Link>
         </div>
-      ))}
-
-      <button
-        className="faq-outline"
-      >
-        Contact Support
-      </button>
-
-      <button
-        className="faq-home"
-        onClick={() => navigate("/")}
-      >
-        Home
-      </button>
-      </div>
+      </section>
     </div>
+  </div>
 
   );
 }

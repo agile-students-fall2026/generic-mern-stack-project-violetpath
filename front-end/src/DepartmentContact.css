@@ -1,16 +1,18 @@
 
 .contact-page {
+  margin: 0;
   min-height: 100vh;
-  width:100%;
-  background: #DDDDDD;
-  padding: 20px;
+  background-color: #DDDDDD;
+  padding: 30px 20px 50px;
   box-sizing:border-box;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #000000;
 }
 
 .contact-page h1 {
-  font-size: 32px;
-  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 24px;
 }
 
 .contact-page > p {
@@ -21,14 +23,19 @@
 .contact-advisor-card {
   background: #FFFFFF;
   border-radius: 20px;
-  padding: 20px;
-  margin-bottom: 18px;
+  padding: 24px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  margin-bottom: 20px;
 }
-.contact-card h2 {
-  color: #57068C;
-  font-size: 20px;
+.contact-department-card h2,
+.contact-advisor-card h2{
   margin: 0 0 12px;
+  font-size: 20px; 
+  font-weight: 700;
+  color: #000000;
 }
+
 .contact-card p {
   color: #505050;
   line-height: 1.5;
@@ -59,24 +66,48 @@
   color: #FFFFFF;
   border: none;
 }
+
 .contact-main {
-  width:100%;
-  max-width: 800px;
+  width:90%;
+  max-width: 480px;
   margin: 0 auto; 
-  box-sizing: border-box;
+}
+.contact-main > p,
+.contact-page > p {
+  margin: 0 0 24px;
+  font-size: 16px;
+  color: #000000;
 }
 
 .contact-search {
   display: flex;
   gap:12px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 .contact-search input {
   flex: 1;
   min-width:0;
-  padding:12px;
-  border: 1px solid #DDDDDD;
-  border-radius: 8px;
+  padding:10px;
+  font-family:inherit;
+  font-size: 14px; 
+  color: #000000;
+  background-color: #FFFFFF;
+  border: 1px solid #6B6578;
+  border-radius: 6px;
+}
+
+.contact-search input:focus,
+.contact-advisor-form input:focus {
+  outline:2px solid #57068C;
+  outline-offset:2px;
+}
+.contact-department-card,
+.contact-advisor-card {
+  margin-bottom: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  border-radius: 20px;
 }
 
 .contact-search button,
@@ -124,17 +155,17 @@
 
 .contact-home-button {
   display:block;
-  width: 180px;
-  padding: 16px 12px;
-  margin: 40px auto 20px;
+  width: 150px;
+  padding: 12px;
+  margin: 40px auto 0;
   box-sizing:border-box;
   background-color: #57068C;
   color: #FFFFFF;
-  border:none;
-  border-radius: 12px;
+  border:2px solid #57068C;
+  border-radius: 8px;
   font-family: "Helvetica Neue", Helvetica, sans-serif;
-  font-size:18px;
-  font-weight:bold;
+  font-size:16px;
+  font-weight:600;
   text-align:center;
   text-decoration:none;
   cursor: pointer;
