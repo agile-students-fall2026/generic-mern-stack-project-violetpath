@@ -1,16 +1,51 @@
-# React + Vite
+# VioletPath
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+VioletPath is a degree planner and GPA calculator for NYU students.
 
-Currently, two official plugins are available:
+Right now only the front-end is done. It uses fake (mock) data, so there's no back-end or database to set up yet.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## What you need
 
-## React Compiler
+- Node.js
+- npm (comes with Node)
+- git
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## How to run it
 
-## Expanding the Oxlint configuration
+1. Clone the repo
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```
+   git clone <repo-url>
+   cd <repo-folder>/front-end
+```
+
+2. Install the packages
+
+```
+   npm install
+```
+
+3. Start the app
+
+```
+   npm run dev
+```
+
+4. Open http://localhost:5173 in your browser
+
+That's it. To stop it, press `Ctrl + C` in the terminal.
+
+
+## Pages
+
+Here are some pages you can go to:
+
+- `/` - home
+- `/login`, `/signup`, `/forgot-password`
+- `/gpa/overview`, `/gpa/target`
+- `/courses`, `/courses/add`
+- `/degree/progress`, `/degree/requirements`, `/degree/graduation`
+- `/declaration`
+- `/student-information`
+- `/faq`
+- `/department/contact`
