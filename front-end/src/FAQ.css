@@ -1,121 +1,82 @@
 .faq-page {
-  margin: 0;
-  padding: 30px 20px 50px;
   min-height: 100vh;
-  box-sizing: border-box;
+  padding: 20px;
+  background-color: #DDDDDD;
+  color: #000000;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #DDDDDD;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #000000;
+  font-family: "Helvetica Neue";
 }
 
 .faq-container {
   width:90%;
   max-width:480px;
-  margin: 0 auto;
+  margin: 0;
 }
 .faq-container h1 {
-  margin: 0 0 24px;
   font-size: 28px;
-  font-weight:700;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 4px;
 }
 
 .faq-container > p {
-  color: #000000;
-  font-size: 16px;
-  margin: 0 0 24px;
-}
-
-.faq-search {
-  display:flex;
-  gap:12px;
-  margin-bottom:20px;
-}
-.faq-search input {
-  flex:1;
-  min-width: 0;
-  box-sizing: border-box;
-  padding:10px;
-  font-family: inherit;
+  color: #505050;
   font-size: 14px;
-  background-color: #ffffff;
-  border:1px solid #6B6578;
-  font-family:inherit;
-  border-radius: 6px;
-  
-}
-.faq-search input:focus {
-  outline: 2px solid #57068C;
-  outline-offset: 2px;
+  margin: 0;
+  margin-bottom: 27px;
 }
 
-.faq-search button {
-  padding: 10px 20px;
-  font-family: inherit;
-  font-size:14px;
-  background-color: #57068C;
-  color: #ffffff;
-  border: 2px solid #57068C;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.faq-search button:hover {
-  background-color: #6B6578;
-  border-color: #6B6578;
-}
-
-.faq-categories {
-  display: flex;
-  gap: 12px;
-  margin: 0 0 24px;
-  flex-wrap: wrap;
-}
-
-.faq-categories button {
-  background-color: #f4f4f4;
-  color: #57068C;
-  border: 1px solid #57068C;
-  border-radius: 8px;
-  padding: 10px 16px;
-  font-family: inherit;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.faq-categories button:hover {
-  background-color: #ECE8F1;
-}
 .faq-card {
   background-color: #ffffff;
   box-sizing: border-box;
   border-radius: 20px;
-  padding: 24px;
-  margin-bottom: 20px;
+  padding: 20px;
+  margin-bottom: 15px;
 }
 .faq-question {
   display: flex;
   justify-content:space-between;
   align-items:center;
   gap: 12px;
-  cursor:pointer;
+  cursor: pointer;
 }
 .faq-question strong {
-  font-size: 16px;
+  font-size: 14px;
 }
 .faq-question span {
   color: #57068C;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .faq-card p {
-  margin: 10px 0 0;
-  font-size: 14px;
+  margin: 0;
+  margin-top: 10px;
+  font-size: 13px;
   color: #505050;
-  line-height: 1.5;
+}
+
+.faq-support {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.faq-support p {
+  margin: 0;
+  margin-bottom: 15px;
+}
+.faq-support-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.faq-support .faq-outline,
+.faq-support .faq-home{
+  margin: 0;
+  width: 100%;
 }
 
 .faq-outline, .faq-home {
@@ -123,54 +84,35 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 150px;
-  min-height: 48px;
+  max-width: 150px;
   margin: 40px auto 0;
-  padding: 12px;
-  border-radius: 8px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size:16px;
+  padding: 14px;
+  border-radius: 10px;
+  font-family: "Helvetica Neue";
+  font-size:15px;
   font-weight: 600;
-  line-height: 1.2;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
 }
 
 .faq-outline {
-  background-color: #ffffff;
-  border: 2px solid #57068C;
+  background-color: #FFFFFF;
+  border: 1px solid #57068C;
   color: #57068C; 
 }
 .faq-outline:hover{
-  background-color: #ECE8F1;
+  background-color: #000000;
+  color: #FFFFFF;
 }
 
 .faq-home {
   background: #57068C;
-  color: #ffffff;
-  border: 2px solid #57068c;
+  color: #FFFFFF;
+  border: 1px solid #57068C;
 }
 
 .faq-home:hover{
-  background-color: #6B6578;
-  border-color: #57068C;
-}
-.faq-support {
-  margin-top: 40px;
-  text-align: center;
-}
-
-.faq-support p {
-  margin: 0 0 15px;
-}
-.faq-support-buttons {
-  display:flex;
-  justify-content: center;
-  align-items:center;
-  gap:24px;
-}
-.faq-support .faq-outline,
-.faq-support .faq-home{
-  margin: 0;
+  background-color: #000000;
+  color: #FFFFFF;
 }
