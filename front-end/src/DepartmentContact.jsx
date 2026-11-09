@@ -45,7 +45,7 @@ function DepartmentContact () {
           <h2>Your Departments</h2>
 
             {filteredDepartments.map((department) => (
-              <div className="contact-department-card" key={department.name}>
+              <div className="contact-card" key={department.name}>
                 <h3>{department.name}</h3>
               
                 <div className="contact-card-buttons">
@@ -63,22 +63,24 @@ function DepartmentContact () {
 
         <section className="contact-advisor-section">
           <h2>Advisor Contact</h2>
+          <div className="contact-card-buttons">
+            <div className="contact-card">
+              <h3>{advisor || 'Your Advisor'}</h3>
 
-          <div className="contact-advisor-card">
-            <h3>{advisor || 'Your Advisor'}</h3>
+              {email ? (
+                <a href={`mailto:${email}`}>Email</a>
+              ) : (
+                <a href="https://cas.nyu.edu/advising/advising-staff.html">
+                  Find Advisor
+                </a>
+              )}
 
-            {email ? (
-              <a href={`mailto:${email}`}>Email</a>
-            ) : (
-              <a href="https://cas.nyu.edu/advising/advising-staff.html">
-                Find Advisor
-              </a>
-            )}
-
-            <button type="button" onClick={toggleForm}>
-              Add advisor
-            </button>
-          </div>
+              <button type="button" onClick={toggleForm}>
+                Add advisor
+              </button>
+            </div>
+          </div>  
+          
 
           {showForm && (
             <form className="contact-advisor-form" onSubmit={handleSubmit}>
@@ -104,8 +106,8 @@ function DepartmentContact () {
         <Link to="/" className="contact-home-button">
          Home
         </Link>
-        </div>
       </div>
+    </div>
   );
 }
 
