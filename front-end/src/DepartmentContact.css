@@ -1,124 +1,91 @@
-
 .contact-page {
-  margin: 0;
   min-height: 100vh;
+  padding: 20px;
   background-color: #DDDDDD;
-  padding: 30px 20px 50px;
-  box-sizing:border-box;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Helvetica Neue";
+}
+
+.contact-main {
+  width: 90%;
+  max-width: 480px;
 }
 
 .contact-page h1 {
   font-size: 28px;
+  font-style: normal;
   font-weight: 700;
-  margin: 0 0 24px;
-}
-
-.contact-page > p {
-  color: #57068C;
-  margin: 0 0 30px;
-}
-.contact-department-card,
-.contact-advisor-card {
-  background: #FFFFFF;
-  border-radius: 20px;
-  padding: 24px;
-  box-sizing: border-box;
-  background-color: #FFFFFF;
-  margin-bottom: 20px;
-}
-.contact-department-card h2,
-.contact-advisor-card h2{
-  margin: 0 0 12px;
-  font-size: 20px; 
-  font-weight: 700;
-  color: #000000;
-}
-
-.contact-card p {
-  color: #505050;
-  line-height: 1.5;
-  margin: 0 0 12px;
-}
-.contact-card a {
-  color: #57068C;
-  text-decoration: none;
-  font-weight: 600;
-}
-.contact-card a:hover {
-  text-decoration: underline;
-}
-
-
-
-.contact-outline {
-  width:100%;
-  padding:13px;
-  border-radius:8px;
-  font: 600 17px "Helvetica Neue", Helvetica, sans-serif;
-  cursor: pointer;
-  margin-top: 12px;
-}
-
-.contact-home {
-  background: #57068C;
-  color: #FFFFFF;
-  border: none;
-}
-
-.contact-main {
-  width:90%;
-  max-width: 480px;
-  margin: 0 auto; 
-}
-.contact-main > p,
-.contact-page > p {
-  margin: 0 0 24px;
-  font-size: 16px;
-  color: #000000;
+  margin: 0;
+  margin-bottom: 27px;
 }
 
 .contact-search {
   display: flex;
   gap:12px;
-  margin-bottom: 20px;
+  margin: 0;
+  margin-bottom: 30px;
 }
+
 .contact-search input {
   flex: 1;
   min-width:0;
   padding:10px;
-  font-family:inherit;
-  font-size: 14px; 
+  font-size: 13px;
   color: #000000;
   background-color: #FFFFFF;
-  border: 1px solid #6B6578;
-  border-radius: 6px;
+  border: 1px solid #505050;
+  border-radius: 10px;
 }
 
-.contact-search input:focus,
-.contact-advisor-form input:focus {
+.contact-search input:focus {
   outline:2px solid #57068C;
-  outline-offset:2px;
-}
-.contact-department-card,
-.contact-advisor-card {
-  margin-bottom: 20px;
-  padding: 20px;
-  box-sizing: border-box;
-  background-color: #FFFFFF;
-  border-radius: 20px;
 }
 
-.contact-search button,
-.contact-card-buttons a,
-.contact-advisor-form button {
+.contact-search button {
   background: #57068C;
   color: #FFFFFF;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 12px 20px;
   cursor: pointer;
+}
+
+.contact-search button:hover {
+  background: #000000;
+}
+
+.contact-departments {
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+.contact-departments h2{
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.contact-card {
+  border-radius: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  margin-bottom: 15px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.contact-card h3 {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 15px;
 }
 
 .contact-card-buttons {
@@ -127,58 +94,83 @@
 }
 
 .contact-card-buttons a {
+  background: #57068C;
+  color: #FFFFFF;
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  cursor: pointer;
   text-decoration: none;
 }
 
-.contact-advisor-card button {
-  background: #FFFFFF;
-  color: #57068C;
-  border: 1px solid #57068C;
-  border-radius: 8px;
-  padding: 10px 16px;
-  margin-left: 12px;
-  cursor: pointer;
+.contact-advisor-section {
+  margin: 0;
 }
 
-.contact-advisor-card a {
-  color: #57068C;
-  margin-right: 12px;
+.contact-advisor-section h2{
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.contact-card-buttons button {
+  background: #57068C;
+  color: #FFFFFF;
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 12px;
+}
+
+
+.contact-advisor-form button {
+  background: #57068C;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  cursor: pointer;
 }
 
 .contact-advisor-form input {
   padding: 12px;
   border: 1px solid #DDDDDD;
-  border-radius: 8px;
+  border-radius: 10px;
   margin: 5px;
 }
 
 
 .contact-home-button {
-  display:block;
-  width: 150px;
+  display: block;
+  max-width: 150px;
   padding: 12px;
   margin: 40px auto 0;
-  box-sizing:border-box;
+  box-sizing: border-box;
   background-color: #57068C;
   color: #FFFFFF;
-  border:2px solid #57068C;
-  border-radius: 8px;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
-  font-size:16px;
-  font-weight:600;
-  text-align:center;
-  text-decoration:none;
+  border-radius: 10px;
+  font-family: "Helvetica Neue";
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
   cursor: pointer;
 
 }
 
-.contact-search button:hover,
 .contact-card-buttons a:hover,
+.contact-card-buttons button:hover,
 .contact-home-button:hover {
-  background: #6B6578;
+  background: #000000;
   color: #FFFFFF;
 }
 
-.contact-page {
-  background-color: #DDDDDD !important;
+.contact-advisor-form input:focus {
+  outline:2px solid #57068C;
 }
