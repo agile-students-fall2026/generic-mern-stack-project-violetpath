@@ -6,7 +6,7 @@ import ForgotPW from './ForgotPW'
 import TargetGPA from './TargetGPA'
 import OverviewGPA from './OverviewGPA'
 import CourseEntryForm from './CourseEntryForm'
-import MajorMinorSection from './MajorMinorSection';
+import DegreeRequirements from './DegreeRequirements';
 import Header from "./Header";
 import DegreeProgress from './DegreeProgress';
 import FAQ from "./FAQ";
@@ -30,7 +30,7 @@ const App = () => {
         <Route path="/student-information" element={<StudentInformation />} />
         <Route path="/courses" element={<CoursesSearch />} />
         <Route path="/degree/progress" element={<DegreeProgress />} />
-        <Route path="/degree/requirements" element={<MajorMinorSection />} />
+        <Route path="/degree/requirements" element={<DegreeRequirements />} />
         <Route path="/graduation-check" element={<div />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/department/contact" element={<DepartmentContact />} />

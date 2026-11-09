@@ -1,0 +1,300 @@
+.degree-req-page {
+  margin: 0;
+  padding: 30px 20px 50px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #dedede;
+  color: #000000;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.degree-req-container {
+  width: 90%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.degree-req-container h1 {
+  margin: 0 0 24px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.degree-req-card {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.degree-req-card h2 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.degree-req-subtitle {
+  margin: 0 0 20px;
+  color: #666666;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.degree-req-summary {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.degree-req-summary-item {
+  flex: 1;
+  min-width: 0;
+  padding: 16px;
+  background-color: #F4F4F4;
+  border-radius: 14px;
+  box-sizing: border-box;
+}
+
+.degree-req-summary-item p {
+  margin: 0 0 8px;
+  color: #666666;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.degree-req-summary-item strong {
+  color: #000000;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.degree-req-course-section {
+  margin-top: 20px;
+}
+
+.degree-req-course-section h3 {
+  margin: 0 0 12px;
+  color: #000000;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.degree-req-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.degree-req-group {
+  padding: 16px;
+  background-color: #F4F4F4;
+  border-radius: 8px;
+}
+
+.degree-req-group h4 {
+  margin: 0 0 12px;
+  color: #000000;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.degree-req-course-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.degree-req-course-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 0;
+  border-bottom: 1px solid #dddddd;
+}
+
+.degree-req-course-row:first-child {
+  padding-top: 0;
+}
+
+.degree-req-course-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.degree-req-course-info {
+  min-width: 0;
+}
+
+.degree-req-course-code {
+  display: block;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.degree-req-course-title {
+  margin: 6px 0 0;
+  color: #666666;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.degree-req-course-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.degree-req-course-credits {
+  color: #666666;
+  font-size: 14px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.degree-req-status {
+  display: inline-block;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.degree-req-status-completed {
+  background-color: #57068C;
+  color: #ffffff;
+}
+
+.degree-req-status-in-progress {
+  background-color: #ffffff;
+  color: #57068C;
+  border: 1px solid #57068C;
+}
+
+.degree-req-status-not-started {
+  background-color: #ffffff;
+  color: #666666;
+  border: 1px solid #cccccc;
+}
+
+.degree-req-minor-list {
+  margin-top: 20px;
+}
+
+.degree-req-minor-list h3 {
+  margin: 0 0 12px;
+  color: #000000;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.degree-req-minor-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.degree-req-minor-list li {
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  background-color: #F4F4F4;
+  border-radius: 8px;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.degree-req-minor-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.degree-req-minor-stat {
+  flex: 1;
+  min-width: 90px;
+  padding: 12px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.degree-req-minor-stat p {
+  margin: 0 0 8px;
+  color: #666666;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.degree-req-minor-stat strong {
+  color: #000000;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.degree-req-empty {
+  margin: 0;
+  padding: 16px;
+  background-color: #F4F4F4;
+  border-radius: 8px;
+  color: #666666;
+  font-size: 14px;
+}
+
+.degree-req-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  margin: 30px auto 0;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  background-color: #57068C;
+  color: #ffffff;
+  border: 2px solid #57068C;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+}
+
+.degree-req-home:hover {
+  background-color: #460570;
+}
+
+@media (max-width: 480px) {
+  .degree-req-container {
+    width: 100%;
+  }
+
+  .degree-req-card {
+    padding: 20px;
+  }
+
+  .degree-req-container h1 {
+    font-size: 26px;
+  }
+
+  .degree-req-summary {
+    gap: 10px;
+  }
+
+  .degree-req-summary-item {
+    padding: 12px;
+  }
+
+  .degree-req-course-details {
+    flex-wrap: wrap;
+  }
+}
