@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import axios from 'axios'
 import './LogIn.css'
 
 const LogIn = () => {
@@ -9,9 +10,23 @@ const LogIn = () => {
 
   const navigate = useNavigate()
 
-  const handleSubmit = e => {
-    e.preventDefault() // prevent the default browser form submission stuff
-    navigate('/')
+  const handleSubmit = async e => {
+    e.preventDefault()
+    setError('')
+
+    try {
+      // send the request to the server api to authenticate
+      const response = await axios.post(
+        'http://localhost:3000/login', {
+        email,
+        password,
+    })
+      // store the response data into the data state variable
+      console.log(response.data.message)
+      navigate("/")
+    } catch (err) {
+      setError(err.response?.data?.error ?? 'Login failed')
+    }
   }
 
   return (
