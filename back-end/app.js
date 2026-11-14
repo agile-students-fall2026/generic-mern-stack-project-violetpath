@@ -94,5 +94,42 @@ app.post('/validate-target-gpa', (req, res) => {
   })
 })
 
+app.post('/calculate-target-gpa', (req, res) => {
+  const { currentGPA, targetGPA, completedCredits, futureCredits } = req.body || {}
+
+  const values = [currentGPA, targetGPA, completedCredits, futureCredits]
+
+  if (values.some(value => typeof value !== 'number' || !Number.isFinite(value))) {
+    return res.status(400).json({
+      error: 'Please enter valid numbers'
+    })
+  }
+
+  if (currentGPA < 0 || currentGPA > 4 ||
+      targetGPA < 0 || targetGPA > 4 ||
+      completedCredits < 0 || futureCredits <= 0) {
+    return res.status(400).json({
+      error: 'Invalid GPA or credit values'
+    })
+  }
+
+  const totalCredits = completedCredits + futureCredits
+
+  const requiredGPA = (targetGPA * totalCredits -
+    currentGPA * completedCredits) / futureCredits
+
+  if (!Number.isFinite(requiredGPA)) {
+    return res.status(400).json({
+      error: 'Invalid credit values'
+    })
+  }
+
+  const achievable = requiredGPA <= 4
+
+  res.status(200).json({
+    requiredGPA: Number(Math.max(0, requiredGPA).toFixed(2)),
+    achievable: achievable
+  })
+})
 
 export default app // ES module export style!
