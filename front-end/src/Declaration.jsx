@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Declaration.css';
-import { currentMajor, majors } from './mockDeclaration';
+const API_URL = 'http://localhost:3000';
 
 function Declaration() {
   const [query, setQuery] = useState('');
@@ -11,6 +11,23 @@ function Declaration() {
   const [signature, setSignature] = useState('');
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [majors, setMajors] = useState([]);
+  const [currentMajor, setCurrentMajor] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+
+  // Load the current major and major list from the back end
+  useEffect(() => {
+    fetch(`${API_URL}/declaration`)
+      .then((response) => response.json())
+      .then((data) => {
+        setMajors(data.majors);
+        setCurrentMajor(data.currentMajor);
+      })
+      .catch(() => {
+        setSubmitError('Could not load majors. Please try again later.');
+      });
+  }, []);
 
   // Filter majors based on the search input
   const filteredMajors = majors.filter((major) =>
@@ -40,15 +57,43 @@ function Declaration() {
     return newErrors;
   }
 
-  // Handle the declaration form submission
-  function handleSubmit(event) {
+  // Send the declaration form to the back end
+  async function handleSubmit(event) {
     event.preventDefault();
 
     const newErrors = validate();
     setErrors(newErrors);
 
-    if (Object.keys(newErrors).length === 0) {
+    if (Object.keys(newErrors).length > 0) {
+      return;
+    }
+
+    setSubmitting(true);
+    setSubmitError('');
+
+    try {
+      const response = await fetch(`${API_URL}/declaration`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          major: selectedMajor,
+          date,
+          reason,
+          signature,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Submission failed.');
+      }
+
       setSubmitted(true);
+    } catch (error) {
+      setSubmitError(error.message);
+    } finally {
+      setSubmitting(false);
     }
   }
 
@@ -249,11 +294,16 @@ function Declaration() {
           </section>
 
           {/* Submit Button */}
+          {submitError && (
+            <p className="decl-error">{submitError}</p>
+          )}
+
           <button
             type="submit"
             className="decl-btn decl-btn-primary decl-submit"
+            disabled={submitting}
           >
-            Submit Declaration
+            {submitting ? 'Submitting...' : 'Submit Declaration'}
           </button>
         </form>
 

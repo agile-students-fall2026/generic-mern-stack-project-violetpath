@@ -40,3 +40,48 @@ app.post('/login', (req, res) => {
 })
 
 export default app // ES module export style!
+
+// mock data for the declaration page, hard-coded for now
+const declarationOptions = {
+  currentMajor: 'Computer Science',
+  majors: [
+    'Computer Science',
+    'Data Science',
+    'Mathematics',
+    'Physics',
+    'Economics',
+    'Psychology',
+    'Interactive Media',
+    'Philosophy',
+  ],
+}
+// returns true if a value is missing or only spaces
+const isBlank = (value) => !value || String(value).trim() === ''
+// send the current major and the list of majors to the front end
+app.get('/declaration', (req, res) => {
+  res.status(200).json(declarationOptions)
+})
+// receive a declaration form and check it
+app.post('/declaration', (req, res) => {
+  const body = req.body ?? {}
+  const { major } = body
+  const missing = ['major', 'date', 'reason', 'signature'].filter(
+    (field) => isBlank(body[field])
+  )
+  if (missing.length > 0) {
+    res.status(400).json({
+      error: 'Missing required fields',
+      fields: missing,
+    })
+    return
+  }
+  if (!declarationOptions.majors.includes(major)) {
+    res.status(400).json({ error: 'Unknown major' })
+    return
+  }
+  // nothing is saved yet, so just confirm what was received
+  res.status(201).json({
+    message: 'Declaration received',
+    declaration: body,
+  })
+})
