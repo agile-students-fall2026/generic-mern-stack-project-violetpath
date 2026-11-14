@@ -39,8 +39,6 @@ app.post('/login', (req, res) => {
       })
 })
 
-export default app // ES module export style!
-
 // mock data for the declaration page, hard-coded for now
 const declarationOptions = {
   currentMajor: 'Computer Science',
@@ -85,3 +83,4 @@ app.post('/declaration', (req, res) => {
     declaration: body,
   })
 })
+export default app // ES module export style!
