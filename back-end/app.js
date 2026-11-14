@@ -16,32 +16,35 @@ dotenv.config({ silent: true })
 import morgan from 'morgan' // middleware for nice logging of incoming HTTP requests
 
 // use the morgan middleware to log all incoming http requests
-app.use(morgan('dev')) // morgan has a few logging default styles - dev is a nice concise color-coded style
+app.use(morgan('dev'))
 
 app.use(cors())
-// use express's builtin body-parser middleware to parse any data included in a request
-app.use(express.json()) // decode JSON-formatted incoming POST data
-app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
+// Login API (Joh)
 app.post('/login', (req, res) => {
   let email = req.body.email
   let password = req.body.password
 
   if (!email || !password) {
     res.status(400).json({
-        error: 'Missing email or password'
-      })
-      return
+      error: 'Missing email or password'
+    })
+    return
   }
 
   res.status(200).json({
-        message: 'Login Successful'
-      })
+    message: 'Login Successful'
+  })
 })
 
-
-app.post('/validate-target-gpa', (req, res) => {
-  const { currentGPA, targetGPA, completedCredits, futureCredits } = req.body
+// Target GPA Validation + Calculation API
+app.post('/calculate-target-gpa', (req, res) => {
+  let currentGPA = req.body.currentGPA
+  let targetGPA = req.body.targetGPA
+  let completedCredits = req.body.completedCredits
+  let futureCredits = req.body.futureCredits
 
   // Check for missing inputs
   if (
@@ -88,31 +91,7 @@ app.post('/validate-target-gpa', (req, res) => {
     })
   }
 
-  // All inputs are valid
-  return res.status(200).json({
-    message: 'Target GPA inputs are valid'
-  })
-})
-
-app.post('/calculate-target-gpa', (req, res) => {
-  const { currentGPA, targetGPA, completedCredits, futureCredits } = req.body || {}
-
-  const values = [currentGPA, targetGPA, completedCredits, futureCredits]
-
-  if (values.some(value => typeof value !== 'number' || !Number.isFinite(value))) {
-    return res.status(400).json({
-      error: 'Please enter valid numbers'
-    })
-  }
-
-  if (currentGPA < 0 || currentGPA > 4 ||
-      targetGPA < 0 || targetGPA > 4 ||
-      completedCredits < 0 || futureCredits <= 0) {
-    return res.status(400).json({
-      error: 'Invalid GPA or credit values'
-    })
-  }
-
+  // Calculate required GPA
   const totalCredits = completedCredits + futureCredits
 
   const requiredGPA = (targetGPA * totalCredits -
@@ -126,7 +105,7 @@ app.post('/calculate-target-gpa', (req, res) => {
 
   const achievable = requiredGPA <= 4
 
-  res.status(200).json({
+  return res.status(200).json({
     requiredGPA: Number(Math.max(0, requiredGPA).toFixed(2)),
     achievable: achievable
   })
