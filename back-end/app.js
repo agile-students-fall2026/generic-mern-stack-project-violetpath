@@ -39,4 +39,60 @@ app.post('/login', (req, res) => {
       })
 })
 
+
+app.post('/validate-target-gpa', (req, res) => {
+  const { currentGPA, targetGPA, completedCredits, futureCredits } = req.body
+
+  // Check for missing inputs
+  if (
+    currentGPA === undefined ||
+    targetGPA === undefined ||
+    completedCredits === undefined ||
+    futureCredits === undefined
+  ) {
+    return res.status(400).json({
+      error: 'Missing required GPA or credit information'
+    })
+  }
+
+  // Check that all inputs are valid numbers
+  if (
+    typeof currentGPA !== 'number' ||
+    typeof targetGPA !== 'number' ||
+    typeof completedCredits !== 'number' ||
+    typeof futureCredits !== 'number' ||
+    !Number.isFinite(currentGPA) ||
+    !Number.isFinite(targetGPA) ||
+    !Number.isFinite(completedCredits) ||
+    !Number.isFinite(futureCredits)
+  ) {
+    return res.status(400).json({
+      error: 'All inputs must be valid numbers'
+    })
+  }
+
+  // Validate GPA range
+  if (
+    currentGPA < 0 || currentGPA > 4 ||
+    targetGPA < 0 || targetGPA > 4
+  ) {
+    return res.status(400).json({
+      error: 'GPA must be between 0 and 4'
+    })
+  }
+
+  // Validate credit values
+  if (completedCredits < 0 || futureCredits <= 0) {
+    return res.status(400).json({
+      error: 'Completed credits must be non-negative and future credits must be greater than zero'
+    })
+  }
+
+  // All inputs are valid
+  return res.status(200).json({
+    message: 'Target GPA inputs are valid'
+  })
+})
+
+
 export default app // ES module export style!
