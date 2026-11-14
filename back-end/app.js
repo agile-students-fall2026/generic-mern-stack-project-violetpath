@@ -155,4 +155,17 @@ app.post('/declaration', (req, res) => {
     declaration: body,
   })
 })
+
+// Return mock GPA information for Degree Progress
+app.get('/degree-progress/gpa', (req, res) => {
+  res.status(200).json({
+    cumulativeGPA: 3.781,
+    majorGPA: 3.812,
+    minorGPA: 3.811,
+    creditsTaken: 100,
+    creditsLeft: 28
+  })
+})
+
+
 export default app // ES module export style!
