@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./FAQ.css";
 
@@ -26,34 +26,12 @@ const faqs = [
 
 
 
-function FAQ() { 
+function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
-  const [search, setSearch] = useState("");
-  const [filteredFaqs, setFilteredFaqs] = useState([]);
   const toggleFaq = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
-  useEffect(() => {
-    const searchFaq = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/search-faq", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({search: search})
-        });
-        if (!response.ok) {
-          throw new Error("Failed to search FAQs");
-        }
-        const data = await response.json();
-        setFilteredFaqs(data.results);
-      } catch (error) {
-        console.log("Error searching FAQs:", error);
-      }
-    };
-    searchFaq();
-  }, [search]);
+
 
   return (
     <div className="faq-page">
