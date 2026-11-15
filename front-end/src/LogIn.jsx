@@ -21,8 +21,6 @@ const LogIn = () => {
         email,
         password,
     })
-      // store the response data into the data state variable
-      console.log(response.data.message)
       navigate("/")
     } catch (err) {
       setError(err.response?.data?.error ?? 'Login failed')

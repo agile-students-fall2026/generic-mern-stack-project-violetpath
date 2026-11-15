@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import axios from 'axios'
 import './SignUp.css'
 
 const SignUp = () => {
@@ -11,8 +12,9 @@ const SignUp = () => {
 
   const navigate = useNavigate()
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault() // prevent the default browser form submission stuff
+    setError('')
 
     // check that the two passwords are the same
     if (password !== confirmPassword) {
@@ -20,8 +22,18 @@ const SignUp = () => {
       return
     }
 
-    setError('')
-    navigate('/login') // go back to the log in page after signing up
+    try {
+      // send the request to the server api to authenticate
+      const response = await axios.post(
+        'http://localhost:3000/signup', {
+        email,
+        password,
+        major,
+    })
+      navigate("/login")
+    } catch (err) {
+      setError(err.response?.data?.error ?? 'Signup failed')
+    }
   }
 
   return (
