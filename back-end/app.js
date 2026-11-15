@@ -52,6 +52,12 @@ app.post('/signup', (req, res) => {
     return
   }
 
+  const emails = loadAccounts().map(account => account.email)
+  if (emails.includes(email)) {
+    res.status(401).json({ error: 'An account already exists with this email address' })
+    return
+  }
+
   if (!/^[A-Za-z0-9._%+-]+@nyu.edu$/.test(email)) {
     return res.status(400).json({
         error: 'Your email should be a NYU email address',
