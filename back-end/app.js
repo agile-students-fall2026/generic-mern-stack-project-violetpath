@@ -26,16 +26,8 @@ app.use(express.urlencoded({ extended: true }))
 
 // function that returns accounts data with email and password
 const loadAccounts = () => {
-  const data = fs.readFileSync(path.join(__dirname, 'mock-data', 'accounts.csv'), 'utf8')
-  return data
-    .split('\n')
-    .map(line => line.trim())
-    .filter(line => line !== '')
-    .slice(1)
-    .map(line => {
-      const [email, password] = line.split(',')
-      return { email, password }
-    })
+  const data = fs.readFileSync(path.join(__dirname, 'mock-data', 'accounts.json'), 'utf8')
+  return JSON.parse(data)
 }
 
 // Login API
