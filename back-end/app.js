@@ -2,6 +2,7 @@
 import express from 'express' // ES module import style
 import path from 'path'
 import cors from 'cors'
+import fs from 'fs'
 import { fileURLToPath } from 'url'
 import fs from 'fs'
 
@@ -23,6 +24,20 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+// function that returns accounts data with email and password
+const loadAccounts = () => {
+  const data = fs.readFileSync(path.join(__dirname, 'mock-data', 'accounts.csv'), 'utf8')
+  return data
+    .split('\n')
+    .map(line => line.trim())
+    .filter(line => line !== '')
+    .slice(1)
+    .map(line => {
+      const [email, password] = line.split(',')
+      return { email, password }
+    })
+}
+
 // Login API
 app.post('/login', (req, res) => {
   let email = req.body.email
@@ -32,6 +47,12 @@ app.post('/login', (req, res) => {
     res.status(400).json({
       error: 'Missing email or password'
     })
+    return
+  }
+
+  const account = loadAccounts().find(account => account.email === email)
+  if (!account || account.password !== password) {
+    res.status(401).json({ error: 'Invalid email or password' })
     return
   }
 
@@ -102,6 +123,67 @@ app.post('/signup', (req, res) => {
 
   res.status(200).json({
     message: 'Signup Successful'
+  })
+})
+
+// Forgot Password API
+app.post('/forgot-password', (req, res) => {
+  let email = req.body.email
+  let newPassword = req.body.newPassword
+
+  if (!email || !newPassword) {
+    res.status(400).json({
+      error: 'Missing email or password'
+    })
+    return
+  }
+
+  const emails = loadAccounts().map(account => account.email)
+
+  if (!emails.includes(email)) {
+    res.status(404).json({
+      error: 'Email not found'
+    })
+    return
+  }
+
+  if (newPassword.length < 6) {
+    res.status(400).json({
+      error: 'Password must be at least 6 characters long.',
+    });
+    return
+  }
+
+  if (!/\d/.test(newPassword)) {
+    res.status(400).json({
+      error: 'Password must contain at least one number',
+    });
+    return
+  }
+
+  if (!/[A-Z]/.test(newPassword)) {
+    res.status(400).json({
+      error: 'Password must contain at least one upper case letter',
+    });
+    return
+  }
+
+  if (!/[a-z]/.test(newPassword)) {
+    res.status(400).json({
+      error: 'Password must contain at least one lower case letter',
+    });
+    return
+  }
+
+  if (!/[^A-Za-z0-9]/.test(newPassword)) {
+    res.status(400).json({
+      error: 'Password must contain at least one special character',
+    });
+    return
+  }
+
+  res.status(200).json({
+    message: 'Password Reset Successful'
   })
 })
 
