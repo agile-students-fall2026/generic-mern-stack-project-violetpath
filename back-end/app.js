@@ -3,6 +3,7 @@ import express from 'express' // ES module import style
 import path from 'path'
 import cors from 'cors'
 import { fileURLToPath } from 'url'
+import fs from 'fs'
 
 const app = express() // instantiate an Express object
 const __filename = fileURLToPath(import.meta.url)
@@ -155,4 +156,31 @@ app.post('/declaration', (req, res) => {
     declaration: body,
   })
 })
+
+ // Degree Progress GPA Backend
+const loadGPA = () => {
+  const data = fs.readFileSync(
+    new URL('./mock-data/gpa.csv', import.meta.url),
+    'utf8'
+  )
+
+  const lines = data.trim().split('\n')
+  const values = lines[1].trim().split(',')
+
+  const creditsTaken = Number(values[3])
+
+  return {
+    cumulativeGPA: Number(values[0]),
+    majorGPA: Number(values[1]),
+    minorGPA: Number(values[2]),
+    creditsTaken: creditsTaken,
+    creditsLeft: 128 - creditsTaken
+  }
+}
+
+app.get('/degree-progress/gpa', (req, res) => {
+  res.status(200).json(loadGPA())
+})
+
+
 export default app // ES module export style!
