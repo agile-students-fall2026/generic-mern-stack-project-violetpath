@@ -113,6 +113,9 @@ const faqs = [
   },
 ]
 //implement search API
+app.get('/api/faqs', (req,res)=> {
+  res.json(faqs);
+});
 app.post('/search-faq', (req,res) => {
   const {search} = req.body;
 
