@@ -37,7 +37,7 @@ const loadAccounts = () => {
     })
 }
 
-// Login API (Joh)
+// Login API
 app.post('/login', (req, res) => {
   let email = req.body.email
   let password = req.body.password
@@ -57,6 +57,71 @@ app.post('/login', (req, res) => {
 
   res.status(200).json({
     message: 'Login Successful'
+  })
+})
+
+// Sign Up API
+app.post('/signup', (req, res) => {
+  let email = req.body.email
+  let password = req.body.password
+  let major = req.body.major
+
+  if (!email || !password || !major) {
+    res.status(400).json({
+      error: 'All fields are required'
+    })
+    return
+  }
+
+  const emails = loadAccounts().map(account => account.email)
+  if (emails.includes(email)) {
+    res.status(401).json({ error: 'An account already exists with this email address' })
+    return
+  }
+
+  if (!/^[A-Za-z0-9._%+-]+@nyu.edu$/.test(email)) {
+    return res.status(400).json({
+        error: 'Your email should be a NYU email address',
+    });
+  }
+
+  if (password.length < 6) {
+    res.status(400).json({
+      error: 'Password must be at least 6 characters long.',
+    });
+    return
+  }
+
+  if (!/\d/.test(password)) {
+    res.status(400).json({
+      error: 'Password must contain at least one number',
+    });
+    return
+  }
+
+  if (!/[A-Z]/.test(password)) {
+    res.status(400).json({
+      error: 'Password must contain at least one upper case letter',
+    });
+    return
+  }
+
+  if (!/[a-z]/.test(password)) {
+    res.status(400).json({
+      error: 'Password must contain at least one lower case letter',
+    });
+    return
+  }
+
+  if (!/[^A-Za-z0-9]/.test(password)) {
+    res.status(400).json({
+      error: 'Password must contain at least one special character',
+    });
+    return
+  }
+
+  res.status(200).json({
+    message: 'Signup Successful'
   })
 })
 
