@@ -4,7 +4,6 @@ import path from 'path'
 import cors from 'cors'
 import fs from 'fs'
 import { fileURLToPath } from 'url'
-import fs from 'fs'
 
 const app = express() // instantiate an Express object
 const __filename = fileURLToPath(import.meta.url)
