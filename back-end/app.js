@@ -111,6 +111,45 @@ app.post('/calculate-target-gpa', (req, res) => {
     achievable: achievable
   })
 })
+const faqs = [
+  {
+    question: "How do I check my graduation progress?",
+    answer: "Go to Graduation Check to see your completed and remaining credits.",
+
+  },
+  {
+    question: "How do I calculate my GPA?",
+    answer:"Use the GPA Calculator to calculate your current or target GPA.",
+  },
+  {
+    question: "How do I view my degree requirements?",
+    answer: "Go to Degree Requirements to see required courses.",
+  },
+  {
+    question: "Who can I contact for help?",
+    answer: "Visit Department Contact for more information.",
+  },
+]
+//implement search API
+app.get('/api/faqs', (req,res)=> {
+  res.json(faqs);
+});
+app.post('/search-faq', (req,res) => {
+  const {search} = req.body;
+
+  if (typeof search !== 'string') {
+    return res.status(400).json({
+      error: 'Unavailable to search'
+    });
+  }
+  const filteredFaqs = faqs.filter((faq) =>
+    faq.question.toLowerCase().includes(search.toLowerCase()) ||
+    faq.answer.toLowerCase().includes(search.toLowerCase())
+  );
+  return res.status(200).json({
+    results: filteredFaqs
+  });
+});
 
 // mock data for the declaration page, hard-coded for now
 const declarationOptions = {
