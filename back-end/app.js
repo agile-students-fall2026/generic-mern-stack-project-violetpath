@@ -4,6 +4,7 @@ import path from 'path'
 import cors from 'cors'
 import fs from 'fs'
 import { fileURLToPath } from 'url'
+import fs from 'fs'
 
 const app = express() // instantiate an Express object
 const __filename = fileURLToPath(import.meta.url)
@@ -257,6 +258,45 @@ app.post('/calculate-target-gpa', (req, res) => {
     achievable: achievable
   })
 })
+const faqs = [
+  {
+    question: "How do I check my graduation progress?",
+    answer: "Go to Graduation Check to see your completed and remaining credits.",
+
+  },
+  {
+    question: "How do I calculate my GPA?",
+    answer:"Use the GPA Calculator to calculate your current or target GPA.",
+  },
+  {
+    question: "How do I view my degree requirements?",
+    answer: "Go to Degree Requirements to see required courses.",
+  },
+  {
+    question: "Who can I contact for help?",
+    answer: "Visit Department Contact for more information.",
+  },
+]
+//implement search API
+app.get('/api/faqs', (req,res)=> {
+  res.json(faqs);
+});
+app.post('/search-faq', (req,res) => {
+  const {search} = req.body;
+
+  if (typeof search !== 'string') {
+    return res.status(400).json({
+      error: 'Unavailable to search'
+    });
+  }
+  const filteredFaqs = faqs.filter((faq) =>
+    faq.question.toLowerCase().includes(search.toLowerCase()) ||
+    faq.answer.toLowerCase().includes(search.toLowerCase())
+  );
+  return res.status(200).json({
+    results: filteredFaqs
+  });
+});
 
 // mock data for the declaration page, hard-coded for now
 const declarationOptions = {
@@ -302,4 +342,31 @@ app.post('/declaration', (req, res) => {
     declaration: body,
   })
 })
+
+ // Degree Progress GPA Backend
+const loadGPA = () => {
+  const data = fs.readFileSync(
+    new URL('./mock-data/gpa.csv', import.meta.url),
+    'utf8'
+  )
+
+  const lines = data.trim().split('\n')
+  const values = lines[1].trim().split(',')
+
+  const creditsTaken = Number(values[3])
+
+  return {
+    cumulativeGPA: Number(values[0]),
+    majorGPA: Number(values[1]),
+    minorGPA: Number(values[2]),
+    creditsTaken: creditsTaken,
+    creditsLeft: 128 - creditsTaken
+  }
+}
+
+app.get('/degree-progress/gpa', (req, res) => {
+  res.status(200).json(loadGPA())
+})
+
+
 export default app // ES module export style!
