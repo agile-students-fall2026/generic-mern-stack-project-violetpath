@@ -22,7 +22,13 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-// Login API (Joh)
+// function that returns accounts data with email and password
+const loadAccounts = () => {
+  const data = fs.readFileSync(path.join(__dirname, 'mock-data', 'accounts.json'), 'utf8')
+  return JSON.parse(data)
+}
+
+// Login API
 app.post('/login', (req, res) => {
   let email = req.body.email
   let password = req.body.password
@@ -34,8 +40,140 @@ app.post('/login', (req, res) => {
     return
   }
 
+  const account = loadAccounts().find(account => account.email === email)
+  if (!account || account.password !== password) {
+    res.status(401).json({ error: 'Invalid email or password' })
+    return
+  }
+
   res.status(200).json({
     message: 'Login Successful'
+  })
+})
+
+// Sign Up API
+app.post('/signup', (req, res) => {
+  let email = req.body.email
+  let password = req.body.password
+  let major = req.body.major
+
+  if (!email || !password || !major) {
+    res.status(400).json({
+      error: 'All fields are required'
+    })
+    return
+  }
+
+  const emails = loadAccounts().map(account => account.email)
+  if (emails.includes(email)) {
+    res.status(401).json({ error: 'An account already exists with this email address' })
+    return
+  }
+
+  if (!/^[A-Za-z0-9._%+-]+@nyu.edu$/.test(email)) {
+    return res.status(400).json({
+        error: 'Your email should be a NYU email address',
+    });
+  }
+
+  if (password.length < 6) {
+    res.status(400).json({
+      error: 'Password must be at least 6 characters long.',
+    });
+    return
+  }
+
+  if (!/\d/.test(password)) {
+    res.status(400).json({
+      error: 'Password must contain at least one number',
+    });
+    return
+  }
+
+  if (!/[A-Z]/.test(password)) {
+    res.status(400).json({
+      error: 'Password must contain at least one upper case letter',
+    });
+    return
+  }
+
+  if (!/[a-z]/.test(password)) {
+    res.status(400).json({
+      error: 'Password must contain at least one lower case letter',
+    });
+    return
+  }
+
+  if (!/[^A-Za-z0-9]/.test(password)) {
+    res.status(400).json({
+      error: 'Password must contain at least one special character',
+    });
+    return
+  }
+
+  res.status(200).json({
+    message: 'Signup Successful'
+  })
+})
+
+// Forgot Password API
+app.post('/forgot-password', (req, res) => {
+  let email = req.body.email
+  let newPassword = req.body.newPassword
+
+  if (!email || !newPassword) {
+    res.status(400).json({
+      error: 'Missing email or password'
+    })
+    return
+  }
+
+  const emails = loadAccounts().map(account => account.email)
+
+  if (!emails.includes(email)) {
+    res.status(404).json({
+      error: 'Email not found'
+    })
+    return
+  }
+
+  if (newPassword.length < 6) {
+    res.status(400).json({
+      error: 'Password must be at least 6 characters long.',
+    });
+    return
+  }
+
+  if (!/\d/.test(newPassword)) {
+    res.status(400).json({
+      error: 'Password must contain at least one number',
+    });
+    return
+  }
+
+  if (!/[A-Z]/.test(newPassword)) {
+    res.status(400).json({
+      error: 'Password must contain at least one upper case letter',
+    });
+    return
+  }
+
+  if (!/[a-z]/.test(newPassword)) {
+    res.status(400).json({
+      error: 'Password must contain at least one lower case letter',
+    });
+    return
+  }
+
+  if (!/[^A-Za-z0-9]/.test(newPassword)) {
+    res.status(400).json({
+      error: 'Password must contain at least one special character',
+    });
+    return
+  }
+
+  res.status(200).json({
+    message: 'Password Reset Successful'
   })
 })
 
@@ -110,6 +248,45 @@ app.post('/calculate-target-gpa', (req, res) => {
     achievable: achievable
   })
 })
+const faqs = [
+  {
+    question: "How do I check my graduation progress?",
+    answer: "Go to Graduation Check to see your completed and remaining credits.",
+
+  },
+  {
+    question: "How do I calculate my GPA?",
+    answer:"Use the GPA Calculator to calculate your current or target GPA.",
+  },
+  {
+    question: "How do I view my degree requirements?",
+    answer: "Go to Degree Requirements to see required courses.",
+  },
+  {
+    question: "Who can I contact for help?",
+    answer: "Visit Department Contact for more information.",
+  },
+]
+//implement search API
+app.get('/api/faqs', (req,res)=> {
+  res.json(faqs);
+});
+app.post('/search-faq', (req,res) => {
+  const {search} = req.body;
+
+  if (typeof search !== 'string') {
+    return res.status(400).json({
+      error: 'Unavailable to search'
+    });
+  }
+  const filteredFaqs = faqs.filter((faq) =>
+    faq.question.toLowerCase().includes(search.toLowerCase()) ||
+    faq.answer.toLowerCase().includes(search.toLowerCase())
+  );
+  return res.status(200).json({
+    results: filteredFaqs
+  });
+});
 
 // mock data for the declaration page, hard-coded for now
 const declarationOptions = {

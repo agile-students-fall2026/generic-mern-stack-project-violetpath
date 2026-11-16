@@ -1,37 +1,56 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./FAQ.css";
 
-const faqs = [
-  {
-    question: "How do I check my graduation progress?",
-    answer: "Go to Graduation Check to see your completed and remaining credits.",
-
-  },
-  {
-    question: "How do I calculate my GPA?",
-    answer:"Use the GPA Calculator to calculate your current or target GPA.",
-  },
-  {
-    question: "How do I view my degree requirements?",
-    answer: "Go to Degree Requirements to see required courses.",
-  },
-  {
-    question: "Who can I contact for help?",
-    answer: "Visit Department Contact for more information.",
-  },
-];
 
 
 
 
-function FAQ() {
+function FAQ() { 
   const [openIndex, setOpenIndex] = useState(null);
+  const [search, setSearch] = useState("");
+  const [filteredFaqs, setFilteredFaqs] = useState([]);
+  const [faqs, setFaqs] = useState([]);
   const toggleFaq = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
-
+  useEffect(() => {
+    const getFaqs = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/faqs");
+          if (!response.ok) {
+            throw new Error("Failed to get FAQs");
+          }
+          const data = await response.json();
+          setFaqs(data);
+        } catch (error) {
+          console.log("Error getting FAQs:", error);
+        }
+    };
+    getFaqs();
+  },[]);
+  useEffect(() => {
+    const searchFaq = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/search-faq", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({search: search})
+        });
+        if (!response.ok) {
+          throw new Error("Failed to search FAQs");
+        }
+        const data = await response.json();
+        setFilteredFaqs(data.results);
+      } catch (error) {
+        console.log("Error searching FAQs:", error);
+      }
+    };
+    searchFaq();
+  }, [search]);
 
   return (
     <div className="faq-page">

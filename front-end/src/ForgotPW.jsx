@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import axios from 'axios'
 import './ForgotPW.css'
  
 const ForgotPW = () => {
@@ -10,17 +11,27 @@ const ForgotPW = () => {
  
   const navigate = useNavigate()
  
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault() // prevent the default browser form submission stuff
- 
+    setError('')
+
     // check that the two new passwords are the same
     if (newPassword !== confirmNewPassword) {
       setError('Passwords do not match')
       return
     }
- 
-    setError('')
-    navigate('/login') // go back to the log in page after resetting
+
+    try {
+      // send the request to the server api to authenticate
+      const response = await axios.post(
+        'http://localhost:3000/forgot-password', {
+        email,
+        newPassword,
+      })
+      navigate("/login")
+    } catch (err) {
+      setError(err.response?.data?.error ?? 'Reset Password failed')
+    }
   }
 
   return (
