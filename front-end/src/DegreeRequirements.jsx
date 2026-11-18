@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import './DegreeRequirements.css';
-import { major, minors, minorDetails } from './mockRequirements';
+import { useEffect, useState } from 'react';
+const API_URL = 'http://localhost:3000';
 
 function StatusBadge({ status }) {
   const labels = {
@@ -169,7 +170,7 @@ function MinorCard({ minor }) {
   );
 }
 
-function MinorSection() {
+function MinorSection({ minors, minorDetails }) {
   return (
     <section className="degree-req-card">
       <h2>Minor Requirements</h2>
@@ -198,14 +199,27 @@ function MinorSection() {
 }
 
 function DegreeRequirements() {
+  const [data, setData] = useState(null);
+  const [loadError, setLoadError] = useState('');
+  useEffect(() => {
+    fetch(`${API_URL}/degree/requirements`)
+      .then((response) => response.json())
+      .then((result) => setData(result))
+      .catch(() => setLoadError('Could not load degree requirements.'));
+  }, []);
   return (
     <div className="degree-req-page">
       <div className="degree-req-container">
         <h1>Degree Requirements</h1>
 
-        <MajorSection major={major} />
+        {loadError && <p className="degree-req-empty">{loadError}</p>}
 
-        <MinorSection />
+        {data && (
+          <>
+            <MajorSection major={data.major} />
+            <MinorSection minors={data.minors} minorDetails={data.minorDetails} />
+          </>
+        )}
 
         <Link to="/" className="degree-req-home">
           Home
