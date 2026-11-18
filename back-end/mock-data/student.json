@@ -1,0 +1,10 @@
+{
+  "firstName": "Demo",
+  "middleName": "None",
+  "lastName": "Student",
+  "studentId": "demo001",
+  "universityId": "N00000000",
+  "major": "Computer Science",
+  "minor": "None",
+  "expectedGraduation": "Spring 2027"
+}
