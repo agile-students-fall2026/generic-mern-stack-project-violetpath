@@ -249,45 +249,20 @@ app.post('/calculate-target-gpa', (req, res) => {
     achievable: achievable
   })
 })
-const faqs = [
-  {
-    question: "How do I check my graduation progress?",
-    answer: "Go to Graduation Check to see your completed and remaining credits.",
 
-  },
-  {
-    question: "How do I calculate my GPA?",
-    answer:"Use the GPA Calculator to calculate your current or target GPA.",
-  },
-  {
-    question: "How do I view my degree requirements?",
-    answer: "Go to Degree Requirements to see required courses.",
-  },
-  {
-    question: "Who can I contact for help?",
-    answer: "Visit Department Contact for more information.",
-  },
-]
+const loadFaqs = () => {
+  const data = fs.readFileSync (
+    path.join(__dirname,'mock-data', 'faqs.json'),'utf8'
+  );
+  return JSON.parse(data);
+}
+
 //implement search API
 app.get('/api/faqs', (req,res)=> {
-  res.json(faqs);
+  const faqs = loadFaqs();
+  res.status(200).json(faqs);
 });
-app.post('/search-faq', (req,res) => {
-  const {search} = req.body;
 
-  if (typeof search !== 'string') {
-    return res.status(400).json({
-      error: 'Unavailable to search'
-    });
-  }
-  const filteredFaqs = faqs.filter((faq) =>
-    faq.question.toLowerCase().includes(search.toLowerCase()) ||
-    faq.answer.toLowerCase().includes(search.toLowerCase())
-  );
-  return res.status(200).json({
-    results: filteredFaqs
-  });
-});
 
 // mock data for the declaration page, hard-coded for now
 const declarationOptions = {
@@ -343,11 +318,9 @@ const loadGPA = () => {
 
   return JSON.parse(data)
 }
-
 app.get('/degree-progress/gpa', (req, res) => {
   const gpa = loadGPA()[0]
   const creditsTaken = gpa.creditsTaken
-
   res.status(200).json({
     cumulativeGPA: gpa.cumulativeGPA,
     majorGPA: gpa.majorGPA,
@@ -356,6 +329,60 @@ app.get('/degree-progress/gpa', (req, res) => {
     creditsLeft: 128 - creditsTaken
   })
 })
+// mock data for the graduation check page, hard-coded for now
+const graduationCheckData = {
+  term: 'Spring 2027',
+  major: 'Computer Science',
+  minor: 'Math',
+  totalCredits: { taken: 100, required: 128 },
+  groups: [
+    { key: 'major', label: 'Major credits', taken: 40, required: 48 },
+    { key: 'minor', label: 'Minor credits', taken: 12, required: 16 },
+    { key: 'core', label: 'Core credits', taken: 20, required: 24 },
+  ],
+}
+
+// send the graduation check data to the front end
+app.get('/degree/graduation', (req, res) => {
+  res.status(200).json(graduationCheckData)
+const studentFile = path.join(__dirname, 'mock-data', 'student.json')
+
+app.get('/student-information', (req, res) => {
+  try {
+    const data = fs.readFileSync(studentFile, 'utf8')
+    const student = JSON.parse(data)
+
+    res.status(200).json(student)
+  } catch {
+    res.status(500).json({
+      error: 'Could not load student information'
+    })
+  }
+})
+
+app.put('/student-information', (req, res) => {
+  const data = req.body || {}
+
+  const fields = [
+    'firstName',
+    'middleName',
+    'lastName',
+    'studentId',
+    'universityId',
+    'major',
+    'minor',
+    'expectedGraduation'
+  ]
+
+  for (const field of fields) {
+    if (typeof data[field] !== 'string' || !data[field].trim()) {
+      return res.status(400).json({
+        error: 'Invalid student information'
+      })
+    }
+  }
+
+  const student = {}
 
 // mock data for the degree requirements page, hard-coded for now
 const requirementsData = {
@@ -418,6 +445,22 @@ const requirementsData = {
 // send the degree requirements to the front end
 app.get('/degree/requirements', (req, res) => {
   res.status(200).json(requirementsData)
+  for (const field of fields) {
+    student[field] = data[field].trim()
+  }
+
+  try {
+    fs.writeFileSync(studentFile, JSON.stringify(student, null, 2) + '\n')
+
+    res.status(200).json({
+      message: 'Student information saved',
+      student: student
+    })
+  } catch {
+    res.status(500).json({
+      error: 'Could not save student information'
+    })
+  }
 })
 
 export default app // ES module export style!

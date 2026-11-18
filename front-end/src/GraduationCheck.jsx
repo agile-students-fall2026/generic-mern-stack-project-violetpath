@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import './GraduationCheck.css';
-import { graduationData } from './mockGraduation';
+import { useEffect, useState } from 'react';
+const API_URL = 'http://localhost:3000';
 
 function percent(taken, required) {
   return Math.min(100, Math.round((taken / required) * 100));
@@ -38,7 +39,31 @@ function CreditCard({ label, taken, required }) {
 }
 
 function GraduationCheck() {
-  const { term, major, minor, totalCredits, groups } = graduationData;
+  const [data, setData] = useState(null);
+  const [loadError, setLoadError] = useState('');
+
+  useEffect(() => {
+    fetch(`${API_URL}/degree/graduation`)
+      .then((response) => response.json())
+      .then((result) => setData(result))
+      .catch(() => setLoadError('Could not load graduation check.'));
+  }, []);
+
+  if (loadError) {
+    return (
+      <div className="grad-page">
+        <main className="grad-main">
+          <p className="grad-subtitle">{loadError}</p>
+        </main>
+      </div>
+    );
+  }
+
+  if (!data) {
+    return null;
+  }
+
+  const { term, major, minor, totalCredits, groups } = data;
   const totalLeft = totalCredits.required - totalCredits.taken;
 
   return (

@@ -1,0 +1,19 @@
+[
+  {
+    "question": "How do I check my graduation progress?",
+    "answer": "Go to Graduation Check to see your completed and remaining credits."
+
+  },
+  {
+    "question": "How do I calculate my GPA?",
+    "answer":"Use the GPA Calculator to calculate your current or target GPA."
+  },
+  {
+    "question": "How do I view my degree requirements?",
+    "answer": "Go to Degree Requirements to see required courses."
+  },
+  {
+    "question": "Who can I contact for help?",
+    "answer": "Visit Department Contact for more information."
+  }
+]
