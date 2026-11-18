@@ -1,17 +1,13 @@
 
-import { Link } from 'react-router-dom'
-import './StudentInformation.css'
-
-function StudentInformation() {
-  const student = [
-    { label: 'First Name', value: 'Richie' },
-    { label: 'Middle Name', value: 'None' },
-    { label: 'Last Name', value: 'Zhang' },
-    { label: 'Student ID', value: 'rz2785' },
-    { label: 'University ID', value: 'N16626852' },
-    { label: 'Major', value: 'Computer Science' },
-    { label: 'Minor', value: 'None' },
-    { label: 'Expected Graduation', value: 'Spring 2027' }
+  const fields = [
+    { label: 'First Name', key: 'firstName' },
+    { label: 'Middle Name', key: 'middleName' },
+    { label: 'Last Name', key: 'lastName' },
+    { label: 'Student ID', key: 'studentId' },
+    { label: 'University ID', key: 'universityId' },
+    { label: 'Major', key: 'major' },
+    { label: 'Minor', key: 'minor' },
+    { label: 'Expected Graduation', key: 'expectedGraduation' }
   ]
 
   return (
@@ -19,10 +15,15 @@ function StudentInformation() {
       <h1>Student Information</h1>
 
       <div className="student-info-form">
-        {student.map((item) => (
-          <div className="student-info-field" key={item.label}>
+        {error && <p>{error}</p>}
+        {!student && !error && <p>Loading...</p>}
+
+        {student && fields.map(item => (
+          <div className="student-info-field" key={item.key}>
             <span className="student-info-label">{item.label}</span>
-            <span className="student-info-value">{item.value}</span>
+            <span className="student-info-value">
+              {student[item.key]}
+            </span>
           </div>
         ))}
       </div>
@@ -35,4 +36,3 @@ function StudentInformation() {
 }
 
 export default StudentInformation
-
