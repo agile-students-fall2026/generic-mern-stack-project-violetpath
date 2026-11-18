@@ -318,11 +318,9 @@ const loadGPA = () => {
 
   return JSON.parse(data)
 }
-
 app.get('/degree-progress/gpa', (req, res) => {
   const gpa = loadGPA()[0]
   const creditsTaken = gpa.creditsTaken
-
   res.status(200).json({
     cumulativeGPA: gpa.cumulativeGPA,
     majorGPA: gpa.majorGPA,
@@ -331,7 +329,22 @@ app.get('/degree-progress/gpa', (req, res) => {
     creditsLeft: 128 - creditsTaken
   })
 })
+// mock data for the graduation check page, hard-coded for now
+const graduationCheckData = {
+  term: 'Spring 2027',
+  major: 'Computer Science',
+  minor: 'Math',
+  totalCredits: { taken: 100, required: 128 },
+  groups: [
+    { key: 'major', label: 'Major credits', taken: 40, required: 48 },
+    { key: 'minor', label: 'Minor credits', taken: 12, required: 16 },
+    { key: 'core', label: 'Core credits', taken: 20, required: 24 },
+  ],
+}
 
+// send the graduation check data to the front end
+app.get('/degree/graduation', (req, res) => {
+  res.status(200).json(graduationCheckData)
 const studentFile = path.join(__dirname, 'mock-data', 'student.json')
 
 app.get('/student-information', (req, res) => {
