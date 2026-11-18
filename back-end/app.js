@@ -357,5 +357,61 @@ app.get('/degree-progress/gpa', (req, res) => {
   })
 })
 
+const studentFile = path.join(__dirname, 'mock-data', 'student.json')
+
+app.get('/student-information', (req, res) => {
+  try {
+    const data = fs.readFileSync(studentFile, 'utf8')
+    const student = JSON.parse(data)
+
+    res.status(200).json(student)
+  } catch {
+    res.status(500).json({
+      error: 'Could not load student information'
+    })
+  }
+})
+
+app.put('/student-information', (req, res) => {
+  const data = req.body || {}
+
+  const fields = [
+    'firstName',
+    'middleName',
+    'lastName',
+    'studentId',
+    'universityId',
+    'major',
+    'minor',
+    'expectedGraduation'
+  ]
+
+  for (const field of fields) {
+    if (typeof data[field] !== 'string' || !data[field].trim()) {
+      return res.status(400).json({
+        error: 'Invalid student information'
+      })
+    }
+  }
+
+  const student = {}
+
+  for (const field of fields) {
+    student[field] = data[field].trim()
+  }
+
+  try {
+    fs.writeFileSync(studentFile, JSON.stringify(student, null, 2) + '\n')
+
+    res.status(200).json({
+      message: 'Student information saved',
+      student: student
+    })
+  } catch {
+    res.status(500).json({
+      error: 'Could not save student information'
+    })
+  }
+})
 
 export default app // ES module export style!
