@@ -263,21 +263,10 @@ app.get('/api/faqs', (req,res)=> {
   res.status(200).json(faqs);
 });
 
-
-// mock data for the declaration page, hard-coded for now
-const declarationOptions = {
-  currentMajor: 'Computer Science',
-  majors: [
-    'Computer Science',
-    'Data Science',
-    'Mathematics',
-    'Physics',
-    'Economics',
-    'Psychology',
-    'Interactive Media',
-    'Philosophy',
-  ],
-}
+// load the declaration mock data from its JSON file
+const declarationOptions = JSON.parse(
+  fs.readFileSync(path.join(__dirname, 'mock-data', 'declaration.json'), 'utf8')
+)
 // returns true if a value is missing or only spaces
 const isBlank = (value) => !value || String(value).trim() === ''
 // send the current major and the list of majors to the front end
@@ -329,22 +318,17 @@ app.get('/degree-progress/gpa', (req, res) => {
     creditsLeft: 128 - creditsTaken
   })
 })
-// mock data for the graduation check page, hard-coded for now
-const graduationCheckData = {
-  term: 'Spring 2027',
-  major: 'Computer Science',
-  minor: 'Math',
-  totalCredits: { taken: 100, required: 128 },
-  groups: [
-    { key: 'major', label: 'Major credits', taken: 40, required: 48 },
-    { key: 'minor', label: 'Minor credits', taken: 12, required: 16 },
-    { key: 'core', label: 'Core credits', taken: 20, required: 24 },
-  ],
-}
+
+// load the graduation check mock data from its JSON file
+const graduationCheckData = JSON.parse(
+  fs.readFileSync(path.join(__dirname, 'mock-data', 'graduation-check.json'), 'utf8')
+)
 
 // send the graduation check data to the front end
 app.get('/degree/graduation', (req, res) => {
   res.status(200).json(graduationCheckData)
+})
+
 const studentFile = path.join(__dirname, 'mock-data', 'student.json')
 
 app.get('/student-information', (req, res) => {
@@ -383,68 +367,6 @@ app.put('/student-information', (req, res) => {
   }
 
   const student = {}
-
-// mock data for the degree requirements page, hard-coded for now
-const requirementsData = {
-  major: {
-    name: 'Computer Science',
-    creditsTaken: 48,
-    creditsLeft: 16,
-    groups: [
-      {
-        name: 'Computer Science Courses',
-        courses: [
-          { id: 'c1', code: 'CSCI-UA 2', title: 'Intro to Computer Programming', credits: 4, status: 'completed' },
-          { id: 'c2', code: 'CSCI-UA 101', title: 'Intro to Computer Science', credits: 4, status: 'completed' },
-          { id: 'c3', code: 'CSCI-UA 102', title: 'Data Structures', credits: 4, status: 'in-progress' },
-          { id: 'c4', code: 'CSCI-UA 310', title: 'Algorithms', credits: 4, status: 'not-started' },
-        ],
-      },
-      {
-        name: 'Mathematics Courses',
-        courses: [
-          { id: 'm1', code: 'MATH-UA 102', title: 'Discrete Mathematics', credits: 4, status: 'completed' },
-          { id: 'm2', code: 'MATH-UA 121', title: 'Calculus I', credits: 4, status: 'not-started' },
-        ],
-      },
-      {
-        name: 'Electives Courses',
-        courses: [
-          { id: 'e1', code: 'MATH-UA 122', title: 'Calculus II', credits: 4, status: 'completed' },
-          { id: 'e2', code: 'CSCI-UA 480', title: 'Computer Networks', credits: 4, status: 'not-started' },
-        ],
-      },
-    ],
-  },
-  minors: ['Math', 'Physics'],
-  minorDetails: [
-    {
-      name: 'Math',
-      coursesRequired: 8,
-      creditsTaken: 12,
-      gpa: 3.92,
-      courses: [
-        { id: 'mm1', code: 'MATH-UA 102', title: 'Discrete Mathematics', credits: 4, status: 'completed' },
-        { id: 'mm2', code: 'MATH-UA 121', title: 'Calculus I', credits: 3, status: 'completed' },
-        { id: 'mm3', code: 'MATH-UA 122', title: 'Calculus II', credits: 4, status: 'in-progress' },
-      ],
-    },
-    {
-      name: 'Physics',
-      coursesRequired: 8,
-      creditsTaken: 12,
-      gpa: 3.92,
-      courses: [
-        { id: 'pm1', code: 'PHYS-UA 102', title: 'Mechanics', credits: 4, status: 'completed' },
-        { id: 'pm2', code: 'PHYS-UA 121', title: 'Dynamics', credits: 3, status: 'completed' },
-        { id: 'pm3', code: 'PHYS-UA 122', title: 'Magnetism', credits: 3, status: 'in-progress' },
-      ],
-    },
-  ],
-}
-// send the degree requirements to the front end
-app.get('/degree/requirements', (req, res) => {
-  res.status(200).json(requirementsData)
   for (const field of fields) {
     student[field] = data[field].trim()
   }
@@ -461,6 +383,16 @@ app.get('/degree/requirements', (req, res) => {
       error: 'Could not save student information'
     })
   }
+})
+
+// load the degree requirements mock data from its JSON file
+const requirementsData = JSON.parse(
+    fs.readFileSync(path.join(__dirname, 'mock-data', 'requirements.json'), 'utf8')
+)
+
+// send the degree requirements to the front end
+app.get('/degree/requirements', (req, res) => {
+    res.status(200).json(requirementsData)
 })
 
 export default app // ES module export style!
