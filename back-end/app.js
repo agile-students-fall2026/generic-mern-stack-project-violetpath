@@ -345,6 +345,8 @@ const graduationCheckData = {
 // send the graduation check data to the front end
 app.get('/degree/graduation', (req, res) => {
   res.status(200).json(graduationCheckData)
+})
+
 const studentFile = path.join(__dirname, 'mock-data', 'student.json')
 
 app.get('/student-information', (req, res) => {
@@ -383,6 +385,24 @@ app.put('/student-information', (req, res) => {
   }
 
   const student = {}
+
+  for (const field of fields) {
+    student[field] = data[field].trim()
+  }
+
+  try {
+    fs.writeFileSync(studentFile, JSON.stringify(student, null, 2) + '\n')
+
+    res.status(200).json({
+      message: 'Student information saved',
+      student: student
+    })
+  } catch {
+    res.status(500).json({
+      error: 'Could not save student information'
+    })
+  }
+})
 
 // mock data for the degree requirements page, hard-coded for now
 const requirementsData = {
@@ -445,22 +465,6 @@ const requirementsData = {
 // send the degree requirements to the front end
 app.get('/degree/requirements', (req, res) => {
   res.status(200).json(requirementsData)
-  for (const field of fields) {
-    student[field] = data[field].trim()
-  }
-
-  try {
-    fs.writeFileSync(studentFile, JSON.stringify(student, null, 2) + '\n')
-
-    res.status(200).json({
-      message: 'Student information saved',
-      student: student
-    })
-  } catch {
-    res.status(500).json({
-      error: 'Could not save student information'
-    })
-  }
 })
 
 export default app // ES module export style!
