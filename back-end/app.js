@@ -52,6 +52,11 @@ app.post('/login', (req, res) => {
   })
 })
 
+const loadMajors = () => {
+  const data = fs.readFileSync(path.join(__dirname, 'mock-data', 'majors.json'), 'utf8')
+  return JSON.parse(data)
+}
+
 // Sign Up API
 app.post('/signup', (req, res) => {
   let email = req.body.email
@@ -109,6 +114,11 @@ app.post('/signup', (req, res) => {
     res.status(400).json({
       error: 'Password must contain at least one special character',
     });
+    return
+  }
+
+  if (!loadMajors().includes(major)) {
+    res.status(400).json({ error: 'Unknown major' })
     return
   }
 
