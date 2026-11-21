@@ -1,18 +1,31 @@
 
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import './DepartmentContact.css'
 
 function DepartmentContact () {
-  const [search, setSearch] = useState('');
+  const [major, setMajor] = useState('');
+  const [departments, setDepartments] = useState([]);
   const [advisor, setAdvisor] = useState('');
   const [email, setEmail] = useState('');
   const [showForm, setShowForm] = useState(false);
 
-  const departments = [
-    { name: 'Computer Science', website: 'https://cs.nyu.edu/' },
-    { name: 'Data Science', website: 'https://cds.nyu.edu/' }
-  ]
+  useEffect(() => {
+    fetch('http://localhost:5002/student-information')
+      .then((res) => res.json())
+      .then((data) => setMajor(data.major))
+      .catch((error) => console.log(error))
+    fetch('http://localhost:5002/api/departments')    
+      .then((res) => res.json())
+      .then((data) => setDepartments(data))
+      .catch((error) => console.log(error))
+  }, [])
+  const studentDepartment = departments.find((departmemt) =>
+    departmemt.name.toLowerCase() ===major.toLowerCase()
+  )
+
+
+  
 
   const filteredDepartments = departments.filter((department) =>
     department.name.toLowerCase().includes(search.toLowerCase())
