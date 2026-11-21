@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Computer Science",
+        "phone":"",
+        "website": "http://cs.nyu.edu/"
+    },
+    {
+        "name": "Data Science",
+        "phone":"",
+        "website": "http://cds.nyu.edu/"
+    }
+]
