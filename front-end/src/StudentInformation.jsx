@@ -1,4 +1,22 @@
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import './StudentInformation.css'
+const API_URL = 'http://localhost:3000'
 
+function StudentInformation() {
+  const [student, setStudent] = useState(null)
+  const [error, setError] = useState('')
+  useEffect(() => {
+      fetch(`${API_URL}/student-information`)
+          .then((response) => {
+              if (!response.ok) {
+                  throw new Error('Could not load student information.')
+              }
+              return response.json()
+          })
+          .then((data) => setStudent(data))
+          .catch((err) => setError(err.message))
+  }, [])
   const fields = [
     { label: 'First Name', key: 'firstName' },
     { label: 'Middle Name', key: 'middleName' },

@@ -405,4 +405,13 @@ app.get('/degree/requirements', (req, res) => {
     res.status(200).json(requirementsData)
 })
 
+// load the degree progress course mock data from its JSON file
+const degreeProgressCourses = JSON.parse(
+    fs.readFileSync(path.join(__dirname, 'mock-data', 'degree-progress-courses.json'), 'utf8')
+)
+
+// send the current semester courses to the front end
+app.get('/degree/progress/courses', (req, res) => {
+    res.status(200).json(degreeProgressCourses)
+})
 export default app // ES module export style!
