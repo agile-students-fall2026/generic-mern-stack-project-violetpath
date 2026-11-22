@@ -414,4 +414,19 @@ const degreeProgressCourses = JSON.parse(
 app.get('/degree/progress/courses', (req, res) => {
     res.status(200).json(degreeProgressCourses)
 })
+
+app.get('/api/courses', (req, res) => {
+  try {
+    const file = path.join(__dirname, 'mock-data', 'courses.json')
+    const data = fs.readFileSync(file, 'utf8')
+    const courses = JSON.parse(data)
+
+    res.status(200).json(courses)
+  } catch {
+    res.status(500).json({
+      error: 'Could not load course information'
+    })
+  }
+})
+
 export default app // ES module export style!
