@@ -1,0 +1,40 @@
+
+[
+    {
+      "code": "CSCI-UA 101",
+      "name": "Introduction to Computer Science",
+      "career": "Undergraduate",
+      "school": "College of Arts and Science",
+      "format": "In-person",
+      "description": "Introduction to programming and computer science.",
+      "prerequisite": "None"
+    },
+    {
+      "code": "CS-UY 1114",
+      "name": "Introduction to Programming and Problem Solving",
+      "career": "Undergraduate",
+      "school": "Tandon School of Engineering",
+      "format": "In-person",
+      "description": "Basic programming and problem-solving concepts.",
+      "prerequisite": "None"
+    },
+    {
+      "code": "CSCI-UA 102",
+      "name": "Data Structures",
+      "career": "Undergraduate",
+      "school": "College of Arts and Science",
+      "format": "In-person",
+      "description": "Introduction to data structures and algorithms.",
+      "prerequisite": "CSCI-UA 101"
+    },
+    {
+      "code": "CSCI-UA 202",
+      "name": "Operating Systems",
+      "career": "Undergraduate",
+      "school": "College of Arts and Science",
+      "format": "Online",
+      "description": "Basic concepts of operating systems.",
+      "prerequisite": "Check course requirements"
+    }
+  ]
+  
