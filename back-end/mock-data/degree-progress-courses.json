@@ -1,0 +1,25 @@
+{
+    "courses": [
+        {
+            "id": "d1",
+            "code": "CSCI-UA 102",
+            "title": "Data Structures",
+            "credits": 4,
+            "status": "in-progress"
+        },
+        {
+            "id": "d2",
+            "code": "MATH-UA 122",
+            "title": "Calculus II",
+            "credits": 4,
+            "status": "in-progress"
+        },
+        {
+            "id": "d3",
+            "code": "PHYS-UA 122",
+            "title": "Magnetism",
+            "credits": 3,
+            "status": "in-progress"
+        }
+    ]
+}

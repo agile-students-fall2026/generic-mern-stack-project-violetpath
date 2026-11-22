@@ -88,3 +88,30 @@
   color: #888;
   cursor: not-allowed;
 }
+
+.degree-progress-courses {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.degree-progress-courses h3 {
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+
+.degree-progress-course-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.degree-progress-course-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f2;
+}
