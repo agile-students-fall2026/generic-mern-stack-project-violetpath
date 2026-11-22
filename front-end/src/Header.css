@@ -31,36 +31,23 @@
   text-decoration: none;
 }
 
-/* Navigation menu */
-.site-navigation {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.site-navigation a {
-  color: #57068C;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+.site-header .button {
+  min-width: 120px;
+  padding: 10px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-size: 15px;
   font-weight: 600;
-  text-decoration: none;
-}
-
-.site-navigation a:hover {
-  color: #000000;
-  text-decoration: underline;
+  border: 1px solid #57068C;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  color: #FF0000;
 }
 
 /* Responsive layout */
 @media (max-width: 650px) {
   .site-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
-
-  .site-navigation {
-    flex-wrap: wrap;
-    gap: 12px;
+    align-items: center;
   }
 }

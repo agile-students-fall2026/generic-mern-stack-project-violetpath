@@ -1,7 +1,10 @@
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import './Header.css'
 
 function Header() {
+
+  const navigate = useNavigate()
+
   return (
     <header className="site-header">
       <div className="site-brand">
@@ -25,6 +28,8 @@ function Header() {
 
         <Link to="/" className="logo-info">Violet Path</Link>
       </div>
+
+      <button type="button" onClick={() => navigate("/login")} className="button">Log Out</button>
     </header>
   )
 }
