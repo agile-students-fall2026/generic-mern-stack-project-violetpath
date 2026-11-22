@@ -115,5 +115,27 @@ describe('GET /degree/graduation', () => {
         done()
       })
   })
+it('should return the remaining credits', done => {
+    request.execute(app)
+      .get('/degree/graduation')
+      .end((err, res) => {
+        res.body.totalCreditsLeft.should.equal(28)
+        res.body.groups[0].creditsLeft.should.equal(8)
+        res.body.groups[1].creditsLeft.should.equal(4)
+        res.body.groups[2].creditsLeft.should.equal(4)
+        done()
+      })
+  })
 
+  it('should check if credit requirements are completed', done => {
+    request.execute(app)
+      .get('/degree/graduation')
+      .end((err, res) => {
+        res.body.should.have.property('eligibleByCredits', false)
+        res.body.groups[0].completed.should.equal(false)
+        res.body.groups[1].completed.should.equal(false)
+        res.body.groups[2].completed.should.equal(false)
+        done()
+      })
+  })
 })
