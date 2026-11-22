@@ -142,11 +142,91 @@ The project is being developed as part of New York University's Agile Software D
 
 Our team follows Agile and Scrum practices, organizing development into iterative sprints and managing work through GitHub Issues, GitHub Projects, and Pull Requests.
 
+
 ## Building and Testing
 
-Instructions for installing dependencies, configuring the development environment, running the application, and executing tests will be documented as the project develops.
+### Prerequisites
 
-This section will be updated with verified build and testing commands once the application reaches the implementation stage.
+To run VioletPath locally, you will need:
+
+- Node.js and npm
+- Git
+
+### Clone the Repository
+
+Clone the repository and navigate to the project folder:
+
+```bash
+git clone https://github.com/agile-students-fall2026/generic-mern-stack-project-violetpath.git
+cd generic-mern-stack-project-violetpath
+```
+
+### Run the Back-End
+
+Open a terminal in the project root directory:
+
+```bash
+cd back-end
+npm install
+npm start
+```
+
+The back-end is built with Node.js and Express.js and provides REST API endpoints for the application.
+
+### Run the Front-End
+
+Open a second terminal in the project root directory:
+
+```bash
+cd front-end
+npm install
+npm run dev
+```
+
+Open the URL displayed by Vite in your browser, typically:
+
+http://localhost:5173/
+
+Both the front-end and back-end should be running to use the integrated application.
+
+### Run Back-End Tests
+
+The project uses Mocha and Chai for back-end testing. Some API tests also use chai-http or Axios.
+
+From the project root:
+
+```bash
+cd back-end
+npm test
+```
+
+To run an individual test file from the `back-end` directory:
+
+```bash
+npx mocha test/target-gpa.test.js
+```
+
+Test files are located in `back-end/test/`.
+
+
+### Check Test Coverage
+
+The project uses c8 to measure back-end test coverage.
+
+The course requires each developer to achieve at least 10% code coverage of the back-end code.
+
+To generate a code coverage report, navigate to the `back-end` directory and run:
+
+```bash
+npm run coverage
+```
+
+This command runs the Mocha test suite with c8 and generates a code coverage report.
+
+### Development Status
+
+VioletPath is under active development. Some back-end endpoints currently return mock JSON data while additional functionality and integration tests are being completed.
+
 
 ## Contributing
 
@@ -156,6 +236,5 @@ Our team follows a feature-branch workflow. Changes are developed in separate br
 
 
 ## Additional Resources
-
-- [Product Backlog and User Stories](https://github.com/agile-students-fall2026/violent-path-mern-stack-project/issues)
+- [Product Backlog and User Stories](https://github.com/agile-students-fall2026/generic-mern-stack-project-violetpath/issues)
 - [Contribution Guidelines](CONTRIBUTING.md)
