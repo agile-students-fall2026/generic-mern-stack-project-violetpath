@@ -334,9 +334,27 @@ const graduationCheckData = JSON.parse(
   fs.readFileSync(path.join(__dirname, 'mock-data', 'graduation-check.json'), 'utf8')
 )
 
-// send the graduation check data to the front end
+// Calculate remaining credits and check graduation credit requirements
 app.get('/degree/graduation', (req, res) => {
-  res.status(200).json(graduationCheckData)
+  const totalCredits = graduationCheckData.totalCredits
+
+  const totalCreditsLeft = Math.max(0, totalCredits.required - totalCredits.taken)
+
+  const groups = graduationCheckData.groups.map(group => ({
+    ...group,
+    creditsLeft: Math.max(0, group.required - group.taken),
+    completed: group.taken >= group.required
+  }))
+
+  const eligibleByCredits = totalCreditsLeft === 0 &&
+    groups.every(group => group.completed)
+
+  res.status(200).json({
+    ...graduationCheckData,
+    groups: groups,
+    totalCreditsLeft: totalCreditsLeft,
+    eligibleByCredits: eligibleByCredits
+  })
 })
 
 const studentFile = path.join(__dirname, 'mock-data', 'student.json')
