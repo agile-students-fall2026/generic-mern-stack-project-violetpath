@@ -1,11 +1,33 @@
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import './OverviewGPA.css';
 
 function OverviewGPA() {
+  const [gpaData, setGpaData] = useState(null);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    fetch('http://localhost:3000/degree-progress/gpa')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to load GPA');
+        }
+        return response.json();
+      })
+      .then(data => setGpaData(data))
+      .catch(() => setError('Could not load GPA data.'));
+  }, []);
+
+  const showGPA = value => {
+    return typeof value === 'number' ? value.toFixed(3) : '—';
+  };
+
   return (
     <div className="overview-gpa-page">
       <div className="overview-gpa-container">
         <h2>GPA Overview</h2>
+
+        {error && <p>{error}</p>}
 
         <section className="overview-gpa-summary">
           <div className="overview-gpa-section-heading">
@@ -16,7 +38,7 @@ function OverviewGPA() {
           <div className="overview-gpa-highlight">
             <p>Cumulative GPA</p>
             <div className="overview-gpa-main-value">
-              <strong>3.781</strong>
+              <strong>{showGPA(gpaData?.cumulativeGPA)}</strong>
               <span>/ 4.000</span>
             </div>
           </div>
@@ -24,12 +46,12 @@ function OverviewGPA() {
           <div className="overview-gpa-stats">
             <div className="overview-gpa-stat">
               <p>Major GPA</p>
-              <strong>3.812</strong>
+              <strong>{showGPA(gpaData?.majorGPA)}</strong>
             </div>
 
             <div className="overview-gpa-stat">
               <p>Minor GPA</p>
-              <strong>3.811</strong>
+              <strong>{showGPA(gpaData?.minorGPA)}</strong>
             </div>
           </div>
 
@@ -38,7 +60,6 @@ function OverviewGPA() {
               <span>Major</span>
               <strong>Computer Science</strong>
             </div>
-
             <div className="overview-gpa-program-row">
               <span>Minor</span>
               <strong>Math</strong>
@@ -48,15 +69,15 @@ function OverviewGPA() {
           <div className="overview-gpa-stats">
             <div className="overview-gpa-stat">
               <p>Credits Taken</p>
-              <strong>XX</strong>
+              <strong>{gpaData?.creditsTaken ?? '—'}</strong>
             </div>
-
             <div className="overview-gpa-stat">
               <p>Credits Left</p>
-              <strong>XX</strong>
+              <strong>{gpaData?.creditsLeft ?? '—'}</strong>
             </div>
           </div>
         </section>
+
         <section className="overview-gpa-courses">
           <h3>Course Grades</h3>
           <p className="overview-gpa-semester">
@@ -83,15 +104,13 @@ function OverviewGPA() {
             <p>Course Name - Grade</p>
           </div>
         </section>
+
         <div className="overview-gpa-buttons">
           <Link to="/" className="overview-gpa-button">
             Home
           </Link>
 
-          <Link
-            to="/gpa/target"
-            className="overview-gpa-button"
-          >
+          <Link to="/gpa/target" className="overview-gpa-button">
             GPA Calculator
           </Link>
         </div>
