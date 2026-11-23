@@ -4,32 +4,34 @@ import { useState, useEffect} from 'react'
 import './DepartmentContact.css'
 
 function DepartmentContact () {
-  const [major, setMajor] = useState('');
   const [departments, setDepartments] = useState([]);
   const [advisor, setAdvisor] = useState('');
   const [email, setEmail] = useState('');
   const [showForm, setShowForm] = useState(false);
+  const [major, setMajor] = useState('');
+  const [minor, setMinor] = useState('');
+
 
   useEffect(() => {
-    fetch('http://localhost:5002/student-information')
+    fetch('http://localhost:3000/student-information')    
       .then((res) => res.json())
-      .then((data) => setMajor(data.major))
+      .then((data) => {
+        setMajor(data.major || '');
+        setMinor(data.minor || '');
+      })
       .catch((error) => console.log(error))
-    fetch('http://localhost:5002/api/departments')    
+
+    fetch('http://localhost:3000/api/departments')    
       .then((res) => res.json())
       .then((data) => setDepartments(data))
       .catch((error) => console.log(error))
-  }, [])
-  const studentDepartment = departments.find((departmemt) =>
-    departmemt.name.toLowerCase() ===major.toLowerCase()
-  )
+  }, []);
+  
 
 
   
 
-  const filteredDepartments = departments.filter((department) =>
-    department.name.toLowerCase().includes(search.toLowerCase())
-  )
+  
   const toggleForm = () => {
     setShowForm(!showForm);
   };
@@ -37,6 +39,11 @@ function DepartmentContact () {
     event.preventDefault()
     setShowForm(false)
   };
+  const studentDepartments = departments.filter((department) => 
+    (major && department.name.toLowerCase() === major.toLowerCase()) ||
+    (minor && department.name.toLowerCase() === minor.toLowerCase()) 
+  );
+
 
   return (
     <div className="contact-page">
@@ -44,20 +51,10 @@ function DepartmentContact () {
 
         <h1>Department Contacts</h1>
 
-        <div className="contact-search">
-          <input
-            type="text"
-            placeholder="Search for departments"
-            value={search}
-            onChange={(event) => setSearch(event.target.value)}
-          />
-          <button type="button">Search</button>
-        </div>
-
         <section className="contact-departments">
           <h2>Your Departments</h2>
 
-            {filteredDepartments.map((department) => (
+            {studentDepartments.map((department) => (
               <div className="contact-card" key={department.name}>
                 <h3>{department.name}</h3>
               
@@ -71,7 +68,7 @@ function DepartmentContact () {
                 </div>
               </div>
             ))}
-            {filteredDepartments.length === 0 && <p>No departments found.</p>}
+            {studentDepartments.length === 0 && <p>No departments found.</p>}
         </section>
 
         <section className="contact-advisor-section">
