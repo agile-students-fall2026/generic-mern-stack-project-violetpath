@@ -1,7 +1,21 @@
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import './OverviewGPA.css';
 
+const API_URL = 'http://localhost:3000';
+
 function OverviewGPA() {
+  const [gpaData, setGpaData] = useState(null);
+  const [loadError, setLoadError] = useState('');
+
+  // Get GPA data from the backend
+  useEffect(() => {
+    fetch(`${API_URL}/degree-progress/gpa`)
+      .then((response) => response.json())
+      .then((data) => setGpaData(data))
+      .catch(() => setLoadError('Could not load GPA data.'));
+  }, []);
+
   return (
     <div className="overview-gpa-page">
       <div className="overview-gpa-container">
@@ -16,7 +30,7 @@ function OverviewGPA() {
           <div className="overview-gpa-highlight">
             <p>Cumulative GPA</p>
             <div className="overview-gpa-main-value">
-              <strong>3.781</strong>
+              <strong>{gpaData ? gpaData.cumulativeGPA : '—'}</strong>
               <span>/ 4.000</span>
             </div>
           </div>
@@ -24,12 +38,12 @@ function OverviewGPA() {
           <div className="overview-gpa-stats">
             <div className="overview-gpa-stat">
               <p>Major GPA</p>
-              <strong>3.812</strong>
+              <strong>{gpaData ? gpaData.majorGPA : '—'}</strong>
             </div>
 
             <div className="overview-gpa-stat">
               <p>Minor GPA</p>
-              <strong>3.811</strong>
+              <strong>{gpaData ? gpaData.minorGPA : '—'}</strong>
             </div>
           </div>
 
@@ -48,15 +62,18 @@ function OverviewGPA() {
           <div className="overview-gpa-stats">
             <div className="overview-gpa-stat">
               <p>Credits Taken</p>
-              <strong>XX</strong>
+              <strong>{gpaData ? gpaData.creditsTaken : '—'}</strong>
             </div>
 
             <div className="overview-gpa-stat">
               <p>Credits Left</p>
-              <strong>XX</strong>
+              <strong>{gpaData ? gpaData.creditsLeft : '—'}</strong>
             </div>
           </div>
+
+          {loadError && <p>{loadError}</p>}
         </section>
+
         <section className="overview-gpa-courses">
           <h3>Course Grades</h3>
           <p className="overview-gpa-semester">
@@ -83,6 +100,7 @@ function OverviewGPA() {
             <p>Course Name - Grade</p>
           </div>
         </section>
+
         <div className="overview-gpa-buttons">
           <Link to="/" className="overview-gpa-button">
             Home
