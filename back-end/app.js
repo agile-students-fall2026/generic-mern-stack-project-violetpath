@@ -334,9 +334,27 @@ const graduationCheckData = JSON.parse(
   fs.readFileSync(path.join(__dirname, 'mock-data', 'graduation-check.json'), 'utf8')
 )
 
-// send the graduation check data to the front end
+// Calculate remaining credits and check graduation credit requirements
 app.get('/degree/graduation', (req, res) => {
-  res.status(200).json(graduationCheckData)
+  const totalCredits = graduationCheckData.totalCredits
+
+  const totalCreditsLeft = Math.max(0, totalCredits.required - totalCredits.taken)
+
+  const groups = graduationCheckData.groups.map(group => ({
+    ...group,
+    creditsLeft: Math.max(0, group.required - group.taken),
+    completed: group.taken >= group.required
+  }))
+
+  const eligibleByCredits = totalCreditsLeft === 0 &&
+    groups.every(group => group.completed)
+
+  res.status(200).json({
+    ...graduationCheckData,
+    groups: groups,
+    totalCreditsLeft: totalCreditsLeft,
+    eligibleByCredits: eligibleByCredits
+  })
 })
 
 const studentFile = path.join(__dirname, 'mock-data', 'student.json')
@@ -427,6 +445,62 @@ app.get('/api/courses', (req, res) => {
       error: 'Could not load course information'
     })
   }
+})
+// calculate cumulative, major and minor GPAs from course grades and credits
+app.post('/gpa-overview/calculate', (req, res) => {
+  const courses = req.body?.courses
+
+  if (!Array.isArray(courses) || courses.length === 0) {
+    return res.status(400).json({
+      error: 'Please provide course data'
+    })
+  }
+
+  for (const course of courses) {
+    if (
+      !course ||
+      typeof course.credits !== 'number' ||
+      typeof course.gradePoint !== 'number' ||
+      !Number.isFinite(course.credits) ||
+      !Number.isFinite(course.gradePoint) ||
+      course.credits <= 0 ||
+      course.gradePoint < 0 ||
+      course.gradePoint > 4 ||
+      !['major', 'minor', 'other'].includes(course.type)
+    ) {
+      return res.status(400).json({
+        error: 'Invalid course information'
+      })
+    }
+  }
+
+  function calculateGPA(list) {
+    if (list.length === 0) {
+      return null
+    }
+
+    let totalPoints = 0
+    let totalCredits = 0
+
+    for (const course of list) {
+      totalPoints += course.gradePoint * course.credits
+      totalCredits += course.credits
+    }
+
+    return Number((totalPoints / totalCredits).toFixed(3))
+  }
+
+  const majorCourses = courses.filter(course => course.type === 'major')
+  const minorCourses = courses.filter(course => course.type === 'minor')
+
+  const creditsTaken = courses.reduce((sum, course) => sum + course.credits, 0)
+
+  res.status(200).json({
+    cumulativeGPA: calculateGPA(courses),
+    majorGPA: calculateGPA(majorCourses),
+    minorGPA: calculateGPA(minorCourses),
+    creditsTaken: creditsTaken
+  })
 })
 
 export default app // ES module export style!
