@@ -6,6 +6,7 @@ const API_URL = 'http://localhost:3000';
 
 function OverviewGPA() {
   const [gpaData, setGpaData] = useState(null);
+<<<<<<< HEAD
   const [loadError, setLoadError] = useState('');
 
   // Get GPA data from the backend
@@ -16,10 +17,32 @@ function OverviewGPA() {
       .catch(() => setLoadError('Could not load GPA data.'));
   }, []);
 
+=======
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    fetch('http://localhost:3000/degree-progress/gpa')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to load GPA');
+        }
+        return response.json();
+      })
+      .then(data => setGpaData(data))
+      .catch(() => setError('Could not load GPA data.'));
+  }, []);
+
+  const showGPA = value => {
+    return typeof value === 'number' ? value.toFixed(3) : '—';
+  };
+
+>>>>>>> origin/master
   return (
     <div className="overview-gpa-page">
       <div className="overview-gpa-container">
         <h2>GPA Overview</h2>
+
+        {error && <p>{error}</p>}
 
         <section className="overview-gpa-summary">
           <div className="overview-gpa-section-heading">
@@ -30,7 +53,11 @@ function OverviewGPA() {
           <div className="overview-gpa-highlight">
             <p>Cumulative GPA</p>
             <div className="overview-gpa-main-value">
+<<<<<<< HEAD
               <strong>{gpaData ? gpaData.cumulativeGPA : '—'}</strong>
+=======
+              <strong>{showGPA(gpaData?.cumulativeGPA)}</strong>
+>>>>>>> origin/master
               <span>/ 4.000</span>
             </div>
           </div>
@@ -38,12 +65,20 @@ function OverviewGPA() {
           <div className="overview-gpa-stats">
             <div className="overview-gpa-stat">
               <p>Major GPA</p>
+<<<<<<< HEAD
               <strong>{gpaData ? gpaData.majorGPA : '—'}</strong>
+=======
+              <strong>{showGPA(gpaData?.majorGPA)}</strong>
+>>>>>>> origin/master
             </div>
 
             <div className="overview-gpa-stat">
               <p>Minor GPA</p>
+<<<<<<< HEAD
               <strong>{gpaData ? gpaData.minorGPA : '—'}</strong>
+=======
+              <strong>{showGPA(gpaData?.minorGPA)}</strong>
+>>>>>>> origin/master
             </div>
           </div>
 
@@ -52,7 +87,6 @@ function OverviewGPA() {
               <span>Major</span>
               <strong>Computer Science</strong>
             </div>
-
             <div className="overview-gpa-program-row">
               <span>Minor</span>
               <strong>Math</strong>
@@ -62,12 +96,19 @@ function OverviewGPA() {
           <div className="overview-gpa-stats">
             <div className="overview-gpa-stat">
               <p>Credits Taken</p>
+<<<<<<< HEAD
               <strong>{gpaData ? gpaData.creditsTaken : '—'}</strong>
+=======
+              <strong>{gpaData?.creditsTaken ?? '—'}</strong>
+>>>>>>> origin/master
             </div>
-
             <div className="overview-gpa-stat">
               <p>Credits Left</p>
+<<<<<<< HEAD
               <strong>{gpaData ? gpaData.creditsLeft : '—'}</strong>
+=======
+              <strong>{gpaData?.creditsLeft ?? '—'}</strong>
+>>>>>>> origin/master
             </div>
           </div>
 
@@ -106,10 +147,7 @@ function OverviewGPA() {
             Home
           </Link>
 
-          <Link
-            to="/gpa/target"
-            className="overview-gpa-button"
-          >
+          <Link to="/gpa/target" className="overview-gpa-button">
             GPA Calculator
           </Link>
         </div>
