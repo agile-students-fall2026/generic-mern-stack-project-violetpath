@@ -266,12 +266,6 @@ const loadFaqs = () => {
   );
   return JSON.parse(data);
 }
-const loadDepartmemts = () => {
-  const data = fs.readFileSync(
-    path.join(__dirname, 'mock-data', 'departments.json'), 'utf8'
-  );
-  return JSON.parse(data);
-}
 
 //implement search API
 app.get('/api/faqs', (req,res)=> {
