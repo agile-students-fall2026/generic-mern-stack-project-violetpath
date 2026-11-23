@@ -1,17 +1,18 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./FAQ.css";
 
 
-
-
-
 function FAQ() { 
   const [openIndex, setOpenIndex] = useState(null);
   const [search, setSearch] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
   const [faqs, setFaqs] = useState([]);
+  const [submittedSearch, setSubmittedSearch] = useState('');
+
+  const filteredFaqs = faqs.filter((faq) =>
+    faq.question.toLowerCase().includes(submittedSearch.toLowerCase()) ||
+    faq.answer.toLowerCase().includes(submittedSearch.toLowerCase())
+  );
   const toggleFaq = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
@@ -32,31 +33,30 @@ function FAQ() {
     
     getFaqs();
   },[]);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setSearchTerm(search);
-    }, 500);
-
-    
-
-    return() => clearTimeout(timer);
-  }, [search]);
   
-  const filteredFaqs = faqs.filter((faq) => 
-      faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      faq.answer.toLowerCase().includes(searchTerm.toLowerCase())
-    );
   return (
     <div className="faq-page">
       <div className="faq-container">
         <h1>Frequently Asked Questions</h1>
         <p>Find answers to common questions.</p>
+        <form
+          className="faq-search" 
+          onSubmit={(e) => {
+            e.preventDefault();
+            setSubmittedSearch(search);
+            setOpenIndex(null);
+          }}
+        >
+
+  
         <input
           type="text"
           placeholder="Search FAQs.."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           />
+          <button type="submit">Search</button>
+          </form>
         {filteredFaqs.map((faq,index)=>(
           <section className="faq-card" key={faq.question}>
             <div

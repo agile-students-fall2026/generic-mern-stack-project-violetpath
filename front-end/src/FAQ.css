@@ -64,7 +64,24 @@
   color: #57068C;
   font-size: 20px;
 }
+.faq-search {
+  display: flex;
+  gap:10px;
+  width:100%;
+}
+.faq-search input {
+  flex:1 ;
+  min-width:0;
 
+}
+.faq-search button{
+  padding: 10px 20px;
+  background-color: #57068C;
+  color:white;
+  border:none;
+  border-radius: 10px;
+  cursor: pointer;
+}
 .faq-card p {
   margin: 0;
   margin-top: 10px;
