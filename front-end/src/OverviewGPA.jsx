@@ -1,11 +1,14 @@
+
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './OverviewGPA.css';
 
 function OverviewGPA() {
   const [gpaData, setGpaData] = useState(null);
+  const [studentData, setStudentData] = useState(null);
   const [error, setError] = useState('');
 
+  // Get GPA data from the backend
   useEffect(() => {
     fetch('http://localhost:3000/degree-progress/gpa')
       .then(response => {
@@ -16,6 +19,19 @@ function OverviewGPA() {
       })
       .then(data => setGpaData(data))
       .catch(() => setError('Could not load GPA data.'));
+  }, []);
+
+  // Get student information from the backend
+  useEffect(() => {
+    fetch('http://localhost:3000/student-information')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to load student information');
+        }
+        return response.json();
+      })
+      .then(data => setStudentData(data))
+      .catch(() => setError('Could not load student information.'));
   }, []);
 
   const showGPA = value => {
@@ -58,11 +74,11 @@ function OverviewGPA() {
           <div className="overview-gpa-program">
             <div className="overview-gpa-program-row">
               <span>Major</span>
-              <strong>Computer Science</strong>
+              <strong>{studentData?.major ?? '—'}</strong>
             </div>
             <div className="overview-gpa-program-row">
               <span>Minor</span>
-              <strong>Math</strong>
+              <strong>{studentData?.minor ?? '—'}</strong>
             </div>
           </div>
 
