@@ -22,40 +22,6 @@
   margin-bottom: 27px;
 }
 
-.contact-search {
-  display: flex;
-  gap:12px;
-  margin: 0;
-  margin-bottom: 30px;
-}
-
-.contact-search input {
-  flex: 1;
-  min-width:0;
-  padding:10px;
-  font-size: 13px;
-  color: #000000;
-  background-color: #FFFFFF;
-  border: 1px solid #505050;
-  border-radius: 10px;
-}
-
-.contact-search input:focus {
-  outline:2px solid #57068C;
-}
-
-.contact-search button {
-  background: #57068C;
-  color: #FFFFFF;
-  border: none;
-  border-radius: 10px;
-  padding: 12px 20px;
-  cursor: pointer;
-}
-
-.contact-search button:hover {
-  background: #000000;
-}
 
 .contact-departments {
   margin: 0;
