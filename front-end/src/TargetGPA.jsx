@@ -1,7 +1,63 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import "./TargetGPA.css";
 
 function TargetGPA() {
+  const [gpaData, setGpaData] = useState(null);
+  const [targetGPA, setTargetGPA] = useState("");
+  const [creditLeft, setCreditLeft] = useState("");
+  const [result, setResult] = useState(null);
+  const [error, setError] = useState("");
+
+  // Get GPA data from the backend
+  useEffect(() => {
+    fetch("http://localhost:3000/degree-progress/gpa")
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Failed to load GPA");
+        }
+        return response.json();
+      })
+      .then(data => {
+        setGpaData(data);
+      })
+      .catch(() => setError("Could not load GPA data."));
+  }, []);
+
+  // Calculate required GPA using the backend
+  const calculateGPA = () => {
+    setResult(null);
+    setError("");
+
+    if (!gpaData || targetGPA === "" || creditLeft === "") {
+      setError("Please enter a target GPA and remaining credits.");
+      return;
+    }
+
+    fetch("http://localhost:3000/calculate-target-gpa", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        currentGPA: Number(gpaData.cumulativeGPA),
+        targetGPA: Number(targetGPA),
+        completedCredits: Number(gpaData.creditsTaken),
+        futureCredits: Number(creditLeft)
+      })
+    })
+      .then(response => {
+        return response.json().then(data => {
+          if (!response.ok) {
+            throw new Error(data.error || "Calculation failed.");
+          }
+          return data;
+        });
+      })
+      .then(data => setResult(data))
+      .catch(error => setError(error.message));
+  };
+
   return (
     <div className="target-gpa-page">
       <div className="target-gpa-container">
@@ -9,14 +65,13 @@ function TargetGPA() {
 
         {/* Current GPA information */}
         <section className="target-gpa-summary">
-          <p>1-1 GPA: XX</p>
-          <p>1-2 GPA: XX</p>
-          <p>2-1 GPA: XX</p>
+          <p>Credits Taken: {gpaData?.creditsTaken ?? "—"}</p>
+          <p>Credits Left: {gpaData?.creditsLeft ?? "—"}</p>
 
           <div className="target-gpa-overall">
-            <p>Major GPA: 3.7</p>
-            <p>Minor GPA: 3.8</p>
-            <p>Cumulative GPA: 3.8</p>
+            <p>Major GPA: {gpaData?.majorGPA ?? "—"}</p>
+            <p>Minor GPA: {gpaData?.minorGPA ?? "—"}</p>
+            <p>Cumulative GPA: {gpaData?.cumulativeGPA ?? "—"}</p>
           </div>
         </section>
 
@@ -37,6 +92,11 @@ function TargetGPA() {
                   max="4"
                   step="0.01"
                   placeholder="e.g. 3.90"
+                  value={targetGPA}
+                  onChange={e => {
+                    setTargetGPA(e.target.value);
+                    setResult(null);
+                  }}
                 />
               </div>
 
@@ -47,20 +107,39 @@ function TargetGPA() {
                 <input
                   id="credit-left"
                   type="number"
-                  min="0"
+                  min="1"
                   step="1"
                   placeholder="e.g. 16"
+                  value={creditLeft}
+                  onChange={e => {
+                    setCreditLeft(e.target.value);
+                    setResult(null);
+                  }}
                 />
               </div>
+
+              <button
+                type="button"
+                onClick={calculateGPA}
+                disabled={!gpaData}
+              >
+                Calculate
+              </button>
             </div>
 
             <div className="target-gpa-divider" />
 
             <div className="target-gpa-achievable">
               <h4>Achievable?</h4>
-              <p>—</p>
+              <p>
+                {result
+                  ? (result.achievable ? "Yes" : "No")
+                  : "—"}
+              </p>
             </div>
           </div>
+
+          {error && <p>{error}</p>}
         </section>
 
         {/* Estimated grades section */}
@@ -71,6 +150,8 @@ function TargetGPA() {
             How many A / A- grades do you need to reach
             your target GPA?
           </p>
+
+          <p>Required GPA: {result ? result.requiredGPA : "—"}</p>
 
           <div className="target-gpa-results">
             <div className="target-gpa-result-item">
