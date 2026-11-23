@@ -53,8 +53,8 @@ app.post('/login', (req, res) => {
 })
 
 const loadMajors = () => {
-  const data = fs.readFileSync(path.join(__dirname, 'mock-data', 'majors.json'), 'utf8')
-  return JSON.parse(data)
+  const data = fs.readFileSync(path.join(__dirname, 'mock-data', 'declaration.json'), 'utf8')
+  return JSON.parse(data).majors
 }
 
 // Sign Up API
