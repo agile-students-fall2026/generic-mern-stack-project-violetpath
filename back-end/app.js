@@ -272,6 +272,17 @@ app.get('/api/faqs', (req,res)=> {
   const faqs = loadFaqs();
   res.status(200).json(faqs);
 });
+const loadDepartments = () => {
+  const data = fs.readFileSync(
+    path.join(__dirname,'mock-data','departmentcontacts.json'), 'utf8'
+  )
+  return JSON.parse(data)
+}
+app.get('/api/departments', (req,res) => {
+  const departments = loadDepartments()
+  res.status(200).json(departments)
+})
+
 
 // load the declaration mock data from its JSON file
 const declarationOptions = JSON.parse(
