@@ -54,7 +54,7 @@ function Home() {
           {studentData
             ? `${studentData.firstName} ${studentData.lastName}`
             : '—'}
-          . Major: {studentData?.major ?? '—'}
+          . Major: {gpaData?.major ?? '—'}
         </p>
         {error && <p>{error}</p>}
       </div>

@@ -5,7 +5,7 @@ import './OverviewGPA.css';
 
 function OverviewGPA() {
   const [gpaData, setGpaData] = useState(null);
-  const [studentData, setStudentData] = useState(null);
+  const [requirements, setRequirements] = useState(null);
   const [error, setError] = useState('');
 
   // Get GPA data from the backend
@@ -21,17 +21,17 @@ function OverviewGPA() {
       .catch(() => setError('Could not load GPA data.'));
   }, []);
 
-  // Get student information from the backend
+  // Get course grades from the backend
   useEffect(() => {
-    fetch('http://localhost:3000/student-information')
+    fetch('http://localhost:3000/degree/requirements')
       .then(response => {
         if (!response.ok) {
-          throw new Error('Failed to load student information');
+          throw new Error('Failed to load requirements');
         }
         return response.json();
       })
-      .then(data => setStudentData(data))
-      .catch(() => setError('Could not load student information.'));
+      .then(data => setRequirements(data))
+      .catch(() => setError('Could not load course grades.'));
   }, []);
 
   const showGPA = value => {
@@ -48,7 +48,6 @@ function OverviewGPA() {
         <section className="overview-gpa-summary">
           <div className="overview-gpa-section-heading">
             <h3>Academic Summary</h3>
-            <span>Spring 2026</span>
           </div>
 
           <div className="overview-gpa-highlight">
@@ -74,11 +73,16 @@ function OverviewGPA() {
           <div className="overview-gpa-program">
             <div className="overview-gpa-program-row">
               <span>Major</span>
-              <strong>{studentData?.major ?? '—'}</strong>
+              <strong>{gpaData?.major ?? '—'}</strong>
             </div>
+
             <div className="overview-gpa-program-row">
               <span>Minor</span>
-              <strong>{studentData?.minor ?? '—'}</strong>
+              <strong>
+                {gpaData
+                  ? gpaData.minors.join(', ') || 'None'
+                  : '—'}
+              </strong>
             </div>
           </div>
 
@@ -87,6 +91,7 @@ function OverviewGPA() {
               <p>Credits Taken</p>
               <strong>{gpaData?.creditsTaken ?? '—'}</strong>
             </div>
+
             <div className="overview-gpa-stat">
               <p>Credits Left</p>
               <strong>{gpaData?.creditsLeft ?? '—'}</strong>
@@ -96,29 +101,66 @@ function OverviewGPA() {
 
         <section className="overview-gpa-courses">
           <h3>Course Grades</h3>
-          <p className="overview-gpa-semester">
-            Spring 2026
-          </p>
 
-          <div className="overview-gpa-category">
-            <h4>Major Courses</h4>
-            <p>Course Name - Grade</p>
-          </div>
+          {requirements && (
+            <>
+              {requirements.major.groups.map(group => (
+                <div key={group.name} className="overview-gpa-category">
+                  <h4>{group.name}</h4>
 
-          <div className="overview-gpa-category">
-            <h4>Major Electives</h4>
-            <p>Course Name - Grade</p>
-          </div>
+                  {group.courses
+                    .filter(course => course.status === 'completed' && course.grade)
+                    .map(course => (
+                      <p key={course.id}>
+                        {course.title} - {course.grade}
+                      </p>
+                    ))}
+                </div>
+              ))}
 
-          <div className="overview-gpa-category">
-            <h4>General Electives</h4>
-            <p>Course Name - Grade</p>
-          </div>
+              {requirements.minorDetails.map(minor => (
+                <div key={minor.name} className="overview-gpa-category">
+                  <h4>{minor.name} Minor</h4>
 
-          <div className="overview-gpa-category">
-            <h4>CORE Curriculum</h4>
-            <p>Course Name - Grade</p>
-          </div>
+                  {minor.courses
+                    .filter(course => course.status === 'completed' && course.grade)
+                    .map(course => (
+                      <p key={course.id}>
+                        {course.title} - {course.grade}
+                      </p>
+                    ))}
+                </div>
+              ))}
+
+              <div className="overview-gpa-category">
+                <h4>General Electives</h4>
+
+                {requirements.generalElectives.courses
+                  .filter(course => course.status === 'completed' && course.grade)
+                  .map(course => (
+                    <p key={course.id}>
+                      {course.title} - {course.grade}
+                    </p>
+                  ))}
+              </div>
+
+              <div className="overview-gpa-category">
+                <h4>CORE Curriculum</h4>
+
+                {requirements.core.groups.map(group => (
+                  <div key={group.name}>
+                    {group.courses
+                      .filter(course => course.status === 'completed' && course.grade)
+                      .map(course => (
+                        <p key={course.id}>
+                          {course.title} - {course.grade}
+                        </p>
+                      ))}
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </section>
 
         <div className="overview-gpa-buttons">

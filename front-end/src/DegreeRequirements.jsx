@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import './DegreeRequirements.css';
 import { useEffect, useState } from 'react';
+
 const API_URL = 'http://localhost:3000';
 
 function StatusBadge({ status }) {
@@ -83,7 +84,7 @@ function MajorSection({ major }) {
       </div>
 
       <div className="degree-req-course-section">
-        <h3>Computer Science Courses</h3>
+        <h3>{major.name} Courses</h3>
 
         {requiredGroups.length > 0 ? (
           <div className="degree-req-groups">
@@ -93,7 +94,7 @@ function MajorSection({ major }) {
                 group={group}
                 showTitle={
                   group.name.toLowerCase() !==
-                  'computer science courses'
+                  `${major.name.toLowerCase()} courses`
                 }
               />
             ))}
@@ -131,13 +132,8 @@ function MajorSection({ major }) {
   );
 }
 
+
 function MinorCard({ minor }) {
-  const coursesDone = minor.courses.filter(
-    (course) => course.status === 'completed'
-  ).length;
-
-  const coursesLeft = minor.coursesRequired - coursesDone;
-
   return (
     <div className="degree-req-group">
       <h4>{minor.name} Minor</h4>
@@ -150,10 +146,8 @@ function MinorCard({ minor }) {
 
       <div className="degree-req-minor-summary">
         <div className="degree-req-minor-stat">
-          <p>Courses Left</p>
-          <strong>
-            {coursesLeft} / {minor.coursesRequired}
-          </strong>
+          <p>Credits Left</p>
+          <strong>{minor.creditsLeft}</strong>
         </div>
 
         <div className="degree-req-minor-stat">
@@ -163,7 +157,11 @@ function MinorCard({ minor }) {
 
         <div className="degree-req-minor-stat">
           <p>GPA</p>
-          <strong>{minor.gpa.toFixed(2)}</strong>
+          <strong>
+            {typeof minor.gpa === 'number'
+              ? minor.gpa.toFixed(3)
+              : '—'}
+          </strong>
         </div>
       </div>
     </div>
@@ -201,12 +199,19 @@ function MinorSection({ minors, minorDetails }) {
 function DegreeRequirements() {
   const [data, setData] = useState(null);
   const [loadError, setLoadError] = useState('');
+
   useEffect(() => {
     fetch(`${API_URL}/degree/requirements`)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to load degree requirements');
+        }
+        return response.json();
+      })
       .then((result) => setData(result))
       .catch(() => setLoadError('Could not load degree requirements.'));
   }, []);
+
   return (
     <div className="degree-req-page">
       <div className="degree-req-container">
@@ -217,7 +222,10 @@ function DegreeRequirements() {
         {data && (
           <>
             <MajorSection major={data.major} />
-            <MinorSection minors={data.minors} minorDetails={data.minorDetails} />
+            <MinorSection
+              minors={data.minors}
+              minorDetails={data.minorDetails}
+            />
           </>
         )}
 
