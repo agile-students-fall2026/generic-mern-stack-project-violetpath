@@ -148,5 +148,25 @@ describe('POST /calculate-target-gpa', () => {
         }
       })
   })
-
+it('should calculate the number of A and A- grades needed', done => {
+  request.execute(app)
+  .post('/calculate-target-gpa')
+  .send({
+    currentGPA :3.5,
+    targetGPA:3.6,
+    completedCredits:32,
+    futureCredits:16
+  })
+  .end((err, res) => {
+    try {
+      res.should.have.status(200)
+      res.body.should.have.property('requiredGPA', 3.8)
+      res.body.should.have.property('numA',2)
+      res.body.should.have.property('numAMinus',2)
+      done()
+    } catch(error) {
+      done(error)
+    }
+  })
+  })
 })
