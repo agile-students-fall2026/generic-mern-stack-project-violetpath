@@ -7,13 +7,33 @@ const API_URL = 'http://localhost:3000'
 
 function DegreeProgress() {
   const [courses, setCourses] = useState([])
+  const [gpaData, setGpaData] = useState(null)
   const [loadError, setLoadError] = useState('')
+
   useEffect(() => {
     fetch(`${API_URL}/degree/progress/courses`)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to load courses')
+        }
+        return response.json()
+      })
       .then((data) => setCourses(data.courses))
       .catch(() => setLoadError('Could not load courses.'))
   }, [])
+
+  useEffect(() => {
+    fetch(`${API_URL}/degree-progress/gpa`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to load GPA data')
+        }
+        return response.json()
+      })
+      .then((data) => setGpaData(data))
+      .catch(() => setLoadError('Could not load GPA data.'))
+  }, [])
+
   return (
     <main className="degree-progress-page">
       <div className="degree-progress-container">
@@ -22,13 +42,23 @@ function DegreeProgress() {
 
         <section className="degree-progress-box">
           <div className="degree-progress-summary">
-            <p>Current Semester: Spring 2027</p>
-            <p>Current Major: Computer Science</p>
-            <p>Current Minor: Mathematics</p>
-            <p># of Credits: 100 / 128 Credits</p>
+            <p>Current Major: {gpaData?.major ?? '—'}</p>
+
+            <p>
+              Current Minor: {gpaData
+                ? gpaData.minors.join(', ') || 'None'
+                : '—'}
+            </p>
+
+            <p>
+              # of Credits: {gpaData?.creditsTaken ?? '—'}
+              {' / '}
+              {gpaData?.creditsRequired ?? '—'} Credits
+            </p>
           </div>
+
           <section className="degree-progress-courses">
-            <h3>Current Semester Courses</h3>
+            <h3>In-Progress Courses</h3>
 
             {loadError && <p>{loadError}</p>}
 
@@ -42,6 +72,7 @@ function DegreeProgress() {
               ))}
             </ul>
           </section>
+
           <div className="degree-progress-buttons">
             <Link to="/degree/requirements" className="degree-progress-link">
               Requirements

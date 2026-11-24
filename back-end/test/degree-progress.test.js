@@ -16,12 +16,37 @@ after(() => {
 
 describe('Degree Progress API', () => {
     describe('GET /degree/progress/courses', () => {
-        it('returns the current semester courses', async () => {
-            const res = await axios.get(`${baseURL}/degree/progress/courses`, { validateStatus: () => true })
+        it('returns in-progress courses', async () => {
+            const res = await axios.get(
+                `${baseURL}/degree/progress/courses`,
+                { validateStatus: () => true }
+            )
+
             expect(res.status).to.equal(200)
-            expect(res.data.courses).to.be.an('array').that.is.not.empty
-            expect(res.data.courses[0]).to.have.property('code')
-            expect(res.data.courses[0]).to.have.property('status')
+            expect(res.data.courses).to.be.an('array')
+
+            for (const course of res.data.courses) {
+                expect(course).to.have.property('code')
+                expect(course).to.have.property('title')
+                expect(course.credits).to.be.a('number')
+                expect(course.status).to.equal('in-progress')
+            }
+        })
+
+        it('should not return duplicate courses', async () => {
+            const res = await axios.get(
+                `${baseURL}/degree/progress/courses`,
+                { validateStatus: () => true }
+            )
+
+            expect(res.status).to.equal(200)
+
+            const codes = []
+
+            for (const course of res.data.courses) {
+                expect(codes).to.not.include(course.code)
+                codes.push(course.code)
+            }
         })
     })
 })

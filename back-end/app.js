@@ -4,6 +4,13 @@ import path from 'path'
 import cors from 'cors'
 import { fileURLToPath } from 'url'
 import fs from 'fs'
+import {
+  calculateGPA,
+  calculateAcademicSummary,
+  calculateDegreeRequirements,
+  getInProgressCourses,
+  calculateGraduationCheck
+} from './gpaCalculator.js'
 
 const app = express() // instantiate an Express object
 const __filename = fileURLToPath(import.meta.url)
@@ -319,52 +326,34 @@ app.post('/declaration', (req, res) => {
   })
 })
 
- // Degree Progress GPA Backend
-const loadGPA = () => {
-  const data = fs.readFileSync(
-    new URL('./mock-data/gpa.json', import.meta.url),
-    'utf8'
-  )
-
+// Degree Progress GPA Backend
+const loadRequirements = () => {
+  const data = fs.readFileSync(path.join(__dirname, 'mock-data', 'requirements.json'), 'utf8')
   return JSON.parse(data)
 }
+
 app.get('/degree-progress/gpa', (req, res) => {
-  const gpa = loadGPA()[0]
-  const creditsTaken = gpa.creditsTaken
-  res.status(200).json({
-    cumulativeGPA: gpa.cumulativeGPA,
-    majorGPA: gpa.majorGPA,
-    minorGPA: gpa.minorGPA,
-    creditsTaken: creditsTaken,
-    creditsLeft: 128 - creditsTaken
-  })
+  const requirements = loadRequirements()
+  const summary = calculateAcademicSummary(requirements)
+
+  res.status(200).json(summary)
 })
 
-// load the graduation check mock data from its JSON file
-const graduationCheckData = JSON.parse(
-  fs.readFileSync(path.join(__dirname, 'mock-data', 'graduation-check.json'), 'utf8')
-)
-
-// Calculate remaining credits and check graduation credit requirements
+// Calculate graduation credit requirements
 app.get('/degree/graduation', (req, res) => {
-  const totalCredits = graduationCheckData.totalCredits
+  const requirements = loadRequirements()
+  const graduation = calculateGraduationCheck(requirements)
 
-  const totalCreditsLeft = Math.max(0, totalCredits.required - totalCredits.taken)
-
-  const groups = graduationCheckData.groups.map(group => ({
-    ...group,
-    creditsLeft: Math.max(0, group.required - group.taken),
-    completed: group.taken >= group.required
-  }))
-
-  const eligibleByCredits = totalCreditsLeft === 0 &&
-    groups.every(group => group.completed)
+  const student = JSON.parse(
+    fs.readFileSync(
+      path.join(__dirname, 'mock-data', 'student.json'),
+      'utf8'
+    )
+  )
 
   res.status(200).json({
-    ...graduationCheckData,
-    groups: groups,
-    totalCreditsLeft: totalCreditsLeft,
-    eligibleByCredits: eligibleByCredits
+    ...graduation,
+    term: student.expectedGraduation
   })
 })
 
@@ -424,24 +413,22 @@ app.put('/student-information', (req, res) => {
   }
 })
 
-// load the degree requirements mock data from its JSON file
-const requirementsData = JSON.parse(
-    fs.readFileSync(path.join(__dirname, 'mock-data', 'requirements.json'), 'utf8')
-)
-
 // send the degree requirements to the front end
 app.get('/degree/requirements', (req, res) => {
-    res.status(200).json(requirementsData)
+  const requirements = loadRequirements()
+  const result = calculateDegreeRequirements(requirements)
+
+  res.status(200).json(result)
 })
 
-// load the degree progress course mock data from its JSON file
-const degreeProgressCourses = JSON.parse(
-    fs.readFileSync(path.join(__dirname, 'mock-data', 'degree-progress-courses.json'), 'utf8')
-)
-
-// send the current semester courses to the front end
+// send in-progress courses to the front end
 app.get('/degree/progress/courses', (req, res) => {
-    res.status(200).json(degreeProgressCourses)
+  const requirements = loadRequirements()
+  const courses = getInProgressCourses(requirements)
+
+  res.status(200).json({
+    courses: courses
+  })
 })
 
 app.get('/api/courses', (req, res) => {
@@ -457,6 +444,7 @@ app.get('/api/courses', (req, res) => {
     })
   }
 })
+
 // calculate cumulative, major and minor GPAs from course grades and credits
 app.post('/gpa-overview/calculate', (req, res) => {
   const courses = req.body?.courses
@@ -483,22 +471,6 @@ app.post('/gpa-overview/calculate', (req, res) => {
         error: 'Invalid course information'
       })
     }
-  }
-
-  function calculateGPA(list) {
-    if (list.length === 0) {
-      return null
-    }
-
-    let totalPoints = 0
-    let totalCredits = 0
-
-    for (const course of list) {
-      totalPoints += course.gradePoint * course.credits
-      totalCredits += course.credits
-    }
-
-    return Number((totalPoints / totalCredits).toFixed(3))
   }
 
   const majorCourses = courses.filter(course => course.type === 'major')

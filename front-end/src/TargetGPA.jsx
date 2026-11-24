@@ -34,6 +34,11 @@ function TargetGPA() {
       return;
     }
 
+    if (typeof gpaData.cumulativeGPA !== "number") {
+      setError("Current GPA is not available.");
+      return;
+    }
+
     fetch("http://localhost:3000/calculate-target-gpa", {
       method: "POST",
       headers: {
@@ -42,7 +47,7 @@ function TargetGPA() {
       body: JSON.stringify({
         currentGPA: Number(gpaData.cumulativeGPA),
         targetGPA: Number(targetGPA),
-        completedCredits: Number(gpaData.creditsTaken),
+        completedCredits: Number(gpaData.gpaCredits),
         futureCredits: Number(creditLeft)
       })
     })
