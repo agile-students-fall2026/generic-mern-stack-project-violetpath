@@ -125,6 +125,7 @@ function TargetGPA() {
 
               <button
                 type="button"
+                className="target-gpa-home target-gpa-calculate-button"
                 onClick={calculateGPA}
                 disabled={!gpaData}
               >
