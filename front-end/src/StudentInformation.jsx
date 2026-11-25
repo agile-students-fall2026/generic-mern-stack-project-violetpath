@@ -64,13 +64,13 @@ function StudentInformation() {
       <h1>Student Information</h1>
 
       <div className="student-info-form">
-        {error && <p>{error}</p>}
-        {!student && !error && <p>Loading...</p>}
+        {error && !student && <p className="student-info-error">{error}</p>}
+      {!student && !error && <p>Loading...</p>}
 
         {student && fields.map(item => (
           <div className="student-info-field" key={item.key}>
-            <label className="student-info-label">{item.label}</label>
-            <input name={item.key} placeholder={item.label}
+            <label className="student-info-label" htmlFor={item.key}>{item.label}</label>
+            <input id={item.key} name={item.key} placeholder={item.label}
               value={student[item.key] ?? ''} onChange={handleChange} />
           </div>
         ))}
@@ -80,6 +80,8 @@ function StudentInformation() {
             Save
           </button>
         )}
+        
+        {error && student && <p className="student-info-error">{error}</p>}
         {message && <p className="student-info-message">{message}</p>}
       </div>
 
