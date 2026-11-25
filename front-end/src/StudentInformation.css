@@ -37,12 +37,20 @@
   
   .student-info-field {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
+    flex-direction: column;
+    gap: 8px;
     padding: 14px 16px;
     background-color: #f5f5f5;
     border-radius: 8px;
+  }
+
+  .student-info-field input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #999999;
+    border-radius: 10px;
   }
   
   .student-info-label {
@@ -57,7 +65,44 @@
     text-align: right;
     overflow-wrap: anywhere;
   }
+
+  .student-info-save {
+    align-self: center;
+    min-width: 120px;
+    padding: 10px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 5px;
+    border: 1px solid #57068C;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #57068C;
+    color: #FFFFFF;
+  }
+
+  .student-info-save:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+  }
   
+  .student-info-error {
+    align-self: center;
+    margin: 0;
+    color: #FF0000;
+    padding-top: 10px;
+  }
+
+  .student-info-message {
+    align-self: center;
+    margin: 0;
+    margin-top: -5px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #57068C;
+  }
+
   .student-info-home {
     display: inline-flex;
     align-items: center;
@@ -73,7 +118,7 @@
     text-align: center;
     text-decoration: none;
     border: 2px solid #57068C;
-    border-radius: 8px;
+    border-radius: 10px;
   }
   
   .student-info-home:hover {
