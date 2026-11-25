@@ -259,11 +259,31 @@ app.post('/calculate-target-gpa', (req, res) => {
     })
   }
 
-  const achievable = requiredGPA <= 4
+  const achievable = requiredGPA <= 4 + 1e-9
+  //Calculate how many A and A- grades are needed
+  const numCourses = futureCredits / 4
+
+  let numA = null
+  let numAMinus = null 
+
+  if (achievable && Number.isInteger(numCourses)) {
+    numA = Math.ceil(
+      ((requiredGPA - 3.667) * numCourses) / (4 -3.667) -1e-9
+    )
+   if (numA < 0) {
+    numA = 0
+   }
+   if (numA > numCourses) {
+    numA = numCourses
+   }
+   numAMinus = numCourses - numA
+  }
 
   return res.status(200).json({
     requiredGPA: Number(Math.max(0, requiredGPA).toFixed(2)),
-    achievable: achievable
+    achievable: achievable,
+    numA: numA,
+    numAMinus:numAMinus
   })
 })
 

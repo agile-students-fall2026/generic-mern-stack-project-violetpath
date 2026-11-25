@@ -139,10 +139,12 @@ function TargetGPA() {
               <p>
                 {result
                   ? (result.achievable ? "Yes" : "No")
-                  : "—"}
+                  : "-"}
               </p>
             </div>
-          </div>
+            </div>
+            
+      
 
           {error && <p>{error}</p>}
         </section>
@@ -161,17 +163,17 @@ function TargetGPA() {
           <div className="target-gpa-results">
             <div className="target-gpa-result-item">
               <h4>A needed</h4>
-              <p>—</p>
+              <p>{result?.numA ?? "-"}</p>
             </div>
 
             <div className="target-gpa-result-divider" />
 
             <div className="target-gpa-result-item">
               <h4>A- needed</h4>
-              <p>—</p>
-            </div>
-          </div>
-        </section>
+              <p>{result?.numAMinus ?? "-"}</p>
+              </div>
+              </div>
+          </section>
 
         {/* Home button */}
         <Link to="/" className="target-gpa-home">

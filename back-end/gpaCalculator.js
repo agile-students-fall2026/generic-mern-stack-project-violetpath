@@ -328,4 +328,23 @@ export function calculateGraduationCheck(requirements) {
     eligibleByCredits: summary.creditsLeft === 0 &&
       creditGroups.every(group => group.completed)
   }
+
+}
+//Calculate required GPA to achieve target GPA
+export function calculateTargetGPA(
+  currentGPA, 
+  targetGPA, 
+  completedCredits, 
+  futureCredits
+) {
+  const currentPoints = currentGPA * completedCredits
+  const totalCredits = completedCredits + futureCredits
+  const targetPoints = targetGPA * totalCredits
+  const requiredPoints = targetPoints - currentPoints
+  const requiredGPA = requiredPoints/futureCredits
+
+  return {
+    requiredGPA: Number(requiredGPA.toFixed(3)),
+    achieveable:requiredGPA <= 4 + 1e-9
+  }
 }
