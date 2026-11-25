@@ -259,3 +259,13 @@
     width: 90px;
   }
 }
+  /* Calculate button */
+  .target-gpa-calculate-button {
+    margin: 12px auto 0;
+    cursor: pointer;
+  }
+
+  .target-gpa-calculate-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
