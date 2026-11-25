@@ -413,7 +413,33 @@ app.put('/student-information', (req, res) => {
       })
     }
   }
+  // make sure the major is one of the majors in declaration.json
+  if (!declarationOptions.majors.includes(data.major.trim())) {
+    return res.status(400).json({
+      error: 'Unknown major'
+    })
+  }
+    // check the student ID: letters followed by exactly 4 numbers
+  if (!/^[A-Za-z]+\d{4}$/.test(data.studentId.trim())) {
+    return res.status(400).json({
+      error: 'Invalid student ID'
+    })
+  }
 
+  // check the university ID: the letter N followed by exactly 8 numbers
+  if (!/^N\d{8}$/.test(data.universityId.trim())) {
+    return res.status(400).json({
+      error: 'Invalid university ID'
+    })
+  }
+
+  // check expected graduation: Spring or Fall, a space, then a 4-digit year
+  if (!/^(Spring|Fall) \d{4}$/.test(data.expectedGraduation.trim())) {
+    return res.status(400).json({
+      error: 'Invalid expected graduation'
+    })
+  }
+  
   const student = {}
   for (const field of fields) {
     student[field] = data[field].trim()
